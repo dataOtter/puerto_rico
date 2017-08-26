@@ -17,7 +17,7 @@ db_name, user_name, pwd, host_ip = 'puerto_rico', 'root', 'password', '192.168.4
 
 prep_0.create_sub_pid_csv(all_csvs_path)
 prep_p1.prep_all_p1(all_csvs_path)
-prep_p2.
+prep_p2.prep_all_p2(all_csvs_path)
 
 
 for csv in csvs:

@@ -1,4 +1,4 @@
-import wrangling_cleaning as w
+import wrangling_functions as w
 
 
 def create_sub_pid_csv(file_path, node_file="node_index_5_3_17",
@@ -8,10 +8,10 @@ def create_sub_pid_csv(file_path, node_file="node_index_5_3_17",
     path_pid = file_path + sub_pid_file + ".csv"
     path_nodes = file_path + node_file + ".csv"
 
-    nodes_list = w.get_csv_as_list(path_nodes)[1:]  # data of nodes csv as list
+    nodes_data = w.get_csv_as_list(path_nodes)[1:]  # data of nodes csv as list
     nodes_pid_index = w.get_value_index_from_nodes_col(path_nodes, "project_id")
 
     w.create_csv_add_column_labels(path_pid, pid_col_labels)  # make subjects_pids csv with given column labels
 
-    for row in nodes_list:
+    for row in nodes_data:
         w.append_row_to_csv(path_pid, [row[nodes_pid_index]])  # add pids to the subjects_pids file
