@@ -28,8 +28,8 @@ def prep_all_p2(path, network_file='p2_network_interviews', hiv_file='p2_hivs', 
     w.add_column_and_data_from_nodes_to_csv(path_interviews1, path_nodes,
                                             add_col_name='project_id', reference_col_name="unique_id")
 
+    # add rds_id to p2_second_interview.csv using its newly made unique_id to associate the correct rds_id
+    w.add_column_and_data_from_nodes_to_csv(path_interviews2, path_nodes,
+                                            add_col_name='rds_id', reference_col_name="unique_id")
 
-prep_all_p2("C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\csv_data\\")
-
-    # p2_second_interviews make rds_id column
-    # p2_first_interviews make project_id column
+#prep_all_p2("C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\csv_data\\")
