@@ -3,6 +3,7 @@ import prepare_subjects_pids as prep_0
 import prepare_all_p1_csvs as prep_p1
 import prepare_all_p2_csvs as prep_p2
 import prepare_p1_p2_overlaps as prep_3
+import prepare_all_edge_csvs as prep_4
 
 
 all_csvs_path = "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\csv_data\\"
@@ -11,6 +12,7 @@ prep_0.create_sub_pid_csv(all_csvs_path)
 prep_p1.prep_all_p1(all_csvs_path)
 prep_p2.prep_all_p2(all_csvs_path)
 prep_3.create_p1_p2_overlaps(all_csvs_path)
+prep_4.create_all_edge_csvs(all_csvs_path)
 
 
 csvs = ['subjects_pids',

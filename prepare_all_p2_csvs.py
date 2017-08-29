@@ -4,6 +4,9 @@ import wrangling_functions as w
 def prep_all_p2(path, network_file='p2_network_interviews', hiv_file='p2_hivs', hcv_file='p2_hcvs',
                 interviews1_file='p2_first_interviews', interviews2_file='p2_second_interviews',
                 nodes_file="node_index_5_3_17"):
+    """Input: General file path; names of all p2 csv files; name of nodes csv file.
+        Output: Merges all files' unique id fragment columns, adding a unique_id column;
+        adds a project_id column to p2_first_interviews.csv; adds a rds_id column to p2_second_interviews.csv."""
     # get all p2 csv file paths
     path_network = path + network_file + ".csv"
     path_hiv = path + hiv_file + '.csv'
@@ -24,11 +27,11 @@ def prep_all_p2(path, network_file='p2_network_interviews', hiv_file='p2_hivs', 
     w.add_merged_col_to_csv(path_interviews2, 'unique_id', interviews2_cols_to_merge)
     w.add_merged_col_to_csv(path_network, 'unique_id', network_hcv_hiv_cols_to_merge)
 
-    # add project_id to p2_first_interview.csv using its newly made unique_id to associate the correct project_id
+    # add project_id to p2_first_interviews.csv using its newly made unique_id to associate the correct project_id
     w.add_column_and_data_from_nodes_to_csv(path_interviews1, path_nodes,
                                             add_col_name='project_id', reference_col_name="unique_id")
 
-    # add rds_id to p2_second_interview.csv using its newly made unique_id to associate the correct rds_id
+    # add rds_id to p2_second_interviews.csv using its newly made unique_id to associate the correct rds_id
     w.add_column_and_data_from_nodes_to_csv(path_interviews2, path_nodes,
                                             add_col_name='rds_id', reference_col_name="unique_id")
 

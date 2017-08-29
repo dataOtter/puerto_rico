@@ -1,21 +1,5 @@
 import csv
 import os
-# get_csv_as_list(file_path)
-# get_first_row_of_csv_as_list(file_path)
-# get_new_col_labels_list(full_path, replace_with)
-# get_value_index_from_nodes_col(path_nodes, value)
-# get_value_indices_from_file(full_path, values)
-# get_str_list_of_merged_cols(full_path, cols_to_merge)
-
-# create_csv_add_column_labels(full_path, cols)
-# create_empty_csv(full_path)
-
-# append_row_to_csv(full_path, row)
-# add_col_and_data_to_csv(full_path, col_name, values_to_add)
-# add_merged_col_to_csv(full_path, new_col_name, cols_to_merge)
-# remove_csv(full_path)
-# rename_csv(full_path_old, full_path_new)
-# fix_column_labels_csv(full_path1, replace_with)
 
 
 def get_csv_as_list(full_path):
@@ -33,12 +17,12 @@ def get_first_row_of_csv_as_list(full_path):
     return first_row
 
 
-def create_csv_add_column_labels(full_path, cols):
+def create_csv_add_column_labels(full_path, cols: list):
     create_empty_csv(full_path)
     append_row_to_csv(full_path, cols)
 
 
-def append_row_to_csv(full_path, row):
+def append_row_to_csv(full_path, row: list):
     with open(full_path, "a", newline="") as f:
         writer = csv.writer(f, quoting=csv.QUOTE_ALL, doublequote=True, delimiter=",")
         writer.writerow(row)
@@ -170,13 +154,31 @@ def get_data_from_one_col_as_list(full_path, col_name):
     return data_list
 
 
+def get_data_from_multiple_columns_as_list_of_lists(full_path, columns: list):
+    cols = get_first_row_of_csv_as_list(full_path)
+    indices = []
+    for col in columns:
+        indices.append(cols.index(col))
+    data_list = []
+
+    f = open(full_path, 'r')
+    reader = csv.reader(f, delimiter=',')
+    next(reader)
+    for row in reader:
+        data_row = []
+        for index in indices:
+            data_row.append(row[index])
+        data_list.append(data_row)
+
+    f.close()
+    return data_list
+
+
 def add_column_and_data_from_nodes_to_csv(full_path_csv_grow, full_path_nodes, add_col_name, reference_col_name):
     """Input: Path of csv file to add column to; nodes indices of column to add and
     column to use as comparison to associate new column with correct row; data of nodes file.
         Output: Adds column to be added to the specified file and populates it."""
-    nodes_data = get_csv_as_list(full_path_nodes)[1:]  # data of nodes csv as list
-    nodes_add_col_index = get_value_index_from_nodes_col(full_path_nodes, add_col_name)
-    nodes_reference_col_index = get_value_index_from_nodes_col(full_path_nodes, reference_col_name)
+    ref_col_to_add_col_dict = get_nodes_dict(full_path_nodes, reference_col_name, add_col_name)
 
     x = get_csv_as_list(full_path_csv_grow)
     csv_grow_cols = x[0]  # column labels of csv to grow, as list
@@ -188,26 +190,37 @@ def add_column_and_data_from_nodes_to_csv(full_path_csv_grow, full_path_nodes, a
     # remove original csv_grow file, make new one with add_col
     create_csv_add_column_labels(full_path_csv_grow, csv_grow_cols)
 
-    reference_col_to_add_col = {}
-    for row in nodes_data:
-        if row[nodes_reference_col_index] != '#NULL!' and row[nodes_reference_col_index] != '':
-            # make reference_col to add_col dict
-            reference_col_to_add_col[row[nodes_reference_col_index]] = row[nodes_add_col_index]
-
     csv_grow_reference_col_index = csv_grow_cols.index(reference_col_name)
 
     for row in csv_grow_data:
-        # use reference_col from each row in csv_grow to get add_col from reference_col_to_add_col dictionary
+        # use reference_col from each row in csv_grow to get add_col from ref_col_to_add_col_dict dictionary
         try:
-            add_col = reference_col_to_add_col[row[csv_grow_reference_col_index]]
+            add_col = ref_col_to_add_col_dict[row[csv_grow_reference_col_index]]
         except KeyError:
             continue
         row.append(add_col)  # append the retrieved add_col value to the row, under the newly added add_col column label
         append_row_to_csv(full_path_csv_grow, row)
 
+
+def get_nodes_dict(full_path_nodes, key_col_name, value_col_name):
+    """Input: Nodes csv file path, names of columns to be key and value.
+    Output: Returns a dictionary of the specified key, value pairs extracted from the nodes file."""
+    nodes_data = get_csv_as_list(full_path_nodes)[1:]  # data of nodes csv as list
+    nodes_value_col_index = get_value_index_from_nodes_col(full_path_nodes, value_col_name)
+    nodes_key_col_index = get_value_index_from_nodes_col(full_path_nodes, key_col_name)
+
+    key_value_dict = {}
+    for row in nodes_data:
+        if row[nodes_key_col_index] != '#NULL!' and row[nodes_key_col_index] != '':
+            # make key_col to value_col dict
+            key_value_dict[row[nodes_key_col_index]] = row[nodes_value_col_index]
+
+    return key_value_dict
+
+
 fp = "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\csv_data\\test.csv"
 fp2 = "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\csv_data\\test2.csv"
-fp3 = "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\csv_data\\p2_hivs.csv"
+fp3 = "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\csv_data\\p1_screenings.csv"
 #col = ['c', 'd']
 #replace_with = {'d': 'e'}
 #create_csv_add_column_labels(fp, col)
@@ -218,3 +231,4 @@ fp3 = "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\csv_data\\p2_hivs.csv"
 #cols_to_merge = ['P2FLFN', 'P2FLBM', 'P2BD', 'P2FLMN', 'P2FLSN', 'P2EDAD']
 #add_merged_col_to_csv(fp3, 'unique_id', cols_to_merge)
 #print(get_data_from_one_col_as_list(fp3, 'unique_id'))
+#print(get_data_from_multiple_columns_as_list_of_lists(fp3, ['rds_id', 'project_id']))
