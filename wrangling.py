@@ -37,7 +37,7 @@ def get_new_col_labels_list(full_path, replace_with):
     wrangle.get_new_col_labels_list(full_path, replace_with)
 
 
-def get_value_index_from_nodes_col(path_nodes, value):
+def get_index_of_file_col(path_nodes, value):
     wrangle.get_index_of_file_col(path_nodes, value)
 
 
@@ -105,3 +105,17 @@ def append_rows_of_edge_id_note_ids_to_new_file_from_old_edge_data(row, note_ind
                                                                    path_note_edges, edge_id):
     wrangle.append_rows_of_edge_id_note_ids_to_new_file_from_old_edge_data(row, note_index, note_name_to_note_id,
                                                                    path_note_edges, edge_id)
+
+
+def get_unique_pids_from_old_edges(old_edge_full_path):
+    wrangle.get_unique_pids_from_old_edges(old_edge_full_path)
+
+
+def get_discrepancy_pids_old_edge_and_node(old_edge_full_path, old_node_full_path):
+    wrangle.get_discrepancy_pids_old_edge_and_node(old_edge_full_path, old_node_full_path)
+
+
+def get_and_remove_discrepancy_rows_and_indices_from_old_edges(old_edge_full_path, old_node_full_path):
+    wrangle.get_and_remove_discrepancy_rows_and_indices_from_old_edges(old_edge_full_path, old_node_full_path)
+
+

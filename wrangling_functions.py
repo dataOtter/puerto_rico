@@ -43,7 +43,9 @@ def remove_csv(full_path):
 
 def rename_csv(full_path_old, full_path_new):
     try:
+        remove_csv(full_path_new)
         os.rename(full_path_old, full_path_new)
+        remove_csv(full_path_old)
     except Exception:
         print("Renaming not possible, check caller")
 
@@ -63,7 +65,6 @@ def fix_column_labels_csv(full_path1, replace_with: dict):
         append_row_to_csv(file_path2, row)
 
     f1.close()
-    remove_csv(full_path1)
     rename_csv(file_path2, full_path1)
 
 
@@ -127,7 +128,6 @@ def add_col_and_data_to_csv(full_path, col_name, values_to_add: list):
             i += 1
 
     f.close()
-    remove_csv(full_path)
     rename_csv(full_path2, full_path)
 
 
@@ -315,3 +315,63 @@ def get_col_label_to_longest_entry_dict(full_path):
         col_label_to_longest_entry[col] = longest
 
     return col_label_to_longest_entry
+
+
+def get_unique_pids_from_old_edges(old_edge_full_path):
+    senders_set_list = list(set(get_data_from_one_col_as_list(old_edge_full_path, 'sender_pid')))
+    receivers_set_list = list(set(get_data_from_one_col_as_list(old_edge_full_path, 'receiver_pid')))
+    for sender in senders_set_list:
+        receivers_set_list.append(sender)
+    unique_pids_from_old_edges = list(set(receivers_set_list))
+    return unique_pids_from_old_edges
+
+
+def get_discrepancy_pids_old_edge_and_node(old_edge_full_path, old_node_full_path):
+    unique_pids_from_old_edges = get_unique_pids_from_old_edges(old_edge_full_path)
+    unique_pids_from_subjects_pids = get_data_from_one_col_as_list(old_node_full_path, 'project_id')
+    only_in_old_edges = []
+    for edge_pid in unique_pids_from_old_edges:
+        if edge_pid not in unique_pids_from_subjects_pids:
+            only_in_old_edges.append(edge_pid)
+    return only_in_old_edges
+
+
+def get_and_remove_discrepancy_rows_and_indices_from_old_edges(path, old_edge_file='edge_index_5_2_17',
+                                                               old_node_file='node_index_5_3_17'):
+    old_edge_full_path = get_full_path(path, old_edge_file)
+    old_node_full_path = get_full_path(path, old_node_file)
+
+    only_in_old_edges = get_discrepancy_pids_old_edge_and_node(old_edge_full_path, old_node_full_path)
+
+    x = get_csv_as_list(old_edge_full_path)
+    original_edge_data = x[1:]
+    edge_col = x[0]
+
+    temp_file = get_full_path(path, old_edge_file + '2')
+    create_csv_add_column_labels(temp_file, edge_col)
+
+    discrepancy_rows = []
+
+    for i in range(len(original_edge_data)):
+        row = original_edge_data[i]
+        for pid in only_in_old_edges:
+            if pid in row:
+                discrepancy_rows.append([original_edge_data.index(row) + 2] + row)
+                to_add = 0
+                break
+            else:
+                to_add = 1
+        if to_add == 1:
+            append_row_to_csv(temp_file, row)
+
+    rename_csv(temp_file, old_edge_full_path)
+
+    print(only_in_old_edges)
+    for row in discrepancy_rows:
+        print(row)
+
+    return discrepancy_rows
+
+all_csvs_path = "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\csv_data\\"
+
+#get_and_remove_discrepancy_rows_and_indices_from_old_edges(all_csvs_path)

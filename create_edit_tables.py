@@ -12,7 +12,7 @@ def add_columns_from_csv_to_db_table(full_path, table_name, db_name, keys, user_
     csv_columns = w.get_first_row_of_csv_as_list(full_path)
     column_positions = get_col_label_to_col_index_in_csv_dict(csv_columns)
 
-    if len(csv_columns) == len(keys):
+    if len(csv_columns) <= len(keys):
         return column_positions
 
     else:
