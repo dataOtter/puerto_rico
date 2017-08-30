@@ -38,7 +38,7 @@ def get_new_col_labels_list(full_path, replace_with):
 
 
 def get_value_index_from_nodes_col(path_nodes, value):
-    wrangle.get_value_index_from_nodes_col(path_nodes, value)
+    wrangle.get_index_of_file_col(path_nodes, value)
 
 
 def get_value_indices_from_file(full_path, values):
@@ -70,4 +70,38 @@ def add_column_and_data_from_nodes_to_csv(full_path_csv_grow, full_path_nodes, a
 
 
 def get_nodes_dict(full_path_nodes, key_col_name, value_col_name):
-    wrangle.get_nodes_dict(full_path_nodes, key_col_name, value_col_name)
+    wrangle.get_no_null_entries_dict_from_csv(full_path_nodes, key_col_name, value_col_name)
+
+
+def get_sender_receiver_to_edge_id_dict(path_edges, edge, sender, receiver):
+    wrangle.get_sender_receiver_to_edge_id_dict(path_edges, edge, sender, receiver)
+
+
+def get_unique_single_entry_list(original_data):
+    wrangle.get_unique_single_entry_list(original_data)
+
+
+def split_and_append_entry_of_list(set_list, entry, sym):
+    wrangle.split_and_append_entry_of_list(set_list, entry, sym)
+
+
+def add_note_name_for_each_unique_note(path_notes, path_old_edges, old_col_label, type_entry_name):
+    wrangle.add_note_name_for_each_unique_note(path_notes, path_old_edges, old_col_label, type_entry_name)
+
+
+def get_full_path(path, file_name):
+    wrangle.get_full_path(path, file_name)
+
+
+def get_note_ids_from_row(row: list, note_index, note_name_to_note_id_dict):
+    wrangle.get_note_ids_from_given_row(row, note_index, note_name_to_note_id_dict)
+
+
+def add_auto_increment_col(full_path, col_label):
+    wrangle.add_auto_increment_col(full_path, col_label)
+
+
+def append_rows_of_edge_id_note_ids_to_new_file_from_old_edge_data(row, note_index, note_name_to_note_id,
+                                                                   path_note_edges, edge_id):
+    wrangle.append_rows_of_edge_id_note_ids_to_new_file_from_old_edge_data(row, note_index, note_name_to_note_id,
+                                                                   path_note_edges, edge_id)

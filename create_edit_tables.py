@@ -1,28 +1,48 @@
 import csv
 import mysql.connector
+import wrangling_functions as w
 
 
-def add_columns(file_path, table_name, db_name, keys, user_name, pwd, host_ip):
+def add_columns_from_csv_to_db_table(full_path, table_name, db_name, keys, user_name, pwd, host_ip):
     """Input: Database name, username, password and host ip address to open a connection to the desired database;
     name of the table to be used; file path to the csv file to be used;
     list of primary and foreign keys already contained in the given table.
     Output: Adds the columns from the given csv file to the given table, skipping those that already exist.
     Returns a dictionary column_positions of column labels as keys and column indices in the csv as values."""
-    reader = csv.reader(open(file_path, "r"), delimiter=",")
-    x = list(reader)
-    columns = x[0]
+    csv_columns = w.get_first_row_of_csv_as_list(full_path)
+    column_positions = get_col_label_to_col_index_in_csv_dict(csv_columns)
+
+    if len(csv_columns) == len(keys):
+        return column_positions
+
+    else:
+        statement = "ALTER TABLE " + table_name
+        col_label_to_longest_entry = w.get_col_label_to_longest_entry_dict(full_path)
+
+        for col in csv_columns:
+            if col not in keys:
+                max_col_len = col_label_to_longest_entry[col] + 1
+                statement += " ADD COLUMN `" + col + "` "
+                if max_col_len >= 255:
+                    statement += "TEXT,"
+                else:
+                    statement += "VARCHAR(" + str(max_col_len) + "),"
+
+        statement = statement[:-1] + ";"
+        execute_mysql_statement(db_name, user_name, pwd, host_ip, statement)
+
+    return column_positions
+
+
+def get_col_label_to_col_index_in_csv_dict(csv_columns: list):
     column_positions = {}
+    for i in range(len(csv_columns)):
+        col = csv_columns[i]
+        column_positions[col] = i
+    return column_positions
 
-    statement = "ALTER TABLE " + table_name
 
-    for i in range(len(columns)):
-        c = columns[i]
-        if c not in keys:
-            statement += " ADD COLUMN `" + c + "` VARCHAR(255),"
-        column_positions[c] = i
-
-    statement = statement[:-1] + ";"
-
+def execute_mysql_statement(db_name, user_name, pwd, host_ip, statement: str):
     cnx = mysql.connector.connect(user=user_name, password=pwd, host=host_ip, database=db_name)
     cursor = cnx.cursor()
     cursor.execute(statement)
@@ -30,10 +50,8 @@ def add_columns(file_path, table_name, db_name, keys, user_name, pwd, host_ip):
     cursor.close()
     cnx.close()
 
-    return column_positions
 
-
-def insert_data(file_path, db_name, column_positions, user_name, pwd, host_ip, tbl_name):
+def insert_data(full_path, db_name, column_positions, user_name, pwd, host_ip, tbl_name):
     """Input: Database name, username, password and host ip address to open a connection to the desired database;
     name of the table to be used; file path to the csv file to be used;
     dictionary of column_positions linking column labels to row indices in the csv.
@@ -54,9 +72,7 @@ def insert_data(file_path, db_name, column_positions, user_name, pwd, host_ip, t
                                   database=db_name)
     cursor = cnx.cursor()
 
-    reader = csv.reader(open(file_path, "r"), delimiter=",")
-    x = list(reader)
-    rows = x[1:]
+    rows = w.get_csv_as_list(full_path)[1:]
 
     for row in rows:
         row_values = ()
@@ -65,6 +81,7 @@ def insert_data(file_path, db_name, column_positions, user_name, pwd, host_ip, t
                 row_values += ('',)
             else:
                 row_values += (row[index],)
+        print(row_values)
         cursor.execute(insert_row_statement, row_values)
         cnx.commit()
 
@@ -76,30 +93,20 @@ def drop_table(table_name, db_name, user_name, pwd, host_ip):
     """Input: Database name, username, password and host ip address to open a
     connection to the desired database; name of the table to be dropped.
     Output: Deletes the given table."""
-    cnx = mysql.connector.connect(user=user_name, password=pwd, host=host_ip, database=db_name)
-    cursor = cnx.cursor()
-    cursor.execute("DROP TABLE IF EXISTS " + table_name)
-    cnx.commit()
-    cursor.close()
-    cnx.close()
+    statement = "DROP TABLE IF EXISTS " + table_name
+    execute_mysql_statement(db_name, user_name, pwd, host_ip, statement)
 
 
 def create_table(table_name, db_name, columns, user_name, pwd, host_ip):
     """Input: Database name, username, password and host ip address to open a connection to the desired database;
     name of the table to be created; list of columns to be added while creating the table.
     Output: Creates a table with the given inputs."""
-    cnx = mysql.connector.connect(user=user_name, password=pwd, host=host_ip, database=db_name)
-    cursor = cnx.cursor()
-
     statement = "CREATE TABLE " + table_name + " ("
     for c in columns:
         statement += "`" + c + "`" + " VARCHAR(255),"
     statement = statement[:-1] + ")"
 
-    cursor.execute(statement)
-    cnx.commit()
-    cursor.close()
-    cnx.close()
+    execute_mysql_statement(db_name, user_name, pwd, host_ip, statement)
 
 
 def get_keys_from_db(db_name, user_name, pwd, host_ip, tbl_name):

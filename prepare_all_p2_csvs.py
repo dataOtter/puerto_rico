@@ -8,12 +8,12 @@ def prep_all_p2(path, network_file='p2_network_interviews', hiv_file='p2_hivs', 
         Output: Merges all files' unique id fragment columns, adding a unique_id column;
         adds a project_id column to p2_first_interviews.csv; adds a rds_id column to p2_second_interviews.csv."""
     # get all p2 csv file paths
-    path_network = path + network_file + ".csv"
-    path_hiv = path + hiv_file + '.csv'
-    path_hcv = path + hcv_file + '.csv'
-    path_interviews1 = path + interviews1_file + '.csv'
-    path_interviews2 = path + interviews2_file + '.csv'
-    path_nodes = path + nodes_file + '.csv'
+    path_network = w.get_full_path(path, network_file)
+    path_hiv = w.get_full_path(path, hiv_file)
+    path_hcv = w.get_full_path(path, hcv_file)
+    path_interviews1 = w.get_full_path(path, interviews1_file)
+    path_interviews2 = w.get_full_path(path, interviews2_file)
+    path_nodes = w.get_full_path(path, nodes_file)
 
     # get all unique_id segments column titles
     network_hcv_hiv_cols_to_merge = ['P2FLFN', 'P2FLBM', 'P2BD', 'P2FLMN', 'P2FLSN', 'P2EDAD']

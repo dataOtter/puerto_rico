@@ -8,18 +8,18 @@ def create_p1_p2_overlaps(path, p1_screenings_file='p1_screenings', p2_network_f
     in both p1_screenings and p2_network_interviews; populates it with unique id, project id, rds id."""
     pid, rds, unique = 'project_id', 'rds_id', 'unique_id'
 
-    path_screenings = path + p1_screenings_file + ".csv"
-    path_network = path + p2_network_file + ".csv"
-    path_nodes = path + nodes_file + '.csv'
-    path_overlap = path + overlap_file + '.csv'
+    path_screenings = w.get_full_path(path, p1_screenings_file)
+    path_network = w.get_full_path(path, p2_network_file)
+    path_nodes = w.get_full_path(path, nodes_file)
+    path_overlap = w.get_full_path(path, overlap_file)
 
     w.create_csv_add_column_labels(path_overlap, [unique, rds, pid])
 
     scr_rds_data = w.get_data_from_one_col_as_list(path_screenings, rds)
     net_unique_data = w.get_data_from_one_col_as_list(path_network, unique)
 
-    unique_to_rds_dict = w.get_nodes_dict(path_nodes, unique, rds)
-    unique_to_pid_dict = w.get_nodes_dict(path_nodes, unique, pid)
+    unique_to_rds_dict = w.get_no_null_entries_dict_from_csv(path_nodes, unique, rds)
+    unique_to_pid_dict = w.get_no_null_entries_dict_from_csv(path_nodes, unique, pid)
 
     for unique_id, rds_id in unique_to_rds_dict.items():
         try:

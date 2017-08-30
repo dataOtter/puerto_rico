@@ -7,7 +7,8 @@ def load_one_table(csv_path, tbl_name, db_name, user_name, pwd, host_ip):
     name of the table to be used; file path of csv file to be used.
     Output: Inserts the data from the given csv into the given table."""
     keys = t.get_keys_from_db(db_name, user_name, pwd, host_ip, tbl_name)
-    column_positions_dict = t.add_columns(csv_path, tbl_name, db_name, keys, user_name, pwd, host_ip)
+    column_positions_dict = t.add_columns_from_csv_to_db_table(csv_path, tbl_name, db_name, keys,
+                                                               user_name, pwd, host_ip)
     t.insert_data(csv_path, db_name, column_positions_dict, user_name, pwd, host_ip, tbl_name)
 
 

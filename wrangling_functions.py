@@ -76,9 +76,9 @@ def get_new_col_labels_list(full_path, replace_with):
     return cols
 
 
-def get_value_index_from_nodes_col(path_nodes, value):
-    col = get_first_row_of_csv_as_list(path_nodes)
-    return col.index(value)
+def get_index_of_file_col(full_path, col_name):
+    cols = get_first_row_of_csv_as_list(full_path)
+    return cols.index(col_name)
 
 
 def get_value_indices_from_file(full_path, values):
@@ -140,13 +140,13 @@ def add_merged_col_to_csv(full_path, new_col_name, cols_to_merge):
 
 
 def get_data_from_one_col_as_list(full_path, col_name):
-    cols = get_first_row_of_csv_as_list(full_path)
+    f = open(full_path, 'r')
+    reader = csv.reader(f, delimiter=',')
+
+    cols = next(reader)
     index = cols.index(col_name)
     data_list = []
 
-    f = open(full_path, 'r')
-    reader = csv.reader(f, delimiter=',')
-    next(reader)
     for row in reader:
         data_list.append(row[index])
 
@@ -178,7 +178,7 @@ def add_column_and_data_from_nodes_to_csv(full_path_csv_grow, full_path_nodes, a
     """Input: Path of csv file to add column to; nodes indices of column to add and
     column to use as comparison to associate new column with correct row; data of nodes file.
         Output: Adds column to be added to the specified file and populates it."""
-    ref_col_to_add_col_dict = get_nodes_dict(full_path_nodes, reference_col_name, add_col_name)
+    ref_col_to_add_col_dict = get_no_null_entries_dict_from_csv(full_path_nodes, reference_col_name, add_col_name)
 
     x = get_csv_as_list(full_path_csv_grow)
     csv_grow_cols = x[0]  # column labels of csv to grow, as list
@@ -202,33 +202,116 @@ def add_column_and_data_from_nodes_to_csv(full_path_csv_grow, full_path_nodes, a
         append_row_to_csv(full_path_csv_grow, row)
 
 
-def get_nodes_dict(full_path_nodes, key_col_name, value_col_name):
+def get_no_null_entries_dict_from_csv(full_path, key_col_name, value_col_name):
     """Input: Nodes csv file path, names of columns to be key and value.
     Output: Returns a dictionary of the specified key, value pairs extracted from the nodes file."""
-    nodes_data = get_csv_as_list(full_path_nodes)[1:]  # data of nodes csv as list
-    nodes_value_col_index = get_value_index_from_nodes_col(full_path_nodes, value_col_name)
-    nodes_key_col_index = get_value_index_from_nodes_col(full_path_nodes, key_col_name)
+    full_data = get_csv_as_list(full_path)[1:]
+    value_col_index = get_index_of_file_col(full_path, value_col_name)
+    key_col_index = get_index_of_file_col(full_path, key_col_name)
 
     key_value_dict = {}
-    for row in nodes_data:
-        if row[nodes_key_col_index] != '#NULL!' and row[nodes_key_col_index] != '':
-            # make key_col to value_col dict
-            key_value_dict[row[nodes_key_col_index]] = row[nodes_value_col_index]
+    for row in full_data:
+        key = row[key_col_index]
+        value = row[value_col_index]
+        if key != '#NULL!' and key != '' and value != '#NULL!' and value != '':
+            key_value_dict[key] = value
 
     return key_value_dict
 
 
-fp = "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\csv_data\\test.csv"
-fp2 = "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\csv_data\\test2.csv"
-fp3 = "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\csv_data\\p1_screenings.csv"
-#col = ['c', 'd']
-#replace_with = {'d': 'e'}
-#create_csv_add_column_labels(fp, col)
-#create_empty_csv(fp)
-#for i in range(1, 10):
-    #add_row_to_csv(fp, [str(i)])
-#fix_column_labels_csv(fp, replace_with)
-#cols_to_merge = ['P2FLFN', 'P2FLBM', 'P2BD', 'P2FLMN', 'P2FLSN', 'P2EDAD']
-#add_merged_col_to_csv(fp3, 'unique_id', cols_to_merge)
-#print(get_data_from_one_col_as_list(fp3, 'unique_id'))
-#print(get_data_from_multiple_columns_as_list_of_lists(fp3, ['rds_id', 'project_id']))
+def get_sender_receiver_to_edge_id_dict(path_edges, edge, sender, receiver):
+    edges_data = get_csv_as_list(path_edges)[1:]
+    edges_value_col_index = get_index_of_file_col(path_edges, edge)
+    edges_key_col_index1 = get_index_of_file_col(path_edges, sender)
+    edges_key_col_index2 = get_index_of_file_col(path_edges, receiver)
+
+    sender_receiver_to_edge_id = {}
+    for row in edges_data:
+        sender_receiver_to_edge_id[row[edges_key_col_index1] + row[edges_key_col_index2]] = row[
+            edges_value_col_index]
+
+    return sender_receiver_to_edge_id
+
+
+def get_unique_single_entry_list(original_data: list):
+    data_set_list = list(set(original_data))
+    if '' in data_set_list:
+        data_set_list.remove('')
+    i = 0
+    # split up the field note row entries with multiple entries per row
+    while i < len(data_set_list):
+        entry = data_set_list[i]
+        if ',' in entry:
+            split_and_append_entry_of_list(data_set_list, entry, ',')
+        elif ';' in entry:
+            split_and_append_entry_of_list(data_set_list, entry, ';')
+        else:
+            entry.strip()
+            i += 1
+
+    unique_data_list = list(set(data_set_list))
+    return unique_data_list
+
+
+def split_and_append_entry_of_list(set_list, entry, sym):
+    """Input: A list of strings, a particular entry from that list,
+    the separator symbol used within that entry.
+    Output: Splits up the given multi-entry list entry and appends it to the list."""
+    entry_split = entry.split(sym)
+    set_list.remove(entry)
+    for e in entry_split:
+        set_list.append(e.strip())
+
+
+def add_note_name_for_each_unique_note(path_notes, path_old_edges, old_col_label, type_entry_name):
+    """Input: File path to the new notes.csv file; file path to the old edges file;
+    old edge file label of note column to be appended to new file; name of the note type for type column in new file.
+    Output: Adds a row to column note_name of new file for each unique note name from the given old edge file column."""
+    original_col_data = get_data_from_one_col_as_list(path_old_edges, old_col_label)
+    unique_data = get_unique_single_entry_list(original_col_data)
+    # append a row for each unique field note to the notes.csv file
+    # assumes that column 1 is note_name, column 2 is note_type
+    for one_entry in unique_data:
+        append_row_to_csv(path_notes, [one_entry, type_entry_name])
+
+
+def get_full_path(path, file_name):
+    return path + file_name + '.csv'
+
+
+def get_note_ids_from_given_row(row: list, note_index, note_name_to_note_id_dict):
+    # get all entries for note in the given row
+    notes = get_unique_single_entry_list([row[note_index]])
+    note_ids = []
+    # get note ids from notes.csv
+    for note in notes:
+        note_ids.append(note_name_to_note_id_dict[note])
+
+    return note_ids
+
+
+def append_rows_of_edge_id_note_ids_to_new_file_from_old_edge_data(row, note_index, note_name_to_note_id,
+                                                                   path_note_edges, edge_id):
+    # get note ids from notes.csv of current row in old edge file
+    note_ids = get_note_ids_from_given_row(row, note_index, note_name_to_note_id)
+    # add row to note_edges.csv for each edge_id note_id pair
+    for one_id in note_ids:
+        append_row_to_csv(path_note_edges, [edge_id, one_id])
+
+
+def add_auto_increment_col(full_path, col_label):
+    num_rows = len(get_csv_as_list(full_path)[1:])
+    note_ids = range(1, num_rows + 1)
+    add_col_and_data_to_csv(full_path, col_label, list(note_ids))
+
+
+def get_col_label_to_longest_entry_dict(full_path):
+    cols = get_first_row_of_csv_as_list(full_path)
+    col_label_to_longest_entry = {}
+
+    for col in cols:
+        col_data = get_data_from_one_col_as_list(full_path, col)
+        longest = len(max(col_data, key=len))
+        col_label_to_longest_entry[col] = longest
+
+    return col_label_to_longest_entry
