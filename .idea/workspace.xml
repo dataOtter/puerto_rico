@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d07d9d50-5074-49a5-889a-faa5c06f1cee" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mysql_and_csv_functions.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mysql_queries_pid.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mysql_query_fuctions.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/querying.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/create_edit_tables.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/load_csv_into_db.py" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/prepare_subjects_pids.py" afterPath="$PROJECT_DIR$/prepare_subjects_ids.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/current_EER.mwb" afterPath="$PROJECT_DIR$/current_EER.mwb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/current_EER.mwb.bak" afterPath="$PROJECT_DIR$/current_EER.mwb.bak" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/create_edit_tables.py" afterPath="$PROJECT_DIR$/create_edit_tables.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/current_create_db_frame_from_EER.sql" afterPath="$PROJECT_DIR$/current_create_db_frame_from_EER.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/prep_and_load_all_csvs.py" afterPath="$PROJECT_DIR$/prep_and_load_all_csvs.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wrangling.py" afterPath="$PROJECT_DIR$/wrangling.py" />
@@ -20,56 +27,44 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="prep_and_load_all_csvs.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="prep_and_load_all_csvs.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/prep_and_load_all_csvs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="23" column="18" lean-forward="false" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+            <state relative-caret-position="175">
+              <caret line="7" column="33" lean-forward="true" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
               <folding>
-                <element signature="e#0#28#0" expanded="true" />
+                <element signature="e#0#40#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="prepare_subjects_pids.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/prepare_subjects_pids.py">
+      <file leaf-file-name="mysql_queries_pid.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mysql_queries_pid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="8" column="31" lean-forward="true" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="prepare_all_edge_and_notes_csvs.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/prepare_all_edge_and_notes_csvs.py">
+      <file leaf-file-name="mysql_query_fuctions.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mysql_query_fuctions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="92" column="35" lean-forward="false" selection-start-line="92" selection-start-column="35" selection-end-line="92" selection-end-column="35" />
+            <state relative-caret-position="75">
+              <caret line="3" column="17" lean-forward="false" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="load_csv_into_db.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/load_csv_into_db.py">
+      <file leaf-file-name="querying.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/querying.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="475">
+              <caret line="19" column="44" lean-forward="false" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create_edit_tables.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/create_edit_tables.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -77,8 +72,8 @@
       <file leaf-file-name="wrangling_functions.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wrangling_functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="338" column="30" lean-forward="false" selection-start-line="338" selection-start-column="30" selection-end-line="338" selection-end-column="30" />
+            <state relative-caret-position="609">
+              <caret line="381" column="0" lean-forward="true" selection-start-line="381" selection-start-column="0" selection-end-line="381" selection-end-column="0" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -89,8 +84,8 @@
       <file leaf-file-name="wrangling.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wrangling.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="118" column="110" lean-forward="false" selection-start-line="118" selection-start-column="12" selection-end-line="118" selection-end-column="110" />
+            <state relative-caret-position="684">
+              <caret line="123" column="0" lean-forward="true" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -105,13 +100,18 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>pid</find>
+      <find>null</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/load_csv_into_db.py" />
         <option value="$PROJECT_DIR$/../../Python/pythondataio/csv_functions.py" />
         <option value="$PROJECT_DIR$/create_p1_p2_overlaps_csv.py" />
         <option value="$PROJECT_DIR$/pid_create_and_add_to_p1_scr.py" />
@@ -124,17 +124,23 @@
         <option value="$PROJECT_DIR$/wrangling_cleaning.py" />
         <option value="$PROJECT_DIR$/xxx.py" />
         <option value="$PROJECT_DIR$/prepare_edges_csv.py" />
-        <option value="$PROJECT_DIR$/prepare_subjects_pids.py" />
         <option value="$PROJECT_DIR$/prepare_all_p1_csvs.py" />
         <option value="$PROJECT_DIR$/prepare_all_p2_csvs.py" />
         <option value="$PROJECT_DIR$/prepare_p1_p2_overlaps.py" />
         <option value="$PROJECT_DIR$/prepare_all_edge_csvs.py" />
         <option value="$PROJECT_DIR$/prep_and_load_csv_into_db.py" />
         <option value="$PROJECT_DIR$/load_all_csvs.py" />
+        <option value="$PROJECT_DIR$/prepare_subjects_pids.py" />
+        <option value="$PROJECT_DIR$/prepare_subjects_ids.py" />
+        <option value="$PROJECT_DIR$/mysql_queries_pid.py" />
         <option value="$PROJECT_DIR$/wrangling_functions.py" />
-        <option value="$PROJECT_DIR$/create_edit_tables.py" />
         <option value="$PROJECT_DIR$/wrangling.py" />
+        <option value="$PROJECT_DIR$/create_edit_tables.py" />
+        <option value="$PROJECT_DIR$/load_csv_into_db.py" />
+        <option value="$PROJECT_DIR$/mysql_and_csv_functions.py" />
         <option value="$PROJECT_DIR$/prep_and_load_all_csvs.py" />
+        <option value="$PROJECT_DIR$/mysql_query_fuctions.py" />
+        <option value="$PROJECT_DIR$/querying.py" />
       </list>
     </option>
   </component>
@@ -380,14 +386,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1890625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30549684" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30549684" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -425,7 +431,7 @@
         <state relative-caret-position="325">
           <caret line="13" column="16" lean-forward="true" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -434,9 +440,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="13" column="54" lean-forward="true" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#30#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -444,9 +448,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
           <caret line="11" column="20" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="11" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -550,30 +552,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/prepare_p1_p2_overlaps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="13" column="54" lean-forward="false" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prepare_all_p2_csvs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="15" column="50" lean-forward="false" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prepare_all_p1_csvs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/ProgramData/Anaconda3/Lib/codecs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -582,65 +560,121 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/prepare_subjects_pids.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="31" lean-forward="true" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/prepare_all_edge_and_notes_csvs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="92" column="35" lean-forward="false" selection-start-line="92" selection-start-column="35" selection-end-line="92" selection-end-column="35" />
+        <state relative-caret-position="-15">
+          <caret line="47" column="45" lean-forward="false" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wrangling.py">
+    <entry file="file://$PROJECT_DIR$/prepare_subjects_ids.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="118" column="110" lean-forward="false" selection-start-line="118" selection-start-column="12" selection-end-line="118" selection-end-column="110" />
+        <state relative-caret-position="200">
+          <caret line="8" column="49" lean-forward="true" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wrangling_functions.py">
+    <entry file="file://$PROJECT_DIR$/prepare_all_p1_csvs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="338" column="30" lean-forward="false" selection-start-line="338" selection-start-column="30" selection-end-line="338" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="625">
+          <caret line="25" column="2" lean-forward="false" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/load_csv_into_db.py">
+    <entry file="file://$PROJECT_DIR$/prepare_all_p2_csvs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="-55">
+          <caret line="18" column="39" lean-forward="false" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prepare_p1_p2_overlaps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="15" column="66" lean-forward="false" selection-start-line="15" selection-start-column="63" selection-end-line="15" selection-end-column="66" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/create_edit_tables.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/load_csv_into_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prep_and_load_all_csvs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" column="33" lean-forward="true" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wrangling_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="609">
+          <caret line="381" column="0" lean-forward="true" selection-start-line="381" selection-start-column="0" selection-end-line="381" selection-end-column="0" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/prep_and_load_all_csvs.py">
+    <entry file="file://$PROJECT_DIR$/wrangling.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="23" column="18" lean-forward="false" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+        <state relative-caret-position="684">
+          <caret line="123" column="0" lean-forward="true" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysql_and_csv_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="734">
+          <caret line="82" column="4" lean-forward="false" selection-start-line="82" selection-start-column="4" selection-end-line="82" selection-end-column="4" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/querying.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="19" column="44" lean-forward="false" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysql_query_fuctions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="17" lean-forward="false" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysql_queries_pid.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

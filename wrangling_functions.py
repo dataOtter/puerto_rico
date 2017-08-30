@@ -372,6 +372,15 @@ def get_and_remove_discrepancy_rows_and_indices_from_old_edges(path, old_edge_fi
 
     return discrepancy_rows
 
+
+def get_col_label_to_col_index_in_csv_dict(csv_columns: list):
+    column_positions = {}
+    for i in range(len(csv_columns)):
+        col = csv_columns[i]
+        column_positions[col] = i
+    return column_positions
+
+
 all_csvs_path = "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\csv_data\\"
 
 #get_and_remove_discrepancy_rows_and_indices_from_old_edges(all_csvs_path)

@@ -119,3 +119,7 @@ def get_and_remove_discrepancy_rows_and_indices_from_old_edges(old_edge_full_pat
     wrangle.get_and_remove_discrepancy_rows_and_indices_from_old_edges(old_edge_full_path, old_node_full_path)
 
 
+def get_col_label_to_col_index_in_csv_dict(csv_columns: list):
+    wrangle.get_col_label_to_col_index_in_csv_dict(csv_columns)
+
+
