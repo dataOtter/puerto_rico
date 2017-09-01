@@ -39,7 +39,7 @@ def add_columns_from_csv_to_db_table(full_path, table_name, db_name, keys, user_
                     statement += "VARCHAR(" + str(max_col_len) + "),"
 
         statement = statement[:-1] + ";"
-        q.execute_mysql_statement(db_name, user_name, pwd, host_ip, statement)
+        q.execute_query(db_name, user_name, pwd, host_ip, statement)
 
     return column_positions
 

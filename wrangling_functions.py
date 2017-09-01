@@ -326,7 +326,20 @@ def get_unique_pids_from_old_edges(old_edge_full_path):
     return unique_pids_from_old_edges
 
 
-def get_discrepancy_pids_old_edge_and_node(old_edge_full_path, old_node_full_path):
+def get_distinct_ids_from_csv(full_path, id_col_label):
+    return list(set(get_data_from_one_col_as_list(full_path, id_col_label)))
+
+
+def get_distinct_ids_from_multiple_csvs(list_of_full_paths: list, id_col_label: str):
+    disctinct_ids = []
+    for full_path in list_of_full_paths:
+        temp_distinct_ids = get_distinct_ids_from_csv(full_path, id_col_label)
+        disctinct_ids.extend(temp_distinct_ids)
+        disctinct_ids = list(set(disctinct_ids))
+    return disctinct_ids
+
+
+def get_discrepancy_pids_only_in_old_edge_not_node(old_edge_full_path, old_node_full_path):
     unique_pids_from_old_edges = get_unique_pids_from_old_edges(old_edge_full_path)
     unique_pids_from_subjects_pids = get_data_from_one_col_as_list(old_node_full_path, 'project_id')
     only_in_old_edges = []
@@ -341,7 +354,7 @@ def get_and_remove_discrepancy_rows_and_indices_from_old_edges(path, old_edge_fi
     old_edge_full_path = get_full_path(path, old_edge_file)
     old_node_full_path = get_full_path(path, old_node_file)
 
-    only_in_old_edges = get_discrepancy_pids_old_edge_and_node(old_edge_full_path, old_node_full_path)
+    only_in_old_edges = get_discrepancy_pids_only_in_old_edge_not_node(old_edge_full_path, old_node_full_path)
 
     x = get_csv_as_list(old_edge_full_path)
     original_edge_data = x[1:]
@@ -381,6 +394,44 @@ def get_col_label_to_col_index_in_csv_dict(csv_columns: list):
     return column_positions
 
 
+def get_ids_not_in_sub_ids(path, phase: str, comparison_file: str, id_name: str, sub_ids_file='subjects_ids'):
+    path_comp = get_full_path(path, comparison_file)
+    path_sub_ids = get_full_path(path, sub_ids_file)
+
+    phase_ids = get_distinct_ids_from_csv(path_comp, id_name)
+    sub_ids_ids = get_distinct_ids_from_csv(path_sub_ids, id_name)
+
+    in_phase_only_not_in_sub_ids = [id_name + " in " + phase + " files but not in subjects_ids file"]
+    in_sub_ids_only_not_in_phase = [id_name + " in subjects_ids file but not in " + phase]
+
+    for one_id in phase_ids:
+        if one_id not in sub_ids_ids:
+            in_phase_only_not_in_sub_ids.append(one_id)
+
+    for one_id in sub_ids_ids:
+        if one_id not in phase_ids:
+            in_sub_ids_only_not_in_phase.append(one_id)
+
+    return [in_phase_only_not_in_sub_ids] + [in_sub_ids_only_not_in_phase]
+
+
+def get_union_of_lists(list1, list2):
+    return list(set(list1) | set(list2))
+
+
+def get_intersection_of_lists(list1, list2):
+    return list(set(list1) & set(list2))
+
+
 all_csvs_path = "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\csv_data\\"
 
 #get_and_remove_discrepancy_rows_and_indices_from_old_edges(all_csvs_path)
+
+#print(get_ids_not_in_sub_ids(all_csvs_path, "P1", 'p1_screenings', 'rds_id'))
+
+#print(get_ids_not_in_sub_ids(all_csvs_path, "P2", 'p2_network_interviews', 'unique_id'))
+#print(get_ids_not_in_sub_ids(all_csvs_path, "P2_second_interviews", 'p2_second_interviews', 'rds_id'))
+# no new rds ids here, where do the two additional ones come from in subjects_ids???
+
+# would like to add pid foreign key from subjects_ids to p2_network_interviews
+# and rds id foreign key from subjects_ids to p1_screenings

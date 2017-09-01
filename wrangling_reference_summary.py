@@ -112,7 +112,7 @@ def get_unique_pids_from_old_edges(old_edge_full_path):
 
 
 def get_discrepancy_pids_old_edge_and_node(old_edge_full_path, old_node_full_path):
-    wrangle.get_discrepancy_pids_old_edge_and_node(old_edge_full_path, old_node_full_path)
+    wrangle.get_discrepancy_pids_only_in_old_edge_not_node(old_edge_full_path, old_node_full_path)
 
 
 def get_and_remove_discrepancy_rows_and_indices_from_old_edges(old_edge_full_path, old_node_full_path):
@@ -121,5 +121,19 @@ def get_and_remove_discrepancy_rows_and_indices_from_old_edges(old_edge_full_pat
 
 def get_col_label_to_col_index_in_csv_dict(csv_columns: list):
     wrangle.get_col_label_to_col_index_in_csv_dict(csv_columns)
+
+
+def get_distinct_ids_from_csv(full_path, id_col_label):
+    wrangle.get_distinct_ids_from_csv(full_path, id_col_label)
+
+
+def get_distinct_ids_from_multiple_csvs(list_of_full_paths: list, id_col_label: str):
+    wrangle.get_distinct_ids_from_multiple_csvs(list_of_full_paths, id_col_label)
+
+
+def get_ids_not_in_sub_ids(path, phase: str, comparison_file: str, id_name: str, sub_ids_file='subjects_ids'):
+    wrangle.get_ids_not_in_sub_ids(path, phase, comparison_file, id_name)
+
+
 
 
