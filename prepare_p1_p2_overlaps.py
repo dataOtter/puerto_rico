@@ -1,8 +1,8 @@
 import wrangling_functions as w
-
+import constants as c
 
 def create_p1_p2_overlaps(path, p1_screenings_file='p1_screenings', p2_network_file='p2_network_interviews',
-                          nodes_file="node_index_5_3_17", overlap_file='p1_p2_overlaps'):
+                          nodes_file=c.NODES_FILE, overlap_file='p1_p2_overlaps'):
     """Input: General file path; names of p1_screenings, p2_network_interviews, nodes, p1_p2_overlaps file.
     Output: Create the overlap file with entries for every participant who was present
     in both p1_screenings and p2_network_interviews; populates it with unique id, project id, rds id."""

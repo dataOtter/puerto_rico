@@ -1,8 +1,8 @@
 import wrangling_functions as w
 
 
-def create_all_edge_csvs(path, edges_file='edges', old_edge_file='edge_index_5_2_17', net_edges_file='network_edges',
-                         rds_edges_file='rds_edges', notes_file='notes', note_edges_file='note_edges'):
+def create_all_edge_and_note_csvs(path, edges_file='edges', old_edge_file='edge_index_5_2_17', net_edges_file='network_edges',
+                                  rds_edges_file='rds_edges', notes_file='notes', note_edges_file='note_edges'):
     """Input: General file path; csv file names of all edge and note files.
     Output: Creates and populates all edge and note files."""
     path_edges = w.get_full_path(path, edges_file)
@@ -45,14 +45,16 @@ def create_all_edge_csvs(path, edges_file='edges', old_edge_file='edge_index_5_2
 
 
 def create_edges_csv(path_edges, old_edge_data, sender_index, receiver_index,
-                     label_sender='sender_pid', label_receiver='receiver_pid', label_edge='edge_id'):
+                     label_sender='sender_pid', label_receiver='receiver_pid',
+                     label_edge='edge_id', label_sender_receiver='sender_receiver'):
     """Input: edges.csv file path; data from the old edge file;
     sender and receiver index in that file; sender, receiver, edge column labels.
     Output: Creates edges.csv file and populates it with all edge connections (edge id, sender pid, receiver pid)."""
-    w.create_csv_add_column_labels(path_edges, [label_edge, label_sender, label_receiver])
+    w.create_csv_add_column_labels(path_edges, [label_edge, label_sender, label_receiver, label_sender_receiver])
     for i in range(1, len(old_edge_data) + 1):
         row = old_edge_data[i - 1]
-        w.append_row_to_csv(path_edges, [i, row[sender_index], row[receiver_index]])
+        w.append_row_to_csv(path_edges, [i, row[sender_index], row[receiver_index],
+                            row[sender_index] + row[receiver_index]])
 
 
 def create_network_edges_csv(path_net_edges, old_edge_data, sender_receiver_to_edge_id,

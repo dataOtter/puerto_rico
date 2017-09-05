@@ -1,9 +1,12 @@
 import mysql.connector
+import constants as c
 
 
 def execute_query(statement: str, db_name, user_name, pwd, host_ip):
     cnx = mysql.connector.connect(user=user_name, password=pwd, host=host_ip, database=db_name)
     cursor = cnx.cursor()
+    if c.LOGGING_SQL_STATEMENT:
+        print(statement)
     cursor.execute(statement)
     cnx.commit()
     cursor.close()
@@ -13,6 +16,8 @@ def execute_query(statement: str, db_name, user_name, pwd, host_ip):
 def execute_query_return_list(statement: str, db_name, user_name, pwd, host_ip):
     cnx = mysql.connector.connect(user=user_name, password=pwd, host=host_ip, database=db_name)
     cursor = cnx.cursor()
+    if c.LOGGING_SQL_STATEMENT:
+        print(statement)
     cursor.execute(statement)
     result_list = [item[0] for item in cursor.fetchall()]  # get result as list of strings, rather than list of tuples
     cnx.commit()
@@ -21,35 +26,40 @@ def execute_query_return_list(statement: str, db_name, user_name, pwd, host_ip):
     return result_list
 
 
-def execute_query_insert_one_row(row_list, table_name, labels_list, db_name, user_name, pwd, host_ip):
+def get_insert_row_statement(table_name: str, col_labels: list):
     labels, values = '(', '('
-    for label in labels_list:
+    for label in col_labels:
         labels += "`" + label + "`" + ","
         values += "%s,"
     labels = labels[:-1] + ")"
     values = values[:-1] + ")"
-    insert_row_statement = "INSERT INTO " + table_name + " " + labels + " VALUES " + values
+    return "INSERT INTO " + table_name + " " + labels + " VALUES " + values
 
+
+def execute_query_insert_one_row(row: list, table_name: str, col_labels: list, db_name, user_name, pwd, host_ip):
+    insert_row_statement = get_insert_row_statement(table_name, col_labels)
     cnx = mysql.connector.connect(user=user_name, password=pwd, host=host_ip, database=db_name)
     cursor = cnx.cursor()
-    cursor.execute(insert_row_statement, row_list)
+    if c.LOGGING_SQL_STATEMENT:
+        print(insert_row_statement, row)
+    cursor.execute(insert_row_statement, row)
     cnx.commit()
     cursor.close()
     cnx.close()
 
 
-def execute_query_insert_multiple_rows(rows_list_of_lists, table_name, labels_list, db_name, user_name, pwd, host_ip):
-    labels, values = '(', '('
-    for label in labels_list:
-        labels += "`" + label + "`" + ","
-        values += "%s,"
-    labels = labels[:-1] + ")"
-    values = values[:-1] + ")"
-    insert_row_statement = "INSERT INTO " + table_name + " " + labels + " VALUES " + values
-
+def execute_query_insert_multiple_rows(all_rows: list, table_name: str, col_labels: list,
+                                       db_name, user_name, pwd, host_ip):
+    insert_row_statement = get_insert_row_statement(table_name, col_labels)
     cnx = mysql.connector.connect(user=user_name, password=pwd, host=host_ip, database=db_name)
     cursor = cnx.cursor()
-    for row in rows_list_of_lists:
+    if c.LOGGING_SQL_STATEMENT:
+        print("Inserting " + str(len(all_rows)) + " rows: " + str(all_rows))
+    for row in all_rows:
+        if isinstance(row, str):
+            row = [row]
+        if c.LOGGING_SQL_INSERT_STATEMENT:
+            print(insert_row_statement, row)
         cursor.execute(insert_row_statement, row)
         cnx.commit()
     cursor.close()
@@ -88,6 +98,8 @@ def get_existing_column_labels_from_db_table(tbl_name, db_name, user_name, pwd, 
     keys = execute_query_return_list(statement, db_name, user_name, pwd, host_ip)
     return keys
 
+
+
+
 db_name, user_name, pwd, host_ip = 'puerto_rico', 'root', 'password', '192.168.4.30'
 print()
-

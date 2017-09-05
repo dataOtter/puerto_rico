@@ -7,10 +7,10 @@ def load_one_table(csv_path, tbl_name, db_name, user_name, pwd, host_ip):
     """Input: Database name, username, password and host ip address to open a connection to the desired database;
     name of the table to be used; file path of csv file to be used.
     Output: Inserts the data from the given csv into the given table."""
-    keys = q.get_existing_column_labels_from_db_table(db_name, user_name, pwd, host_ip, tbl_name)
+    keys = q.get_existing_column_labels_from_db_table(tbl_name, db_name, user_name, pwd, host_ip)
     column_positions_dict = add_columns_from_csv_to_db_table(csv_path, tbl_name, db_name, keys,
                                                                user_name, pwd, host_ip)
-    insert_data_from_csv(csv_path, db_name, column_positions_dict, user_name, pwd, host_ip, tbl_name)
+    insert_data_from_csv(csv_path, column_positions_dict, tbl_name, db_name, user_name, pwd, host_ip)
 
 
 def add_columns_from_csv_to_db_table(full_path, table_name, db_name, keys, user_name, pwd, host_ip):
@@ -39,26 +39,21 @@ def add_columns_from_csv_to_db_table(full_path, table_name, db_name, keys, user_
                     statement += "VARCHAR(" + str(max_col_len) + "),"
 
         statement = statement[:-1] + ";"
-        q.execute_query(db_name, user_name, pwd, host_ip, statement)
+        q.execute_query(statement, db_name, user_name, pwd, host_ip)
 
     return column_positions
 
 
-def insert_data_from_csv(full_path, db_name, column_positions, user_name, pwd, host_ip, tbl_name):
+def insert_data_from_csv(full_path, column_positions, tbl_name, db_name, user_name, pwd, host_ip, null_value='#NULL!'):
     """Input: Database name, username, password and host ip address to open a connection to the desired database;
     name of the table to be used; file path to the csv file to be used;
     dictionary of column_positions linking column labels to row indices in the csv.
     Output: Inserts the data contained in the given csv into the given table."""
-    labels, values = '(', '('
-
+    labels = []
     for label in column_positions:
-        labels += "`" + label + "`" + ","
-        values += "%s,"
+        labels.append(label)
 
-    labels = labels[:-1] + ")"
-    values = values[:-1] + ")"
-
-    insert_row_statement = "INSERT INTO " + tbl_name + " " + labels + " VALUES " + values
+    insert_row_statement = q.get_insert_row_statement(tbl_name, labels)
 
     cnx = mysql.connector.connect(user=user_name, password=pwd,
                                   host=host_ip,
@@ -70,7 +65,7 @@ def insert_data_from_csv(full_path, db_name, column_positions, user_name, pwd, h
     for row in rows:
         row_values = ()
         for label, index in column_positions.items():
-            if row[index] == '#NULL!':
+            if row[index] == null_value:
                 row_values += ('',)
             else:
                 row_values += (row[index],)

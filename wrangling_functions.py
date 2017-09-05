@@ -423,6 +423,10 @@ def get_intersection_of_lists(list1, list2):
     return list(set(list1) & set(list2))
 
 
+def get_difference_list1_only(list1, list2):
+    return list(set(list1) - set(list2))
+
+
 all_csvs_path = "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\csv_data\\"
 
 #get_and_remove_discrepancy_rows_and_indices_from_old_edges(all_csvs_path)
