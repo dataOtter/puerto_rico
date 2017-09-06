@@ -1,19 +1,19 @@
 import wrangling_functions as w
 import mysql_query_fuctions as q
 import mysql.connector
+import constants as c
 
 
-def load_one_table(csv_path, tbl_name, db_name, user_name, pwd, host_ip):
+def load_one_table(csv_path, tbl_name):
     """Input: Database name, username, password and host ip address to open a connection to the desired database;
     name of the table to be used; file path of csv file to be used.
     Output: Inserts the data from the given csv into the given table."""
-    keys = q.get_existing_column_labels_from_db_table(tbl_name, db_name, user_name, pwd, host_ip)
-    column_positions_dict = add_columns_from_csv_to_db_table(csv_path, tbl_name, db_name, keys,
-                                                               user_name, pwd, host_ip)
-    insert_data_from_csv(csv_path, column_positions_dict, tbl_name, db_name, user_name, pwd, host_ip)
+    keys = q.get_existing_column_labels_from_db_table(tbl_name)
+    column_positions_dict = add_columns_from_csv_to_db_table(csv_path, tbl_name, keys)
+    insert_data_from_csv(csv_path, column_positions_dict, tbl_name)
 
 
-def add_columns_from_csv_to_db_table(full_path, table_name, db_name, keys, user_name, pwd, host_ip):
+def add_columns_from_csv_to_db_table(full_path, table_name, keys):
     """Input: Database name, username, password and host ip address to open a connection to the desired database;
     name of the table to be used; file path to the csv file to be used;
     list of primary and foreign keys already contained in the given table.
@@ -39,12 +39,12 @@ def add_columns_from_csv_to_db_table(full_path, table_name, db_name, keys, user_
                     statement += "VARCHAR(" + str(max_col_len) + "),"
 
         statement = statement[:-1] + ";"
-        q.execute_query(statement, db_name, user_name, pwd, host_ip)
+        q.execute_query(statement)
 
     return column_positions
 
 
-def insert_data_from_csv(full_path, column_positions, tbl_name, db_name, user_name, pwd, host_ip, null_value='#NULL!'):
+def insert_data_from_csv(full_path, column_positions, tbl_name):
     """Input: Database name, username, password and host ip address to open a connection to the desired database;
     name of the table to be used; file path to the csv file to be used;
     dictionary of column_positions linking column labels to row indices in the csv.
@@ -55,9 +55,9 @@ def insert_data_from_csv(full_path, column_positions, tbl_name, db_name, user_na
 
     insert_row_statement = q.get_insert_row_statement(tbl_name, labels)
 
-    cnx = mysql.connector.connect(user=user_name, password=pwd,
-                                  host=host_ip,
-                                  database=db_name)
+    cnx = mysql.connector.connect(user=c.USER_NAME, password=c.PASSWORD,
+                                  host=c.HOST_IP,
+                                  database=c.DB_NAME)
     cursor = cnx.cursor()
 
     rows = w.get_csv_as_list(full_path)[1:]
@@ -65,7 +65,7 @@ def insert_data_from_csv(full_path, column_positions, tbl_name, db_name, user_na
     for row in rows:
         row_values = ()
         for label, index in column_positions.items():
-            if row[index] == null_value:
+            if row[index] == c.CSV_NULL_VALUES:
                 row_values += ('',)
             else:
                 row_values += (row[index],)

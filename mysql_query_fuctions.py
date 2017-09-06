@@ -2,8 +2,8 @@ import mysql.connector
 import constants as c
 
 
-def execute_query(statement: str, db_name, user_name, pwd, host_ip):
-    cnx = mysql.connector.connect(user=user_name, password=pwd, host=host_ip, database=db_name)
+def execute_query(statement: str):
+    cnx = mysql.connector.connect(user=c.USER_NAME, password=c.PASSWORD, host=c.HOST_IP, database=c.DB_NAME)
     cursor = cnx.cursor()
     if c.LOGGING_SQL_STATEMENT:
         print(statement)
@@ -74,7 +74,7 @@ def populate_temp_table(pids_list: list, db_name, user_name, pwd, host_ip, table
 
 def execute_query_drop_table(table_name, db_name, user_name, pwd, host_ip):
     statement = "DROP TABLE IF EXISTS " + table_name
-    execute_query(statement, db_name, user_name, pwd, host_ip)
+    execute_query(statement)
 
 
 def execute_query_create_table(table_name, columns, db_name, user_name, pwd, host_ip):
@@ -82,7 +82,7 @@ def execute_query_create_table(table_name, columns, db_name, user_name, pwd, hos
     for c in columns:
         statement += "`" + c + "`" + " VARCHAR(255),"
     statement = statement[:-1] + ")"
-    execute_query(statement, db_name, user_name, pwd, host_ip)
+    execute_query(statement)
 
 
 def execute_query_get_table_names(db_name, user_name, pwd, host_ip):
@@ -90,12 +90,12 @@ def execute_query_get_table_names(db_name, user_name, pwd, host_ip):
     return tables
 
 
-def get_existing_column_labels_from_db_table(tbl_name, db_name, user_name, pwd, host_ip):
+def get_existing_column_labels_from_db_table(tbl_name):
     """Output: Returns a list of column labels that already exist in the table
      -- for PR project they are the primary and foreign keys."""
     statement = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS " \
-                "WHERE TABLE_SCHEMA='" + db_name + "' AND TABLE_NAME='" + tbl_name + "'"
-    keys = execute_query_return_list(statement, db_name, user_name, pwd, host_ip)
+                "WHERE TABLE_SCHEMA='" + c.DB_NAME + "' AND TABLE_NAME='" + tbl_name + "'"
+    keys = execute_query_return_list(statement, c.DB_NAME, c.USER_NAME, c.PASSWORD, c.HOST_IP)
     return keys
 
 

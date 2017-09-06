@@ -1,5 +1,6 @@
 import csv
 import os
+import constants as c
 
 
 def get_csv_as_list(full_path):
@@ -68,7 +69,7 @@ def fix_column_labels_csv(full_path1, replace_with: dict):
     rename_csv(file_path2, full_path1)
 
 
-def get_new_col_labels_list(full_path, replace_with):
+def get_new_col_labels_list(full_path, replace_with: dict):
     cols = get_first_row_of_csv_as_list(full_path)
     for old, new in replace_with.items():
         if old in cols:
@@ -174,7 +175,7 @@ def get_data_from_multiple_columns_as_list_of_lists(full_path, columns: list):
     return data_list
 
 
-def add_column_and_data_from_nodes_to_csv(full_path_csv_grow, full_path_nodes, add_col_name, reference_col_name):
+def add_column_and_data_from_old_nodes_to_csv(full_path_csv_grow, full_path_nodes, add_col_name, reference_col_name):
     """Input: Path of csv file to add column to; nodes indices of column to add and
     column to use as comparison to associate new column with correct row; data of nodes file.
         Output: Adds column to be added to the specified file and populates it."""
@@ -203,8 +204,8 @@ def add_column_and_data_from_nodes_to_csv(full_path_csv_grow, full_path_nodes, a
 
 
 def get_no_null_entries_dict_from_csv(full_path, key_col_name, value_col_name):
-    """Input: Nodes csv file path, names of columns to be key and value.
-    Output: Returns a dictionary of the specified key, value pairs extracted from the nodes file."""
+    """Input: CSV file path, names of columns to be key and value.
+    Output: Returns a dictionary of the specified key, value pairs extracted from the given file."""
     full_data = get_csv_as_list(full_path)[1:]
     value_col_index = get_index_of_file_col(full_path, value_col_name)
     key_col_index = get_index_of_file_col(full_path, key_col_name)
@@ -425,6 +426,7 @@ def get_intersection_of_lists(list1, list2):
 
 def get_difference_list1_only(list1, list2):
     return list(set(list1) - set(list2))
+
 
 
 all_csvs_path = "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\csv_data\\"

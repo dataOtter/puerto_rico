@@ -66,7 +66,7 @@ def get_data_from_multiple_columns_as_list_of_lists(full_path, columns: list):
 
 
 def add_column_and_data_from_nodes_to_csv(full_path_csv_grow, full_path_nodes, add_col_name, reference_col_name):
-    wrangle.add_column_and_data_from_nodes_to_csv(full_path_csv_grow, full_path_nodes, add_col_name, reference_col_name)
+    wrangle.add_column_and_data_from_old_nodes_to_csv(full_path_csv_grow, full_path_nodes, add_col_name, reference_col_name)
 
 
 def get_nodes_dict(full_path_nodes, key_col_name, value_col_name):
