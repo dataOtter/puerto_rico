@@ -16,7 +16,7 @@ class PidFilter:
         raise Exception("PidFilter is abstract or derived class did not specify apply method")
 
     @abc.abstractmethod
-    def toString(self):
+    def get_cat(self):
         """This must be overridden in the derived class"""
         raise Exception("PidFilter is abstract or derived class did not specify apply method")
 
@@ -41,8 +41,8 @@ class GenderFilter(PidFilter):
             ans = prs.pids_transgender(pids_list)
         return ans
 
-    def toString(self):
-        return "GenderFilter on " + self.desired_gender
+    def get_cat(self):
+        return str(self.desired_gender)
 
 
 class AgeFilter(PidFilter):
@@ -64,8 +64,8 @@ class AgeFilter(PidFilter):
             ans = prs.pids_age_range(pids_list, min_age=41, max_age=100)
         return ans
 
-    def toString(self):
-        return "AgeFilter on " + self.age_category
+    def get_cat(self):
+        return str(self.age_category)
 
 
 class MinDrugsFilter(PidFilter):
@@ -87,8 +87,8 @@ class MinDrugsFilter(PidFilter):
             ans = prs.pids_min_drug_use_per_day(pids_list, min_use_per_day=8)
         return ans
 
-    def toString(self):
-        return "MinDrugFilter on " + self.daily_drug_use
+    def get_cat(self):
+        return str(self.daily_drug_use)
 
 
 class MaxDrugsFilter(PidFilter):
@@ -110,5 +110,5 @@ class MaxDrugsFilter(PidFilter):
             ans = prs.pids_max_drug_use_per_day(pids_list, max_use_per_day=8)
         return ans
 
-    def toString(self):
-        return "MaxDrugFilter on " + self.daily_drug_use
+    def get_cat(self):
+        return str(self.daily_drug_use)

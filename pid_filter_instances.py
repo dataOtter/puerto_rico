@@ -34,12 +34,12 @@ class FilterSystem:
         self.active_filters = []
         self.result_pids = w.get_union_of_lists(prs.pids_phase_1(), prs.pids_phase_2())
 
-    def add_active_filter(self, filter):
+    def add_filter(self, filter):
         self.result_pids = self.apply_one_filter(filter)
         self.active_filters.append(filter)
         self.inactive_filters.remove(filter)
 
-    def remove_active_filter(self, filter):
+    def remove_filter(self, filter):
         try:
             self.active_filters.remove(filter)
             self.apply_all_filters()
@@ -56,7 +56,17 @@ class FilterSystem:
             self.result_pids = filter.apply(self.result_pids)
         return self.result_pids
 
-    def get_filter_options(self):
+    def get_remove_filter_options(self):
+        options_dict = {}
+        for filter in self.active_filters:
+            kind = filter.get_kind()
+            if kind in options_dict:
+                options_dict[kind].append(filter)
+            else:
+                options_dict[kind] = [filter]
+        return options_dict
+
+    def get_add_filter_options(self):
         options_dict = {}
         for filter in self.inactive_filters:
             temp_pids = filter.apply(self.result_pids)
@@ -69,6 +79,11 @@ class FilterSystem:
                     options_dict[kind] = [(filter, temp_len)]
         return options_dict
 
+    def add_or_remove_filter(self, filter):
+        if filter in self.active_filters:
+            self.remove_filter(filter)
+        else:
+            self.add_filter(filter)
 
 
 
