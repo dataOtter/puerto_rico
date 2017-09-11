@@ -68,7 +68,7 @@ def execute_query_insert_multiple_rows(all_rows: list, table_name: str, col_labe
 
 def populate_temp_table(pids_list: list, db_name, user_name, pwd, host_ip, table_name="temp", label="pid"):
     execute_query_drop_table(table_name, db_name, user_name, pwd, host_ip)
-    execute_query_create_table(table_name, [label], db_name, user_name, pwd, host_ip)
+    execute_query_create_table(table_name, [label])
     execute_query_insert_multiple_rows(pids_list, table_name, [label], db_name, user_name, pwd, host_ip)
 
 
@@ -77,10 +77,10 @@ def execute_query_drop_table(table_name, db_name, user_name, pwd, host_ip):
     execute_query(statement)
 
 
-def execute_query_create_table(table_name, columns, db_name, user_name, pwd, host_ip):
+def execute_query_create_table(table_name, columns, data_type='TEXT'):
     statement = "CREATE TABLE IF NOT EXISTS " + table_name + " ("
     for c in columns:
-        statement += "`" + c + "`" + " VARCHAR(255),"
+        statement += "`" + c + "` " + data_type + ","
     statement = statement[:-1] + ")"
     execute_query(statement)
 

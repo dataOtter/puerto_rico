@@ -4,6 +4,8 @@ import constants as c
 
 
 def get_csv_as_list(full_path):
+    """Input: File path of the csv to return.
+    Output: Returns list containing each row of the csv file as another list."""
     with open(full_path, "r") as f:
         reader = csv.reader(f, delimiter=",")
         csv_list = list(reader)
@@ -11,6 +13,8 @@ def get_csv_as_list(full_path):
 
 
 def get_first_row_of_csv_as_list(full_path):
+    """Input: File path of the csv whose first row to return.
+    Output: Returns list containing the first row of the csv file."""
     f = open(full_path, 'r')
     reader = csv.reader(f, delimiter=',')
     first_row = next(reader)
@@ -18,24 +22,32 @@ def get_first_row_of_csv_as_list(full_path):
     return first_row
 
 
-def create_csv_add_column_labels(full_path, cols: list):
+def create_csv_add_column_labels(full_path, col_labels: list):
+    """Input: File path of the csv to create; column labels to add to this file.
+    Output: Creates a csv with the given column labels as the first row."""
     create_empty_csv(full_path)
-    append_row_to_csv(full_path, cols)
+    append_row_to_csv(full_path, col_labels)
 
 
 def append_row_to_csv(full_path, row: list):
+    """Input: File path of the csv; the row to append to that csv.
+    Output: Appends the given row to the end of the given file."""
     with open(full_path, "a", newline="") as f:
         writer = csv.writer(f, quoting=csv.QUOTE_ALL, doublequote=True, delimiter=",")
         writer.writerow(row)
 
 
 def create_empty_csv(full_path):
+    """Input: File path of the csv to create.
+    Output: Creates an empty file at the given location."""
     remove_csv(full_path)
     f = open(full_path, "w", newline="")
     f.close()
 
 
 def remove_csv(full_path):
+    """Input: File path of the csv to delete.
+    Output: Deletes the given file if it exists at that location."""
     try:
         os.remove(full_path)
     except FileNotFoundError:
@@ -43,6 +55,8 @@ def remove_csv(full_path):
 
 
 def rename_csv(full_path_old, full_path_new):
+    """Input: File path of the current csv; what the new file path should be.
+    Output: Renames the given file to the given new name."""
     try:
         remove_csv(full_path_new)
         os.rename(full_path_old, full_path_new)
@@ -51,88 +65,103 @@ def rename_csv(full_path_old, full_path_new):
         print("Renaming not possible, check caller")
 
 
-def fix_column_labels_csv(full_path1, replace_with: dict):
-    file_path2 = full_path1[:-4] + "2.csv"
-    create_empty_csv(file_path2)
+def fix_column_labels_csv(full_path, replace_with: dict):
+    """Input: File path of the csv whose column labels to update;
+    dictionary of current column labels and what to replace them with.
+    Output: Replaces the given old column labels with the given new labels."""
+    file_path_temp = full_path[:-4] + "2.csv"
+    create_empty_csv(file_path_temp)
 
-    f1 = open(full_path1, 'r')
-    reader1 = csv.reader(f1, delimiter=',')
+    f1 = open(full_path, 'r')
+    reader = csv.reader(f1, delimiter=',')
 
-    new_cols = get_new_col_labels_list(full_path1, replace_with)
-    append_row_to_csv(file_path2, new_cols)
-    next(reader1)
+    new_cols = get_new_col_labels_list(full_path, replace_with)  # get updated column labels row
+    append_row_to_csv(file_path_temp, new_cols)  # append it to the new file, as first row
+    next(reader)  # move reader to the first row containing data of the original csv
 
-    for row in reader1:
-        append_row_to_csv(file_path2, row)
+    for row in reader:
+        append_row_to_csv(file_path_temp, row)  # append every row of data to the new csv
 
     f1.close()
-    rename_csv(file_path2, full_path1)
+    rename_csv(file_path_temp, full_path)  # rename the new csv to the old name, thus "updating" the column labels
 
 
 def get_new_col_labels_list(full_path, replace_with: dict):
-    cols = get_first_row_of_csv_as_list(full_path)
-    for old, new in replace_with.items():
+    """Input: File path of the csv whose column labels to update;
+    dictionary of current column labels and what to replace them with.
+    Output: Returns updated column labels row as list."""
+    cols = get_first_row_of_csv_as_list(full_path)  # get current column labels row
+    for old, new in replace_with.items():  # for every pair of old and new column labels,
         if old in cols:
-            i = cols.index(old)
-            cols[i] = new
+            i = cols.index(old)  # get the list/row location of the old column label,
+            cols[i] = new  # replace the old column label with the new label
     return cols
 
 
 def get_index_of_file_col(full_path, col_name):
+    """Input: File path of the csv whose column index to fetch; name of the column whose index to fetch.
+    Output: Returns the index of the given column in the given file."""
     cols = get_first_row_of_csv_as_list(full_path)
     return cols.index(col_name)
 
 
-def get_value_indices_from_file(full_path, values):
-    col = get_first_row_of_csv_as_list(full_path)
+def get_indices_of_file_col(full_path, col_names: list):
+    """Input: File path of the csv whose column indices to fetch; name of the columns whose indices to fetch.
+    Output: Returns the indices of the given columns in the given file, as a list."""
     indices = []
-    for value in values:
-        indices.append(col.index(value))
+    for col_name in col_names:
+        indices.append(get_index_of_file_col(full_path, col_name))
     return indices
 
 
-def get_str_list_of_merged_cols(full_path, cols_to_merge):
-    indices_cols_to_merge = get_value_indices_from_file(full_path, cols_to_merge)
+def get_str_list_of_merged_cols(full_path, cols_to_merge: list):
+    """Input: File path of the csv whose given columns to merge to a new one; list of labels of the columns to merge.
+    Output: Returns the new, merged column as a string."""
+    indices_cols_to_merge = get_indices_of_file_col(full_path, cols_to_merge)
     merged_cols_strings = []
 
     f = open(full_path, 'r')
     reader = csv.reader(f, delimiter=',')
-    next(reader)
+    next(reader)  # skip first row (column labels)
 
     for row in reader:
         temp_merged_str = ''
         for index in indices_cols_to_merge:
-            temp_merged_str += row[index]
-        merged_cols_strings.append(temp_merged_str)
-
+            temp_merged_str += row[index]  # add the value from each column in the current row to a string
+        merged_cols_strings.append(temp_merged_str)  # add this new string to the list of merged columns
     f.close()
     return merged_cols_strings
 
 
 def add_col_and_data_to_csv(full_path, col_name, values_to_add: list):
-    full_path2 = full_path[:-4] + "2.csv"
-    create_empty_csv(full_path2)
-
+    """Input: File path of the csv to add a column and its data to; name of the column to add; data to add to that column.
+    Output: Adds the given column (label and data) to the given csv file."""
     cols = get_first_row_of_csv_as_list(full_path)
+    if col_name in cols:  # check that this new column doesn't already exist
+        return 1
+
+    full_path_temp = full_path[:-4] + "2.csv"
+    create_empty_csv(full_path_temp)
+
     cols.append(col_name)
-    append_row_to_csv(full_path2, cols)  # populate new csv with old column labels plus the new column label
+    append_row_to_csv(full_path_temp, cols)  # populate new csv with old column labels plus the new column label
 
     f = open(full_path, 'r')
     reader = csv.reader(f, delimiter=',')
     next(reader)  # already added first row (column labels)
-
     i = 0
-    while i < len(values_to_add):
+    while i < len(values_to_add):  # need while so that we can increase i with each new row read
         for row in reader:
-            row.append(values_to_add[i])
-            append_row_to_csv(full_path2, row)
+            row.append(values_to_add[i])  # add the appropriate value to this current row, as a value of the new column
+            append_row_to_csv(full_path_temp, row)  # add this extended row to the temp csv file
             i += 1
-
     f.close()
-    rename_csv(full_path2, full_path)
+    rename_csv(full_path_temp, full_path)  # rename the temp csv to the original name, thus "adding" the new column
 
 
 def add_merged_col_to_csv(full_path, new_col_name, cols_to_merge):
+    """Input: File path of the csv to add a column and its data to; name of the column to add; data to add to that column.
+    Output: Adds the given column (label and data) to the given csv file."""
     cols = get_first_row_of_csv_as_list(full_path)
     if new_col_name in cols:
         return 1

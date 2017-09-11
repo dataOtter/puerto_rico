@@ -42,7 +42,7 @@ def get_index_of_file_col(path_nodes, value):
 
 
 def get_value_indices_from_file(full_path, values):
-    wrangle.get_value_indices_from_file(full_path, values)
+    wrangle.get_indices_of_file_col(full_path, values)
 
 
 def get_str_list_of_merged_cols(full_path, cols_to_merge):

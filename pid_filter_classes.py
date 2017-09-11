@@ -20,6 +20,11 @@ class PidFilter:
         """This must be overridden in the derived class"""
         raise Exception("PidFilter is abstract or derived class did not specify apply method")
 
+    @abc.abstractmethod
+    def get_kind_and_cat(self):
+        """This must be overridden in the derived class"""
+        raise Exception("PidFilter is abstract or derived class did not specify apply method")
+
     def get_kind(self):
         return self.kind
 
@@ -44,6 +49,9 @@ class GenderFilter(PidFilter):
     def get_cat(self):
         return str(self.desired_gender)
 
+    def get_kind_and_cat(self):
+        return str(self.get_kind() + " " + self.get_cat())
+
 
 class AgeFilter(PidFilter):
     __metaclass__ = abc.ABCMeta
@@ -60,12 +68,15 @@ class AgeFilter(PidFilter):
             ans = prs.pids_age_range(pids_list, min_age=19, max_age=24)
         elif self.age_category == "25-40":
             ans = prs.pids_age_range(pids_list, min_age=25, max_age=40)
-        elif self.age_category == "40-100":
+        elif self.age_category == "41-100":
             ans = prs.pids_age_range(pids_list, min_age=41, max_age=100)
         return ans
 
     def get_cat(self):
         return str(self.age_category)
+
+    def get_kind_and_cat(self):
+        return str(self.get_kind() + " " + self.get_cat())
 
 
 class MinDrugsFilter(PidFilter):
@@ -90,6 +101,9 @@ class MinDrugsFilter(PidFilter):
     def get_cat(self):
         return str(self.daily_drug_use)
 
+    def get_kind_and_cat(self):
+        return str(self.get_kind() + " " + self.get_cat())
+
 
 class MaxDrugsFilter(PidFilter):
     __metaclass__ = abc.ABCMeta
@@ -112,3 +126,6 @@ class MaxDrugsFilter(PidFilter):
 
     def get_cat(self):
         return str(self.daily_drug_use)
+
+    def get_kind_and_cat(self):
+        return str(self.get_kind() + " " + self.get_cat())

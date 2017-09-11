@@ -11,7 +11,18 @@ LOGGING_SQL_STATEMENT = False
 LOGGING_SQL_INSERT_STATEMENT = False
 
 #######################################################################################################################
-# FILE NAMES AND FILE PATHS
+# MEMOIZING
+#######################################################################################################################
+MEMOIZE = True  # if turning on again, be sure to call clear table function in memoize!
+MEMOIZING_TABLE_NAME = 'top_secret_highly_confidential_cheat_sheet'
+MEMOIZING_TABLE_COLUMN_LABELS = ['filters', 'pids', 'hash_index']
+MEMOIZING_HASH_COLUMN_LABEL = MEMOIZING_TABLE_COLUMN_LABELS[2]
+#######################################################################################################################
+# MEMOIZING
+#######################################################################################################################
+
+#######################################################################################################################
+# FILE NAMES AND FILE PATHS FOR CSVS AND MAIN DB TABLES
 #######################################################################################################################
 OLD_NODES_FILE = "node_index_5_3_17"
 OLD_NODES_PATH = ALL_CSVS_PATH + OLD_NODES_FILE + ".csv"
@@ -74,7 +85,7 @@ NOTE_EDGES_PATH = ALL_CSVS_PATH + NOTE_EDGES_FILE + ".csv"
 #######################################################################################################################
 
 #######################################################################################################################
-# OLD AND NEW (COLUMN) LABELS
+# OLD AND NEW (COLUMN) LABELS FOR CSVS AND MAIN DB TABLES
 #######################################################################################################################
 LABEL_PID = "project_id"
 LABEL_UNIQUE_ID = "unique_id"
