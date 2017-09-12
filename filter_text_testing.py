@@ -47,13 +47,9 @@ def test_print_and_prompt(filter_system):
         print("\nNumber of results: " + str(len(filter_system.get_result_pids())))
         print("--------------------------------------------------------------------------")
 
-start_time = time.time()
+'''start_time = time.time()
 m.make_memoize_table()
 print("--- %s seconds ---" % (time.time() - start_time))
-print("--- %s minutes ---" % ((time.time() - start_time)/60))
+print("--- %s minutes ---" % ((time.time() - start_time)/60))'''
 
-#test_print_and_prompt(pidf.FilterSystem())
-
-
-# make memo table population faster with lookup
-# sql indexing: makes lookup faster
+test_print_and_prompt(pidf.FilterSystem())
