@@ -39,6 +39,9 @@ class FilterSystem:
         self.active_filters = []
         self.result_pids = w.get_union_of_lists(prs.pids_phase_1(), prs.pids_phase_2())
 
+    def get_filters_dict(self):
+        return self.filters_dict
+
     def get_result_pids(self):
         return self.result_pids
 
@@ -53,7 +56,6 @@ class FilterSystem:
         self.inactive_filters.remove(filter)
         if c.MEMOIZE:
             pids_list_exists = m.get_filters_result_pids_from_memo_table(self.active_filters)
-            #if len(pids_list_exists) <= 0:
             if not pids_list_exists:
                 self.result_pids = self.apply_one_filter(filter)
                 m.add_filter_pid_pair_to_db_table(self.active_filters, self.result_pids)
@@ -68,7 +70,6 @@ class FilterSystem:
             self.inactive_filters.append(filter)
             if c.MEMOIZE:
                 pids_list_exists = m.get_filters_result_pids_from_memo_table(self.active_filters)
-                #if len(pids_list_exists) <= 0:
                 if not pids_list_exists:
                     self.result_pids = self.apply_all_filters()
                     m.add_filter_pid_pair_to_db_table(self.active_filters, self.result_pids)
@@ -136,15 +137,6 @@ class FilterSystem:
                 else:
                     options_dict[kind] = [(fltr, temp_len)]
 
-        '''for fltr in self.inactive_filters:
-            temp_pids = fltr.apply(self.result_pids)
-            temp_len = len(temp_pids)
-            if temp_len > 0:
-                kind = fltr.get_kind()
-                if kind in options_dict:
-                    options_dict[kind].append((fltr, temp_len))
-                else:
-                    options_dict[kind] = [(fltr, temp_len)]'''
         options_dict = options_dict
         return options_dict
 
@@ -153,10 +145,6 @@ class FilterSystem:
             self.remove_filter(filter)
         else:
             self.add_filter(filter)
-
-
-
-
 
 '''p1_ids = prs.pids_phase_1()
 

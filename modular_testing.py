@@ -1,7 +1,5 @@
 """This is the testing file for an abstract base class representing a data-flow module"""
 import abc
-import PR_SQL_queries as prs
-import constants as c
 from random import randint
 
 
@@ -66,7 +64,7 @@ class Printer(BaseNode):
     __metaclass__ = abc.ABCMeta
 
     def __init__(self):
-        super(Printer, self).__init__("print")
+        super(Printer, self).__init__("Printer")
         self.input_node = None
         self.input_data = []
 
@@ -301,7 +299,30 @@ class MaxMerge(BaseNode):
     def get_kind_and_cat(self):
         return str(self.get_kind())
 
-bursty = Source("bursty")
+
+def get_modules_dict():
+    modules_dict = {"printer": '',
+                    "numbers": {"bursty": '',
+                            "constant": ''},
+                    "drain": '',
+                    "max": ''}
+    return modules_dict
+
+
+def get_node(name: str):
+    if name == 'numbers bursty':
+        return Source("bursty")
+    elif name == 'numbers constant':
+        return Source("constant")
+    elif name == 'drain':
+        return DrainAdapter()
+    elif name == 'max':
+        return MaxMerge()
+    elif name == 'printer':
+        return Printer()
+
+
+'''bursty = Source("bursty")
 constant = Source("constant")
 drain1 = DrainAdapter()
 drain2 = DrainAdapter()
@@ -333,4 +354,4 @@ while not done:
         else:
             done_counter += 1
     if done_counter == len(modules):
-        done = True
+        done = True'''

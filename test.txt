@@ -1,0 +1,13 @@
+Nodes
+1 Numbers bursty
+2 Drain
+3 numbers constant
+4 drain
+5 max
+6 Printer
+Links
+1 2
+3 4
+2 5
+4 5
+5 6

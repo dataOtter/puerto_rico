@@ -2,7 +2,6 @@
 import abc
 import PR_SQL_queries as prs
 import wrangling_functions as w
-import constants as c
 
 
 class BaseNode:
