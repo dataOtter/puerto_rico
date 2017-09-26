@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d07d9d50-5074-49a5-889a-faa5c06f1cee" name="Default" comment="" />
+    <list default="true" id="d07d9d50-5074-49a5-889a-faa5c06f1cee" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/EER.mwb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/EER_digram.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/current_EER.mwb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/current_EER.mwb.bak" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/current_EER_png.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/current_create_db_frame_from_EER.sql" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pid_filter_classes.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/querying_reference_summary.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_queries.sql" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PR_SQL_queries.py" afterPath="$PROJECT_DIR$/filters/filter_SQL_queries.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/file_parser.py" afterPath="$PROJECT_DIR$/modular_data_flow/file_parser.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/filter_text_testing.py" afterPath="$PROJECT_DIR$/faceted_search/faceted_search_filter_text_testing.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/memoize_to_db.py" afterPath="$PROJECT_DIR$/faceted_search/memoize_to_db.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/modular_data_flow.py" afterPath="$PROJECT_DIR$/modular_data_flow/modular_data_flow.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/modular_testing.py" afterPath="$PROJECT_DIR$/modular_data_flow/modular_testing.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/mysql_and_csv_functions.py" afterPath="$PROJECT_DIR$/ETL/mysql_and_csv_functions.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/pid_filter_instances.py" afterPath="$PROJECT_DIR$/faceted_search/faceted_search_filter_instances.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/prep_and_load_all_csvs.py" afterPath="$PROJECT_DIR$/ETL/prep_and_load_all_csvs.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/prepare_all_edge_and_notes_csvs.py" afterPath="$PROJECT_DIR$/ETL/prepare_all_edge_and_notes_csvs.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/prepare_all_p1_csvs.py" afterPath="$PROJECT_DIR$/ETL/prepare_all_p1_csvs.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/prepare_all_p2_csvs.py" afterPath="$PROJECT_DIR$/ETL/prepare_all_p2_csvs.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/prepare_p1_p2_overlaps.py" afterPath="$PROJECT_DIR$/ETL/prepare_p1_p2_overlaps.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/prepare_subjects_ids.py" afterPath="$PROJECT_DIR$/ETL/prepare_subjects_ids.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test.txt" afterPath="$PROJECT_DIR$/modular_data_flow/test.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/wrangling_functions.py" afterPath="$PROJECT_DIR$/ETL/wrangling_functions.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/wrangling_reference_summary.py" afterPath="$PROJECT_DIR$/ETL/wrangling_reference_summary.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PR_App/.idea/workspace.xml" afterPath="$PROJECT_DIR$/PR_App/.idea/workspace.xml" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,48 +41,12 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="modular_data_flow.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modular_data_flow.py">
+      <file leaf-file-name="constants.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/constants.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="12750">
-              <caret line="512" column="0" lean-forward="false" selection-start-line="512" selection-start-column="0" selection-end-line="512" selection-end-column="0" />
-              <folding>
-                <element signature="e#69#79#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="modular_testing.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modular_testing.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7650">
-              <caret line="307" column="30" lean-forward="false" selection-start-line="307" selection-start-column="30" selection-end-line="307" selection-end-column="30" />
-              <folding>
-                <element signature="e#90#100#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="file_parser.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/file_parser.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
-              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state relative-caret-position="450">
+              <caret line="18" column="62" lean-forward="false" selection-start-line="18" selection-start-column="62" selection-end-line="18" selection-end-column="62" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pid_filter_instances.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pid_filter_instances.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="700">
-              <caret line="33" column="32" lean-forward="false" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -110,9 +103,7 @@
         <option value="$PROJECT_DIR$/prepare_subjects_ids.py" />
         <option value="$PROJECT_DIR$/prepare_p1_p2_overlaps.py" />
         <option value="$PROJECT_DIR$/prepare_all_edge_and_notes_csvs.py" />
-        <option value="$PROJECT_DIR$/prepare_all_p1_csvs.py" />
         <option value="$PROJECT_DIR$/prepare_all_p2_csvs.py" />
-        <option value="$PROJECT_DIR$/prep_and_load_all_csvs.py" />
         <option value="$PROJECT_DIR$/mysql_and_csv_functions.py" />
         <option value="$PROJECT_DIR$/wrangling_functions.py" />
         <option value="$PROJECT_DIR$/pid_filter_classes.py" />
@@ -122,8 +113,15 @@
         <option value="$PROJECT_DIR$/filter_text_testing.py" />
         <option value="$PROJECT_DIR$/modular_data_flow.py" />
         <option value="$PROJECT_DIR$/pid_filter_instances.py" />
-        <option value="$PROJECT_DIR$/modular_testing.py" />
         <option value="$PROJECT_DIR$/file_format.py" />
+        <option value="$PROJECT_DIR$/prepare_all_p1_csvs.py" />
+        <option value="$PROJECT_DIR$/ETL/prep_and_load_all_csvs.py" />
+        <option value="$PROJECT_DIR$/prep_and_load_all_csvs.py" />
+        <option value="$PROJECT_DIR$/modular_testing.py" />
+        <option value="$PROJECT_DIR$/filters/pid_filter_instances.py" />
+        <option value="$PROJECT_DIR$/modular_data_flow/modular_data_flow.py" />
+        <option value="$PROJECT_DIR$/faceted_search/faceted_search_filter_text_testing.py" />
+        <option value="$PROJECT_DIR$/faceted_search/faceted_search_filter_classes.py" />
       </list>
     </option>
   </component>
@@ -148,6 +146,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -163,13 +162,20 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Python/CodeFights-Python3" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Maisha\Dropbox\MB_dev\Puerto Rico\puerto_rico\modular_data_flow" />
+      <recent name="C:\Users\Maisha\Dropbox\MB_dev\Puerto Rico\puerto_rico\faceted_search" />
+      <recent name="C:\Users\Maisha\Dropbox\MB_dev\Puerto Rico\puerto_rico\ETL" />
+      <recent name="C:\Users\Maisha\Dropbox\MB_dev\Puerto Rico\puerto_rico\filters" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -196,7 +202,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="puerto_rico" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pid_filter_instances.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Maisha\Dropbox\MB_dev\Puerto Rico\puerto_rico\faceted_search\faceted_search_filter_instances.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -214,7 +220,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="puerto_rico" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/filter_text_testing.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Maisha\Dropbox\MB_dev\Puerto Rico\puerto_rico\faceted_search\faceted_search_filter_text_testing.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -232,7 +238,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="puerto_rico" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/modular_testing.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Maisha\Dropbox\MB_dev\Puerto Rico\puerto_rico\modular_data_flow\modular_testing.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -250,7 +256,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="puerto_rico" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/modular_data_flow.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Maisha\Dropbox\MB_dev\Puerto Rico\puerto_rico\modular_data_flow\modular_data_flow.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -268,7 +274,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="puerto_rico" />
-      <option name="SCRIPT_NAME" value="C:\Users\Maisha\Dropbox\MB_dev\Puerto Rico\puerto_rico\file_parser.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Maisha\Dropbox\MB_dev\Puerto Rico\puerto_rico\modular_data_flow\file_parser.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -378,20 +384,20 @@
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16561845" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15539113" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2653277" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2653277" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6691332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22198732" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -417,7 +423,7 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/modular_data_flow.py">
+    <entry file="file://$PROJECT_DIR$/modular_data_flow/modular_data_flow.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="12800">
           <caret line="512" column="0" lean-forward="true" selection-start-line="512" selection-start-column="0" selection-end-line="512" selection-end-column="0" />
@@ -427,7 +433,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modular_testing.py">
+    <entry file="file://$PROJECT_DIR$/modular_data_flow/modular_testing.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7650">
           <caret line="307" column="30" lean-forward="true" selection-start-line="307" selection-start-column="30" selection-end-line="307" selection-end-column="30" />
@@ -437,17 +443,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pid_filter_instances.py">
+    <entry file="file://$PROJECT_DIR$/faceted_search/faceted_search_filter_instances.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="700">
           <caret line="33" column="32" lean-forward="true" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/file_parser.py">
+    <entry file="file://$PROJECT_DIR$/modular_data_flow/file_parser.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="475">
           <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
@@ -455,7 +459,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/prep_and_load_all_csvs.py">
+    <entry file="file://$PROJECT_DIR$/ETL/prep_and_load_all_csvs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="500">
           <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="84" />
@@ -476,14 +480,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wrangling_functions.py">
+    <entry file="file://$PROJECT_DIR$/ETL/wrangling_functions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9500">
           <caret line="381" column="0" lean-forward="true" selection-start-line="381" selection-start-column="0" selection-end-line="381" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wrangling_reference_summary.py">
+    <entry file="file://$PROJECT_DIR$/ETL/wrangling_reference_summary.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3075">
           <caret line="123" column="0" lean-forward="true" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
@@ -491,7 +495,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mysql_queries_pid.py" />
-    <entry file="file://$PROJECT_DIR$/prep_and_load_all_csvs.py">
+    <entry file="file://$PROJECT_DIR$/ETL/prep_and_load_all_csvs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
           <caret line="13" column="16" lean-forward="true" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
@@ -500,7 +504,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/load_csv_into_db.py" />
     <entry file="file://$PROJECT_DIR$/create_edit_tables.py" />
-    <entry file="file://$PROJECT_DIR$/wrangling_functions.py">
+    <entry file="file://$PROJECT_DIR$/ETL/wrangling_functions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="575">
           <caret line="24" column="35" lean-forward="true" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
@@ -554,105 +558,11 @@
     <entry file="file://$PROJECT_DIR$/xxx.py" />
     <entry file="file://$PROJECT_DIR$/create_edit_tables.py" />
     <entry file="file://$PROJECT_DIR$/load_csv_into_db.py" />
-    <entry file="file://$PROJECT_DIR$/wrangling_reference_summary.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="134" column="73" lean-forward="true" selection-start-line="134" selection-start-column="73" selection-end-line="134" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mysql_queries_pid.py" />
-    <entry file="file://$PROJECT_DIR$/querying_reference_summary.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prepare_all_edge_and_notes_csvs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="14" column="56" lean-forward="true" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prepare_subjects_ids.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prepare_all_p1_csvs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="29" lean-forward="true" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prepare_all_p2_csvs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="14" column="34" lean-forward="false" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prepare_p1_p2_overlaps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="4" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mysql_and_csv_functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="41" column="10" lean-forward="false" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prep_and_load_all_csvs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="28" column="11" lean-forward="false" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wrangling_functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-100">
-          <caret line="139" column="76" lean-forward="false" selection-start-line="139" selection-start-column="76" selection-end-line="139" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/mysql/connector/cursor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="497" column="0" lean-forward="false" selection-start-line="497" selection-start-column="0" selection-end-line="497" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="18" column="62" lean-forward="true" selection-start-line="18" selection-start-column="62" selection-end-line="18" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PR_SQL_queries.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pid_filter_classes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding>
-            <element signature="e#72#82#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -677,61 +587,178 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mysql_query_fuctions.py">
+    <entry file="file://$PROJECT_DIR$/ETL/prepare_all_p2_csvs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+        <state relative-caret-position="325">
+          <caret line="14" column="34" lean-forward="false" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/memoize_to_db.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="19" lean-forward="false" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/filter_text_testing.py">
+    <entry file="file://$PROJECT_DIR$/ETL/prepare_p1_p2_overlaps.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
-          <caret line="2" column="11" lean-forward="true" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+          <caret line="3" column="4" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modular_testing.py">
+    <entry file="file://$PROJECT_DIR$/querying_reference_summary.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7650">
-          <caret line="307" column="30" lean-forward="false" selection-start-line="307" selection-start-column="30" selection-end-line="307" selection-end-column="30" />
+        <state relative-caret-position="25">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ETL/prepare_subjects_ids.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ETL/prepare_all_p1_csvs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="1" column="7" lean-forward="false" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ETL/prepare_all_edge_and_notes_csvs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="14" column="56" lean-forward="true" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ETL/wrangling_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ETL/wrangling_reference_summary.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ETL/prep_and_load_all_csvs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filters/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faceted_search/faceted_search_filter_instances.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3385">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modular_data_flow/modular_testing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7275">
+          <caret line="291" column="29" lean-forward="true" selection-start-line="291" selection-start-column="29" selection-end-line="291" selection-end-column="29" />
           <folding>
             <element signature="e#90#100#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modular_data_flow.py">
+    <entry file="file://$PROJECT_DIR$/filters/filter_SQL_queries.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12750">
-          <caret line="512" column="0" lean-forward="false" selection-start-line="512" selection-start-column="0" selection-end-line="512" selection-end-column="0" />
+        <state relative-caret-position="-1830">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modular_data_flow/modular_data_flow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
             <element signature="e#69#79#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pid_filter_instances.py">
+    <entry file="file://$PROJECT_DIR$/faceted_search/faceted_search_filter_classes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="33" column="32" lean-forward="false" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+        <state relative-caret-position="50">
+          <caret line="2" column="45" lean-forward="true" selection-start-line="2" selection-start-column="45" selection-end-line="2" selection-end-column="45" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#72#82#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/file_parser.py">
+    <entry file="file://$PROJECT_DIR$/ETL/mysql_and_csv_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="925">
+          <caret line="41" column="10" lean-forward="false" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faceted_search/faceted_search_filter_text_testing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faceted_search/memoize_to_db.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <caret line="53" column="26" lean-forward="true" selection-start-line="53" selection-start-column="26" selection-end-line="53" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modular_data_flow/file_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1725">
+          <caret line="0" column="50" lean-forward="false" selection-start-line="0" selection-start-column="50" selection-end-line="0" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysql_query_fuctions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="83" column="36" lean-forward="false" selection-start-line="83" selection-start-column="36" selection-end-line="83" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="18" column="62" lean-forward="false" selection-start-line="18" selection-start-column="62" selection-end-line="18" selection-end-column="62" />
           <folding />
         </state>
       </provider>

@@ -1,7 +1,6 @@
 """This is an abstract base class representing a filter on PID lists"""
 import abc
-import PR_SQL_queries as prs
-import constants as c
+from filters import filter_SQL_queries as prs
 
 
 class PidFilter:

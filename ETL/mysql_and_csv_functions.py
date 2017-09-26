@@ -1,7 +1,8 @@
-import wrangling_functions as w
-import mysql_query_fuctions as q
 import mysql.connector
+
 import constants as c
+import mysql_query_fuctions as q
+from ETL import wrangling_functions as w
 
 
 def load_one_table(csv_path, tbl_name):

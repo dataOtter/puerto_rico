@@ -1,4 +1,4 @@
-import modular_testing as m
+from modular_data_flow import modular_testing as m
 
 
 def get_lines_of_file_as_lists(filename):

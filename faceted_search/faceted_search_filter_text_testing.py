@@ -1,6 +1,4 @@
-import pid_filter_instances as pidf
-import memoize_to_db as m
-import time
+from faceted_search import faceted_search_filter_instances as pidf
 
 
 def test_print_and_prompt(filter_system):

@@ -1,10 +1,5 @@
-import mysql_and_csv_functions as sqlcsv
-import prepare_subjects_ids as prep_0
-import prepare_all_p1_csvs as prep_p1
-import prepare_all_p2_csvs as prep_p2
-import prepare_p1_p2_overlaps as prep_3
-import prepare_all_edge_and_notes_csvs as prep_4
-import constants as c
+from ETL import prepare_all_p1_csvs as prep_p1, prepare_all_p2_csvs as prep_p2, prepare_p1_p2_overlaps as prep_3, \
+    prepare_all_edge_and_notes_csvs as prep_4, prepare_subjects_ids as prep_0, mysql_and_csv_functions as sqlcsv
 
 all_csvs_path = "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\csv_data\\"
 

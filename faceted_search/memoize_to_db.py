@@ -1,8 +1,9 @@
-import mysql_query_fuctions as q
-import constants as c
-import pid_filter_instances as pidf
 import copy
 import hashlib as h
+
+import constants as c
+import mysql_query_fuctions as q
+from faceted_search import faceted_search_filter_instances as pidf
 
 
 def get_filters_string(filters: list):

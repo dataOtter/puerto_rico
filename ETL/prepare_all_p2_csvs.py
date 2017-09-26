@@ -1,5 +1,5 @@
-import wrangling_functions as w
 import constants as c
+from ETL import wrangling_functions as w
 
 
 def prep_all_p2():

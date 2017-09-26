@@ -1,7 +1,8 @@
 """This is an abstract base class representing a data-flow module"""
 import abc
-import PR_SQL_queries as prs
-import wrangling_functions as w
+
+from ETL import wrangling_functions as w
+from filters import filter_SQL_queries as prs
 
 
 class BaseNode:

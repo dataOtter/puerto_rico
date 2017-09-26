@@ -1,9 +1,9 @@
-import pid_filter_classes as cl
-import PR_SQL_queries as prs
-import constants as c
-import wrangling_functions as w
-import memoize_to_db as m
 import copy
+
+import constants as c
+from ETL import wrangling_functions as w
+from faceted_search import faceted_search_filter_classes as cl, memoize_to_db as m
+from filters import filter_SQL_queries as prs
 
 
 class FilterSystem:

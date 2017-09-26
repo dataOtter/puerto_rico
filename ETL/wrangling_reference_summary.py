@@ -1,4 +1,4 @@
-import wrangling_functions as wrangle
+from ETL import wrangling_functions as wrangle
 
 
 def get_csv_as_list(full_path):
