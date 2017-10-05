@@ -1,9 +1,11 @@
+"""Function to create and populate the phase 1/phase 2 overlap csv file."""
 import constants as c
 from ETL import wrangling_functions as w
 
 
 def create_p1_p2_overlaps():
-    """Output: Create the overlap file with entries for every participant who was present
+    """Input: None.
+    Output: Create the overlap file with entries for every participant who was present
     in both p1_screenings and p2_network_interviews; populates it with unique id, project id, rds id."""
     path_screenings = c.P1_SCREENINGS_PATH
     path_network = c.P2_NETWORK_INTERVIEWS_PATH

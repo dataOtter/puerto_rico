@@ -4,28 +4,28 @@ import mysql_query_fuctions as q
 
 def pids_phase_1():
     statement = "SELECT DISTINCT project_id FROM p1_screenings"
-    return q.execute_query_return_list(statement, c.DB_NAME, c.USER_NAME, c.PASSWORD, c.HOST_IP)
+    return q.execute_query_return_list(statement)
 
 
 def pids_phase_2():
     statement = "SELECT DISTINCT project_id FROM subjects_ids " \
                 "WHERE unique_id IN (SELECT unique_id FROM p2_network_interviews)"
-    return q.execute_query_return_list(statement, c.DB_NAME, c.USER_NAME, c.PASSWORD, c.HOST_IP)
+    return q.execute_query_return_list(statement)
 
 
 def pids_gender(pids_list, gender_code, temp_table='temp', col='pid'):
-    q.populate_temp_table(pids_list, c.DB_NAME, c.USER_NAME, c.PASSWORD, c.HOST_IP, table_name=temp_table, label=col)
+    q.populate_temp_table(pids_list, table_name=temp_table, label=col)
     query = "SELECT DISTINCT project_id FROM subjects_ids " \
             "WHERE (project_id IN " \
             "(SELECT project_id FROM p1_screenings WHERE rds_id IN " \
             "(SELECT rds_id FROM p1_interviews WHERE GEN = " + str(gender_code) + "))" \
             "OR project_id IN (SELECT project_id FROM p2_first_interviews WHERE P2FIGEN = " + str(gender_code) + "))" \
             "AND project_id IN (SELECT * FROM " + temp_table + ")"
-    return q.execute_query_return_list(query, c.DB_NAME, c.USER_NAME, c.PASSWORD, c.HOST_IP)
+    return q.execute_query_return_list(query)
 
 
 def pids_age_range(pids_list, min_age=0, max_age=999, temp_table='temp', col='pid'):
-    q.populate_temp_table(pids_list, c.DB_NAME, c.USER_NAME, c.PASSWORD, c.HOST_IP, table_name=temp_table, label=col)
+    q.populate_temp_table(pids_list, table_name=temp_table, label=col)
     query = "SELECT DISTINCT project_id FROM subjects_ids " \
                  "WHERE (project_id IN " \
                  "(SELECT DISTINCT project_id FROM p1_screenings " \
@@ -34,18 +34,18 @@ def pids_age_range(pids_list, min_age=0, max_age=999, temp_table='temp', col='pi
                  "(SELECT DISTINCT project_id FROM p2_first_interviews " \
                     "WHERE P2FIAGE >= " + str(min_age) + " AND P2FIAGE <= " + str(max_age) + \
                  ")) AND project_id IN (SELECT * FROM " + temp_table + ")"
-    return q.execute_query_return_list(query, c.DB_NAME, c.USER_NAME, c.PASSWORD, c.HOST_IP)
+    return q.execute_query_return_list(query)
 
 
 def pids_drug_use_per_day(pids_list, sign: str, min_use_per_day, temp_table='temp', col='pid'):
-    q.populate_temp_table(pids_list, c.DB_NAME, c.USER_NAME, c.PASSWORD, c.HOST_IP, table_name=temp_table, label=col)
+    q.populate_temp_table(pids_list, table_name=temp_table, label=col)
     codes = get_drug_use_cutoff_codes(min_use_per_day)
     p1code, p2code = codes[0], codes[1]
     query = "SELECT project_id FROM subjects_ids " \
             "WHERE (rds_id IN (SELECT rds_id FROM p1_interviews WHERE ID2 " + sign + str(p1code) + \
             ") OR project_id IN (SELECT project_id FROM p2_first_interviews WHERE P2FIID2 " + sign + str(p2code) + \
             ")) AND project_id IN (SELECT * FROM " + temp_table + ")"
-    return q.execute_query_return_list(query, c.DB_NAME, c.USER_NAME, c.PASSWORD, c.HOST_IP)
+    return q.execute_query_return_list(query)
 
 
 def pids_males(pids_list):
@@ -90,14 +90,14 @@ def get_drug_use_cutoff_codes(cutoff):
 def sender_receiver_from_edges(pids_list1, pids_list2):
     """Input: Two pid lists of the groups whose relationship edges to return, e.g. males and females.
     Output: Returns a sender_receiver edge ID list of those relationships - including both permutations of each."""
-    q.populate_temp_table(pids_list1, c.DB_NAME, c.USER_NAME, c.PASSWORD, c.HOST_IP, table_name='temp1', label='sender_receiver')
-    q.populate_temp_table(pids_list2, c.DB_NAME, c.USER_NAME, c.PASSWORD, c.HOST_IP, table_name='temp2', label='sender_receiver')
+    q.populate_temp_table(pids_list1, table_name='temp1', label='sender_receiver')
+    q.populate_temp_table(pids_list2, table_name='temp2', label='sender_receiver')
     query = "SELECT sender_receiver FROM edges " \
             "WHERE (sender_pid IN (SELECT * FROM temp1) " \
             "AND receiver_pid IN (SELECT * FROM temp2)) " \
             "OR (sender_pid IN (SELECT * FROM temp2) " \
             "AND receiver_pid IN (SELECT * FROM temp1))"
-    return q.execute_query_return_list(query, c.DB_NAME, c.USER_NAME, c.PASSWORD, c.HOST_IP)
+    return q.execute_query_return_list(query)
 
 
 def get_unique_sender_receiver_pairs(sender_receiver_list):

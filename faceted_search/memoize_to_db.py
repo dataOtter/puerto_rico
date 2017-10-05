@@ -26,14 +26,13 @@ def add_filter_pid_pair_to_db_table(filters_list: list, pids_list: list):
     row = [filters_str, pids_str, filters_hash]
     exists = get_row_from_db_table(filters_hash, col_to_get=c.MEMOIZING_TABLE_COLUMN_LABELS[0])
     if not exists:
-        q.execute_query_insert_one_row(row, c.MEMOIZING_TABLE_NAME, c.MEMOIZING_TABLE_COLUMN_LABELS,
-                                       c.DB_NAME, c.USER_NAME, c.PASSWORD, c.HOST_IP)
+        q.execute_query_insert_one_row(row, c.MEMOIZING_TABLE_NAME, c.MEMOIZING_TABLE_COLUMN_LABELS)
 
 
 def get_row_from_db_table(comparison_str, col_to_get: str):
     query = "SELECT " + col_to_get + " FROM " + c.MEMOIZING_TABLE_NAME + \
             " WHERE " + c.MEMOIZING_HASH_COLUMN_LABEL + " = '" + comparison_str + "'"
-    row_string_list = q.execute_query_return_list(query, c.DB_NAME, c.USER_NAME, c.PASSWORD, c.HOST_IP)
+    row_string_list = q.execute_query_return_list(query)
     if len(row_string_list) > 0:
         if len(row_string_list[0]) == 0:
             row_list = []
@@ -52,7 +51,7 @@ def get_filters_result_pids_from_memo_table(filters: list):
 
 
 def clear_memoize_table():
-    q.execute_query_drop_table(c.MEMOIZING_TABLE_NAME, c.DB_NAME, c.USER_NAME, c.PASSWORD, c.HOST_IP)
+    q.execute_query_drop_table(c.MEMOIZING_TABLE_NAME)
     q.execute_query_create_table(c.MEMOIZING_TABLE_NAME, c.MEMOIZING_TABLE_COLUMN_LABELS, data_type='TEXT')
     q.execute_query("ALTER TABLE " + c.MEMOIZING_TABLE_NAME + " MODIFY COLUMN " +
                     c.MEMOIZING_HASH_COLUMN_LABEL + " VARCHAR(255), ADD INDEX " +

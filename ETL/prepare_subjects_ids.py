@@ -1,9 +1,10 @@
+"""Function to create and populate the subject IDs csv file."""
 import constants as c
 from ETL import wrangling_functions as w
 
 
 def create_sub_ids_csv():
-    """Input: Subjects ids file column labels.
+    """Input: None.
     Output: Creates subjects_ids.csv file and populates it with project_ids, rds_ids, and unique_ids."""
     path_sub_ids, path_nodes = c.SUBJECTS_IDS_PATH, c.OLD_NODES_PATH
 

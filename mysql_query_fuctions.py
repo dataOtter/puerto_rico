@@ -1,8 +1,11 @@
+"""Functions to execute various types of MySQL queries and return retrieved data, where applicable."""
 import mysql.connector
 import constants as c
 
 
 def execute_query(statement: str):
+    """Input: MySQL statement as a string; only for statements that do not retrieve any data.
+    Output: Executes the given statement using the database details set in the constants file."""
     cnx = mysql.connector.connect(user=c.USER_NAME, password=c.PASSWORD, host=c.HOST_IP, database=c.DB_NAME)
     cursor = cnx.cursor()
     if c.LOGGING_SQL_STATEMENT:
@@ -13,8 +16,11 @@ def execute_query(statement: str):
     cnx.close()
 
 
-def execute_query_return_list(statement: str, db_name, user_name, pwd, host_ip):
-    cnx = mysql.connector.connect(user=user_name, password=pwd, host=host_ip, database=db_name)
+def execute_query_return_list(statement: str):
+    """Input: MySQL statement as a string; only for statements that retrieve data.
+    Output: Executes the given statement using the database details set in the constants file.
+    Returns the retrieved data as a list of strings."""
+    cnx = mysql.connector.connect(user=c.USER_NAME, password=c.PASSWORD, host=c.HOST_IP, database=c.DB_NAME)
     cursor = cnx.cursor()
     if c.LOGGING_SQL_STATEMENT:
         print(statement)
@@ -27,6 +33,8 @@ def execute_query_return_list(statement: str, db_name, user_name, pwd, host_ip):
 
 
 def get_insert_row_statement(table_name: str, col_labels: list):
+    """Input: Name of the table into which to insert a row; list of column labels of that table.
+    Output: Returns the appropriate MySQL statement for inserting a row into the given table."""
     labels, values = '(', '('
     for label in col_labels:
         labels += "`" + label + "`" + ","
@@ -36,9 +44,12 @@ def get_insert_row_statement(table_name: str, col_labels: list):
     return "INSERT INTO " + table_name + " " + labels + " VALUES " + values
 
 
-def execute_query_insert_one_row(row: list, table_name: str, col_labels: list, db_name, user_name, pwd, host_ip):
+def execute_query_insert_one_row(row: list, table_name: str, col_labels: list):
+    """Input: Single row to be inserted, as a list; name of the table into which to insert a row;
+    list of column labels of that table.
+    Output: Inserts the given row into the given table using the database details set in the constants file."""
     insert_row_statement = get_insert_row_statement(table_name, col_labels)
-    cnx = mysql.connector.connect(user=user_name, password=pwd, host=host_ip, database=db_name)
+    cnx = mysql.connector.connect(user=c.USER_NAME, password=c.PASSWORD, host=c.HOST_IP, database=c.DB_NAME)
     cursor = cnx.cursor()
     if c.LOGGING_SQL_STATEMENT:
         print(insert_row_statement, row)
@@ -48,10 +59,12 @@ def execute_query_insert_one_row(row: list, table_name: str, col_labels: list, d
     cnx.close()
 
 
-def execute_query_insert_multiple_rows(all_rows: list, table_name: str, col_labels: list,
-                                       db_name, user_name, pwd, host_ip):
+def execute_query_insert_multiple_rows(all_rows: list, table_name: str, col_labels: list):
+    """Input: Multiple rows to be inserted, as list of lists; name of the table into which to insert a row;
+    list of column labels of that table.
+    Output: Inserts the given rows into the given table using the database details set in the constants file."""
     insert_row_statement = get_insert_row_statement(table_name, col_labels)
-    cnx = mysql.connector.connect(user=user_name, password=pwd, host=host_ip, database=db_name)
+    cnx = mysql.connector.connect(user=c.USER_NAME, password=c.PASSWORD, host=c.HOST_IP, database=c.DB_NAME)
     cursor = cnx.cursor()
     if c.LOGGING_SQL_STATEMENT:
         print("Inserting " + str(len(all_rows)) + " rows: " + str(all_rows))
@@ -66,18 +79,27 @@ def execute_query_insert_multiple_rows(all_rows: list, table_name: str, col_labe
     cnx.close()
 
 
-def populate_temp_table(pids_list: list, db_name, user_name, pwd, host_ip, table_name="temp", label="pid"):
-    execute_query_drop_table(table_name, db_name, user_name, pwd, host_ip)
+def populate_temp_table(pids_list: list, table_name="temp", label="pid"):
+    """Input: List of project IDs; name of the table into which to insert a row, defaulting to "temp";
+    string of the column label of that table, defaulting to "pid".
+    Output: Creates and populates a temporary table for testing purposes
+    using the database details set in the constants file."""
+    execute_query_drop_table(table_name)
     execute_query_create_table(table_name, [label])
-    execute_query_insert_multiple_rows(pids_list, table_name, [label], db_name, user_name, pwd, host_ip)
+    execute_query_insert_multiple_rows(pids_list, table_name, [label])
 
 
-def execute_query_drop_table(table_name, db_name, user_name, pwd, host_ip):
+def execute_query_drop_table(table_name):
+    """Input: Name of the table to delete.
+    Output: Deletes the given table using the database details set in the constants file."""
     statement = "DROP TABLE IF EXISTS " + table_name
     execute_query(statement)
 
 
-def execute_query_create_table(table_name, columns, data_type='TEXT'):
+def execute_query_create_table(table_name, columns: list, data_type='TEXT'):
+    """Input: Name of the table to create; list of columns to add;
+    data type to set for each column, defaulting to 'TEXT'.
+    Output: Creates the given table and columns using the database details set in the constants file."""
     statement = "CREATE TABLE IF NOT EXISTS " + table_name + " ("
     for c in columns:
         statement += "`" + c + "` " + data_type + ","
@@ -85,19 +107,17 @@ def execute_query_create_table(table_name, columns, data_type='TEXT'):
     execute_query(statement)
 
 
-def execute_query_get_table_names(db_name, user_name, pwd, host_ip):
-    tables = execute_query_return_list('SHOW TABLES', db_name, user_name, pwd, host_ip)
+def execute_query_get_table_names():
+    """Input: None.
+    Output: Returns a list of all table names using the database details set in the constants file."""
+    tables = execute_query_return_list('SHOW TABLES')
     return tables
 
 
 def get_existing_column_labels_from_db_table(tbl_name):
-    """Output: Returns a list of column labels that already exist in the table
-     -- for PR project they are the primary and foreign keys."""
+    """Input: Name of the table from which to get columns labels.
+    Output: Returns list of column labels of the given table using the database details set in the constants file."""
     statement = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS " \
                 "WHERE TABLE_SCHEMA='" + c.DB_NAME + "' AND TABLE_NAME='" + tbl_name + "'"
-    keys = execute_query_return_list(statement, c.DB_NAME, c.USER_NAME, c.PASSWORD, c.HOST_IP)
-    return keys
-
-
-db_name, user_name, pwd, host_ip = 'puerto_rico', 'root', 'password', '192.168.4.30'
-print()
+    keys = execute_query_return_list(statement)
+    return keys  # for PR project, before populating DB, these are the primary and foreign keys

@@ -1,3 +1,4 @@
+"""Functions to do various data wrangling operations with/on csv files."""
 import csv
 import os
 import constants as c
@@ -170,6 +171,8 @@ def add_merged_col_to_csv(full_path, new_col_name, cols_to_merge):
 
 
 def get_data_from_one_col_as_list(full_path, col_name):
+    """Input: File path of the csv from which to get column data; name of the column from which to get data.
+    Output: Returns the data from the given table and column as a list."""
     f = open(full_path, 'r')
     reader = csv.reader(f, delimiter=',')
 
@@ -185,6 +188,8 @@ def get_data_from_one_col_as_list(full_path, col_name):
 
 
 def get_data_from_multiple_columns_as_list_of_lists(full_path, columns: list):
+    """Input: File path of the csv from which to get column data; names of the columns from which to get data.
+    Output: Returns the data from the given table and columns as a list of lists."""
     cols = get_first_row_of_csv_as_list(full_path)
     indices = []
     for col in columns:
@@ -250,6 +255,7 @@ def get_no_null_entries_dict_from_csv(full_path, key_col_name, value_col_name):
 
 
 def get_sender_receiver_to_edge_id_dict(path_edges, edge, sender, receiver):
+    """No usage."""
     edges_data = get_csv_as_list(path_edges)[1:]
     edges_value_col_index = get_index_of_file_col(path_edges, edge)
     edges_key_col_index1 = get_index_of_file_col(path_edges, sender)
@@ -264,6 +270,8 @@ def get_sender_receiver_to_edge_id_dict(path_edges, edge, sender, receiver):
 
 
 def get_unique_single_entry_list(original_data: list):
+    """Input: List of strings of the original data of which to get true set.
+        Output: Returns a list of the input data without duplicates or multiple entries per element/string."""
     data_set_list = list(set(original_data))
     if '' in data_set_list:
         data_set_list.remove('')
@@ -284,8 +292,7 @@ def get_unique_single_entry_list(original_data: list):
 
 
 def split_and_append_entry_of_list(set_list, entry, sym):
-    """Input: A list of strings, a particular entry from that list,
-    the separator symbol used within that entry.
+    """Input: A list of strings; a particular entry from that list; the separator symbol used within that entry.
     Output: Splits up the given multi-entry list entry and appends it to the list."""
     entry_split = entry.split(sym)
     set_list.remove(entry)
@@ -305,11 +312,15 @@ def add_note_name_for_each_unique_note(path_notes, path_old_edges, old_col_label
         append_row_to_csv(path_notes, [one_entry, type_entry_name])
 
 
-def get_full_path(path, file_name):
-    return path + file_name + '.csv'
+def get_full_csv_path(file_name):
+    """Input: Name of csv file of which to get full file path.
+    Output: Returns the full file path of the given csv file."""
+    return c.ALL_CSVS_PATH + file_name + '.csv'
 
 
 def get_note_ids_from_given_row(row: list, note_index, note_name_to_note_id_dict):
+    """Input: Row as a list; index of the note column; dictionary from note name to note ID.
+    Output: Returns list of unique note IDs from the given row's note column field."""
     # get all entries for note in the given row
     notes = get_unique_single_entry_list([row[note_index]])
     note_ids = []
@@ -320,8 +331,11 @@ def get_note_ids_from_given_row(row: list, note_index, note_name_to_note_id_dict
     return note_ids
 
 
-def append_rows_of_edge_id_note_ids_to_new_file_from_old_edge_data(row, note_index, note_name_to_note_id,
+def append_rows_of_edge_id_note_ids_to_new_file_from_old_edge_data(row: list, note_index, note_name_to_note_id,
                                                                    path_note_edges, edge_id):
+    """Input: Row as a list; index of the note column; dictionary from note name to note ID;
+    file path of note_edges.csv; this row's edge ID of sender-receiver pair as string.
+    Output: Appends row(s) to the note_edges.csv file for each edge ID - note ID pair found in the given row."""
     # get note ids from notes.csv of current row in old edge file
     note_ids = get_note_ids_from_given_row(row, note_index, note_name_to_note_id)
     # add row to note_edges.csv for each edge_id note_id pair
@@ -330,12 +344,16 @@ def append_rows_of_edge_id_note_ids_to_new_file_from_old_edge_data(row, note_ind
 
 
 def add_auto_increment_col(full_path, col_label):
+    """Input: File path of csv to which to add an autoincrement column; name of that new column.
+    Output: Adds an autoincrement column to the given csv file."""
     num_rows = len(get_csv_as_list(full_path)[1:])
-    note_ids = range(1, num_rows + 1)
-    add_col_and_data_to_csv(full_path, col_label, list(note_ids))
+    column_ids = range(1, num_rows + 1)
+    add_col_and_data_to_csv(full_path, col_label, list(column_ids))
 
 
 def get_col_label_to_longest_entry_dict(full_path):
+    """Input: File path of csv of which to get each column's longest entry length.
+    Output: Returns dictionary of column label to that column's longest row entry length."""
     cols = get_first_row_of_csv_as_list(full_path)
     col_label_to_longest_entry = {}
 
@@ -348,88 +366,103 @@ def get_col_label_to_longest_entry_dict(full_path):
 
 
 def get_unique_pids_from_old_edges(old_edge_full_path):
-    senders_set_list = list(set(get_data_from_one_col_as_list(old_edge_full_path, 'sender_pid')))
-    receivers_set_list = list(set(get_data_from_one_col_as_list(old_edge_full_path, 'receiver_pid')))
+    """Input: File path of old edge csv file.
+    Output: Returns all unique project IDs from the old edge file, from the sender and receiver columns."""
+    senders_set_list = list(set(get_data_from_one_col_as_list(old_edge_full_path, c.LABEL_SENDER_PID)))
+    receivers_set_list = list(set(get_data_from_one_col_as_list(old_edge_full_path, c.LABEL_RECEIVER_PID)))
     for sender in senders_set_list:
         receivers_set_list.append(sender)
     unique_pids_from_old_edges = list(set(receivers_set_list))
     return unique_pids_from_old_edges
 
 
-def get_distinct_ids_from_csv(full_path, id_col_label):
-    return list(set(get_data_from_one_col_as_list(full_path, id_col_label)))
+def get_distinct_column_entries_from_csv(full_path, col_label):
+    """Input: File path of csv from which to get a column's distinct entries; column label.
+    Output: Returns list of the given file column's distinct entries."""
+    return list(set(get_data_from_one_col_as_list(full_path, col_label)))
 
 
 def get_distinct_ids_from_multiple_csvs(list_of_full_paths: list, id_col_label: str):
+    """No usage.
+    Input: List of file paths of csvs from which to get all ID columns' distinct entries; ID column label.
+    Output: Returns list of the given file's columns' distinct entries."""
     disctinct_ids = []
     for full_path in list_of_full_paths:
-        temp_distinct_ids = get_distinct_ids_from_csv(full_path, id_col_label)
+        temp_distinct_ids = get_distinct_column_entries_from_csv(full_path, id_col_label)
         disctinct_ids.extend(temp_distinct_ids)
         disctinct_ids = list(set(disctinct_ids))
     return disctinct_ids
 
 
 def get_discrepancy_pids_only_in_old_edge_not_node(old_edge_full_path, old_node_full_path):
+    """Input: File paths of old edge csv and old node csv.
+    Output: Returns list of project IDs that occur only in old edge csv file and not in old node csv file."""
     unique_pids_from_old_edges = get_unique_pids_from_old_edges(old_edge_full_path)
-    unique_pids_from_subjects_pids = get_data_from_one_col_as_list(old_node_full_path, 'project_id')
+    unique_pids_from_old_subjects_pids = get_data_from_one_col_as_list(old_node_full_path, c.LABEL_PID)
     only_in_old_edges = []
     for edge_pid in unique_pids_from_old_edges:
-        if edge_pid not in unique_pids_from_subjects_pids:
+        if edge_pid not in unique_pids_from_old_subjects_pids:
             only_in_old_edges.append(edge_pid)
     return only_in_old_edges
 
 
-def get_and_remove_discrepancy_rows_and_indices_from_old_edges(path, old_edge_file='edge_index_5_2_17',
-                                                               old_node_file='node_index_5_3_17'):
-    old_edge_full_path = get_full_path(path, old_edge_file)
-    old_node_full_path = get_full_path(path, old_node_file)
+def get_and_remove_discrepancy_rows_and_indices_from_old_edges():
+    """Input: None.
+    Output: Returns list of rows as list that contained at least one pid that occurred in
+    the old edge file, but not the node file; remove those discrepancy rows from the old edge file."""
+    old_edge_full_path = get_full_csv_path(c.OLD_EDGES_FILE)
+    old_node_full_path = get_full_csv_path(c.OLD_NODES_FILE)
 
     only_in_old_edges = get_discrepancy_pids_only_in_old_edge_not_node(old_edge_full_path, old_node_full_path)
 
     x = get_csv_as_list(old_edge_full_path)
     original_edge_data = x[1:]
-    edge_col = x[0]
+    original_edge_col = x[0]
 
-    temp_file = get_full_path(path, old_edge_file + '2')
-    create_csv_add_column_labels(temp_file, edge_col)
+    temp_file_path = get_full_csv_path(c.OLD_EDGES_FILE + '2')
+    create_csv_add_column_labels(temp_file_path, original_edge_col)
 
     discrepancy_rows = []
 
     for i in range(len(original_edge_data)):
-        row = original_edge_data[i]
+        row = original_edge_data[i]  # for every row from the original data
         for pid in only_in_old_edges:
-            if pid in row:
-                discrepancy_rows.append([original_edge_data.index(row) + 2] + row)
+            if pid in row:  # if the pid that occurs only in the old edge file (but not the node file) is in this row
+                #discrepancy_rows.append([original_edge_data.index(row) + 2] + row)
+                # append to discrepancy_rows this row and its real index (not counting column label row, starting at 1)
+                discrepancy_rows.append([i + 2] + row)
                 to_add = 0
-                break
+                break  # stop trying to find discrepancy pids in this row if we already found one
             else:
                 to_add = 1
-        if to_add == 1:
-            append_row_to_csv(temp_file, row)
+        if to_add == 1:  # if we did not find any discrepancy pids in this row, append it to the temp file as "clean".
+            append_row_to_csv(temp_file_path, row)
 
-    rename_csv(temp_file, old_edge_full_path)
-
-    print(only_in_old_edges)
-    for row in discrepancy_rows:
-        print(row)
+    rename_csv(temp_file_path, old_edge_full_path)  # replace old edge file with temp file (discrepancy rows removed)
 
     return discrepancy_rows
 
 
-def get_col_label_to_col_index_in_csv_dict(csv_columns: list):
+def get_col_label_to_col_index_dict(columns: list):
+    """Input: List of csv column labels.
+    Output: Returns dictionary of column label to index of that column."""
     column_positions = {}
-    for i in range(len(csv_columns)):
-        col = csv_columns[i]
+    for i in range(len(columns)):
+        col = columns[i]
         column_positions[col] = i
     return column_positions
 
 
-def get_ids_not_in_sub_ids(path, phase: str, comparison_file: str, id_name: str, sub_ids_file='subjects_ids'):
-    path_comp = get_full_path(path, comparison_file)
-    path_sub_ids = get_full_path(path, sub_ids_file)
+def get_ids_not_in_sub_ids(phase: str, comparison_file: str, id_name: str):
+    """Input: Phase or file name for string writing purposes;
+    name of file to check against subjects_ids.csv file; name of ID to check.
+    Output: Returns list of all pids that occur in given file but not in subjects_ids.csv and
+    pids that occur in subjects_ids.csv but not in given file."""
+    path_comp = get_full_csv_path(comparison_file)
+    path_sub_ids = get_full_csv_path(c.SUBJECTS_IDS_FILE)
 
-    phase_ids = get_distinct_ids_from_csv(path_comp, id_name)
-    sub_ids_ids = get_distinct_ids_from_csv(path_sub_ids, id_name)
+    phase_ids = get_distinct_column_entries_from_csv(path_comp, id_name)
+    sub_ids_ids = get_distinct_column_entries_from_csv(path_sub_ids, id_name)
 
     in_phase_only_not_in_sub_ids = [id_name + " in " + phase + " files but not in subjects_ids file"]
     in_sub_ids_only_not_in_phase = [id_name + " in subjects_ids file but not in " + phase]
@@ -446,26 +479,29 @@ def get_ids_not_in_sub_ids(path, phase: str, comparison_file: str, id_name: str,
 
 
 def get_union_of_lists(list1, list2):
+    """Input: Two lists of which to get the union (all unique members of both).
+    Output: Returns one list of all unique member from both input lists."""
     return list(set(list1) | set(list2))
 
 
 def get_intersection_of_lists(list1, list2):
+    """Input: Two lists of which to get the intersection (only those list members that occur in both lists).
+    Output: Returns one list of all unique members that occur in both input lists."""
     return list(set(list1) & set(list2))
 
 
 def get_difference_list1_only(list1, list2):
+    """Input: Two lists of which to get the difference (all unique members that occur only in list1).
+    Output: Returns one list of all unique members that occur only in input list1."""
     return list(set(list1) - set(list2))
 
 
+#get_and_remove_discrepancy_rows_and_indices_from_old_edges(c.ALL_CSVS_PATH)
 
-all_csvs_path = "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\csv_data\\"
+#print(get_ids_not_in_sub_ids("P1", 'p1_screenings', 'rds_id'))
 
-#get_and_remove_discrepancy_rows_and_indices_from_old_edges(all_csvs_path)
-
-#print(get_ids_not_in_sub_ids(all_csvs_path, "P1", 'p1_screenings', 'rds_id'))
-
-#print(get_ids_not_in_sub_ids(all_csvs_path, "P2", 'p2_network_interviews', 'unique_id'))
-#print(get_ids_not_in_sub_ids(all_csvs_path, "P2_second_interviews", 'p2_second_interviews', 'rds_id'))
+#print(get_ids_not_in_sub_ids("P2", 'p2_network_interviews', 'unique_id'))
+#print(get_ids_not_in_sub_ids("P2_second_interviews", 'p2_second_interviews', 'rds_id'))
 # no new rds ids here, where do the two additional ones come from in subjects_ids???
 
 # would like to add pid foreign key from subjects_ids to p2_network_interviews

@@ -1,9 +1,11 @@
+"""Function to clean all phase 1 csv files."""
 import constants as c
 from ETL import wrangling_functions as w
 
 
 def prep_all_p1():
-    """Output: Fixes all files' column labels; adds a project_id column to p1_screenings."""
+    """Input: None.
+    Output: Fixes all phase 1 files' column labels; adds a project_id column to p1_screenings."""
     replace_with = {c.OLD_LABEL_RDS_ID: c.LABEL_RDS_ID}
     path_screenings = c.P1_SCREENINGS_PATH
     path_hiv = c.P1_HIVS_PATH

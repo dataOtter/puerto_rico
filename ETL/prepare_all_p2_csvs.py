@@ -1,9 +1,10 @@
+"""Function to clean all phase 2 csv files."""
 import constants as c
 from ETL import wrangling_functions as w
 
 
 def prep_all_p2():
-    """Output: Merges all files' unique id fragment columns, adding a unique_id column;
+    """Output: Merges all phase 2 files' unique id fragment columns, adding a unique_id column;
         adds a project_id column to p2_first_interviews.csv; adds a rds_id column to p2_second_interviews.csv."""
     path_network = c.P2_NETWORK_INTERVIEWS_PATH
     path_hiv = c.P2_HIVS_PATH

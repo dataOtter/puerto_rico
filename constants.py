@@ -27,7 +27,7 @@ MEMOIZING_HASH_COLUMN_LABEL = MEMOIZING_TABLE_COLUMN_LABELS[2]
 OLD_NODES_FILE = "node_index_5_3_17"
 OLD_NODES_PATH = ALL_CSVS_PATH + OLD_NODES_FILE + ".csv"
 
-OLD_EDGES_FILE = ''
+OLD_EDGES_FILE = 'edge_index_5_2_17'
 OLD_EDGES_PATH = ALL_CSVS_PATH + OLD_EDGES_FILE + ".csv"
 
 SUBJECTS_IDS_FILE = 'subjects_ids'
@@ -80,6 +80,13 @@ NOTES_PATH = ALL_CSVS_PATH + NOTES_FILE + ".csv"
 
 NOTE_EDGES_FILE = 'note_edges'
 NOTE_EDGES_PATH = ALL_CSVS_PATH + NOTE_EDGES_FILE + ".csv"
+
+ALL_CSV = [SUBJECTS_IDS_FILE,
+            P1_SCREENINGS_FILE, P1_HIVS_FILE, P1_HCVS_FILE, P1_INTERVIEWS_FILE, P1_FOLLOW_UPS_FILE,
+            P2_NETWORK_INTERVIEWS_FILE, P2_FIRST_INTERVIEWS_FILE, P2_SECOND_INTERVIEWS_FILE, P2_HIVS_FILE, P2_HCVS_FILE,
+            P1_P2_OVERLAPS_FILE,
+            EDGES_FILE, NETWORK_EDGES_FILE, RDS_EDGES_FILE,
+            NOTES_FILE, NOTE_EDGES_FILE]
 #######################################################################################################################
 # FILE NAMES AND FILE PATHS
 #######################################################################################################################

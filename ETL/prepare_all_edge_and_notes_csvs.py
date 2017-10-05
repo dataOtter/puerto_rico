@@ -1,9 +1,11 @@
+"""Functions to create and populate all edge and note csv files."""
 import constants as c
 from ETL import wrangling_functions as w
 
 
 def create_all_edge_and_note_csvs():
-    """Output: Creates and populates all edge and note files."""
+    """Input: None.
+    Output: Creates and populates all edge and note csv files."""
     path_edges = c.EDGES_PATH
     path_old_edges = c.OLD_EDGES_PATH
     path_net_edges = c.NETWORK_EDGES_PATH
