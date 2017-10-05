@@ -1,5 +1,4 @@
 import copy
-
 import constants as c
 from ETL import wrangling_functions as w
 from faceted_search import faceted_search_filter_classes as cl, memoize_to_db as m

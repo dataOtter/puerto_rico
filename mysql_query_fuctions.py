@@ -99,7 +99,5 @@ def get_existing_column_labels_from_db_table(tbl_name):
     return keys
 
 
-
-
 db_name, user_name, pwd, host_ip = 'puerto_rico', 'root', 'password', '192.168.4.30'
 print()
