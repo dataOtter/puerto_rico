@@ -2,20 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d07d9d50-5074-49a5-889a-faa5c06f1cee" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ETL/wrangling_reference_summary.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ETL/mysql_and_csv_functions.py" afterPath="$PROJECT_DIR$/ETL/mysql_and_csv_functions.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ETL/prep_and_load_all_csvs.py" afterPath="$PROJECT_DIR$/ETL/prep_and_load_all_csvs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ETL/prepare_all_edge_and_notes_csvs.py" afterPath="$PROJECT_DIR$/ETL/prepare_all_edge_and_notes_csvs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ETL/prepare_all_p1_csvs.py" afterPath="$PROJECT_DIR$/ETL/prepare_all_p1_csvs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ETL/prepare_all_p2_csvs.py" afterPath="$PROJECT_DIR$/ETL/prepare_all_p2_csvs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ETL/prepare_p1_p2_overlaps.py" afterPath="$PROJECT_DIR$/ETL/prepare_p1_p2_overlaps.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ETL/prepare_subjects_ids.py" afterPath="$PROJECT_DIR$/ETL/prepare_subjects_ids.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ETL/wrangling_functions.py" afterPath="$PROJECT_DIR$/ETL/wrangling_functions.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/constants.py" afterPath="$PROJECT_DIR$/constants.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/faceted_search/faceted_search_filter_classes.py" afterPath="$PROJECT_DIR$/faceted_search/faceted_search_filter_classes.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/faceted_search/faceted_search_filter_instances.py" afterPath="$PROJECT_DIR$/faceted_search/faceted_search_filter_instances.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/faceted_search/faceted_search_filter_text_testing.py" afterPath="$PROJECT_DIR$/faceted_search/faceted_search_filter_text_testing.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/faceted_search/memoize_to_db.py" afterPath="$PROJECT_DIR$/faceted_search/memoize_to_db.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/filters/filter_SQL_queries.py" afterPath="$PROJECT_DIR$/filters/filter_SQL_queries.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysql_query_fuctions.py" afterPath="$PROJECT_DIR$/mysql_query_fuctions.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,18 +17,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="constants.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/constants.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="580">
-              <caret line="32" column="17" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -63,7 +43,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/wrangling_reference_summary.py" />
         <option value="$PROJECT_DIR$/mysql_queries_pid.py" />
         <option value="$PROJECT_DIR$/querying_reference_summary.py" />
         <option value="$PROJECT_DIR$/pid_filters.py" />
@@ -85,9 +64,6 @@
         <option value="$PROJECT_DIR$/modular_testing.py" />
         <option value="$PROJECT_DIR$/filters/pid_filter_instances.py" />
         <option value="$PROJECT_DIR$/modular_data_flow/modular_data_flow.py" />
-        <option value="$PROJECT_DIR$/faceted_search/faceted_search_filter_classes.py" />
-        <option value="$PROJECT_DIR$/faceted_search/faceted_search_filter_text_testing.py" />
-        <option value="$PROJECT_DIR$/faceted_search/faceted_search_filter_instances.py" />
         <option value="$PROJECT_DIR$/PR_App/templates/hi.html" />
         <option value="$PROJECT_DIR$/PR_App/hi.py" />
         <option value="$PROJECT_DIR$/PR_App/css/test.css" />
@@ -104,7 +80,6 @@
         <option value="$PROJECT_DIR$/PR_App/faceted_search_webpage_v1.py" />
         <option value="$PROJECT_DIR$/mysql_query_fuctions.py" />
         <option value="$PROJECT_DIR$/filters/filter_SQL_queries.py" />
-        <option value="$PROJECT_DIR$/faceted_search/memoize_to_db.py" />
         <option value="$PROJECT_DIR$/ETL/mysql_and_csv_functions.py" />
         <option value="$PROJECT_DIR$/ETL/prep_and_load_all_csvs.py" />
         <option value="$PROJECT_DIR$/ETL/prepare_all_edge_and_notes_csvs.py" />
@@ -114,6 +89,11 @@
         <option value="$PROJECT_DIR$/ETL/prepare_subjects_ids.py" />
         <option value="$PROJECT_DIR$/constants.py" />
         <option value="$PROJECT_DIR$/ETL/wrangling_functions.py" />
+        <option value="$PROJECT_DIR$/faceted_search/faceted_search_filter_classes.py" />
+        <option value="$PROJECT_DIR$/faceted_search/faceted_search_abstract_filter_classes.py" />
+        <option value="$PROJECT_DIR$/faceted_search/faceted_search_filter_instances.py" />
+        <option value="$PROJECT_DIR$/faceted_search/faceted_search_filter_text_testing.py" />
+        <option value="$PROJECT_DIR$/faceted_search/memoize_to_db.py" />
       </list>
     </option>
   </component>
@@ -162,7 +142,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ETL" />
+              <option name="myItemId" value="filters" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="puerto_rico" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="puerto_rico" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="faceted_search" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -421,7 +415,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="180" />
+      <option name="time" value="185" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -542,13 +536,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PR_App/templates/faceted_search_v1.html" />
     <entry file="file://$PROJECT_DIR$/PR_App/templates/hi.html" />
-    <entry file="file://$PROJECT_DIR$/faceted_search/faceted_search_filter_classes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-375">
-          <caret line="39" column="36" lean-forward="false" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PR_App/static/css/test.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1175">
@@ -564,26 +551,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/faceted_search/faceted_search_filter_text_testing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
-          <caret line="26" column="32" lean-forward="false" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PR_App/static/js/testing_js.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="7" column="55" lean-forward="false" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/faceted_search/faceted_search_filter_instances.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="11" lean-forward="false" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
           <folding />
         </state>
       </provider>
@@ -627,33 +598,6 @@
         <state relative-caret-position="145">
           <caret line="93" column="38" lean-forward="false" selection-start-line="93" selection-start-column="38" selection-end-line="93" selection-end-column="38" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/faceted_search/memoize_to_db.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1032">
-          <caret line="54" column="6" lean-forward="false" selection-start-line="54" selection-start-column="6" selection-end-line="54" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mysql_query_fuctions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="7" column="97" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="7" selection-end-column="97" />
-          <folding>
-            <element signature="e#103#125#0" expanded="true" />
-            <element signature="e#704#1349#0" expanded="false" />
-            <element signature="e#1421#1873#0" expanded="false" />
-            <element signature="e#1960#2588#0" expanded="false" />
-            <element signature="e#2686#3539#0" expanded="false" />
-            <element signature="e#3620#4083#0" expanded="false" />
-            <element signature="e#4132#4345#0" expanded="false" />
-            <element signature="e#4429#4864#0" expanded="false" />
-            <element signature="e#4908#5098#0" expanded="false" />
-            <element signature="e#5161#5647#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -714,17 +658,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ETL/prepare_subjects_ids.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="34" lean-forward="false" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
-          <folding>
-            <element signature="e#64#85#0" expanded="false" />
-            <element signature="e#159#1099#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ETL/wrangling_reference_summary.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -745,6 +678,14 @@
             <element signature="e#5097#5970#0" expanded="false" />
             <element signature="e#6168#7470#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="32" column="17" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -795,11 +736,99 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/constants.py">
+    <entry file="file://$PROJECT_DIR$/ETL/prepare_subjects_ids.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="32" column="17" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="17" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="34" lean-forward="false" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
+          <folding>
+            <element signature="e#159#1099#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysql_query_fuctions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="46" column="34" lean-forward="false" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
+          <folding>
+            <element signature="e#103#125#0" expanded="true" />
+            <element signature="e#704#1349#0" expanded="false" />
+            <element signature="e#1421#1873#0" expanded="false" />
+            <element signature="e#1960#2588#0" expanded="false" />
+            <element signature="e#2686#3539#0" expanded="false" />
+            <element signature="e#3620#4083#0" expanded="false" />
+            <element signature="e#4132#4345#0" expanded="false" />
+            <element signature="e#4429#4864#0" expanded="false" />
+            <element signature="e#4908#5098#0" expanded="false" />
+            <element signature="e#5161#5647#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faceted_search/memoize_to_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="56" lean-forward="true" selection-start-line="0" selection-start-column="56" selection-end-line="0" selection-end-column="56" />
+          <folding>
+            <element signature="e#260#584#0" expanded="false" />
+            <element signature="e#624#724#0" expanded="false" />
+            <element signature="e#805#1402#0" expanded="false" />
+            <element signature="e#1475#2246#0" expanded="false" />
+            <element signature="e#2313#2658#0" expanded="false" />
+            <element signature="e#2692#3173#0" expanded="false" />
+            <element signature="e#3264#6022#0" expanded="false" />
+            <element signature="e#6055#6257#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faceted_search/faceted_search_filter_text_testing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="79" lean-forward="false" selection-start-line="0" selection-start-column="79" selection-end-line="0" selection-end-column="79" />
+          <folding>
+            <element signature="e#241#3065#0" expanded="false" />
+            <element signature="e#3100#3356#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faceted_search/faceted_search_filter_instances.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="e#309#7876#0" expanded="false" />
+            <element signature="e#1848#1984#0" expanded="false" />
+            <element signature="e#2025#2139#0" expanded="false" />
+            <element signature="e#2183#2313#0" expanded="false" />
+            <element signature="e#2359#2493#0" expanded="false" />
+            <element signature="e#2537#3276#0" expanded="false" />
+            <element signature="e#3323#4226#0" expanded="false" />
+            <element signature="e#4276#4459#0" expanded="false" />
+            <element signature="e#4529#4698#0" expanded="false" />
+            <element signature="e#4741#5088#0" expanded="false" />
+            <element signature="e#5164#5515#0" expanded="false" />
+            <element signature="e#5566#5952#0" expanded="false" />
+            <element signature="e#6000#7564#0" expanded="false" />
+            <element signature="e#7618#7876#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faceted_search/faceted_search_filter_classes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="31" column="30" lean-forward="false" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+          <folding>
+            <element signature="e#30#40#0" expanded="true" />
+            <element signature="e#115#943#0" expanded="false" />
+            <element signature="e#981#1759#0" expanded="false" />
+            <element signature="e#1167#1603#0" expanded="false" />
+            <element signature="e#1794#2764#0" expanded="false" />
+            <element signature="e#2804#3825#0" expanded="false" />
+            <element signature="e#3865#4886#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -1,7 +1,12 @@
-from faceted_search import faceted_search_filter_instances as pidf
+"""This runs the filters system through the command prompt. Optional memoizing."""
+from faceted_search import faceted_search_filter_instances as pidf, \
+    memoize_to_db as m
+import time as t
 
 
 def test_print_and_prompt(filter_system):
+    """Input: Filter system instance.
+    Output: Runs the filters system through the command prompt for testing purposes."""
     while True:
         prompt = "Active filters:"
         i = 1
@@ -52,9 +57,13 @@ def test_print_and_prompt(filter_system):
         print("\nNumber of results: " + str(len(filter_system.get_result_pids())))
         print("--------------------------------------------------------------------------")
 
-'''start_time = time.time()
-m.make_memoize_table()
-print("--- %s seconds ---" % (time.time() - start_time))
-print("--- %s minutes ---" % ((time.time() - start_time)/60))'''
+
+def memoize_all_and_time():
+    """Input: None.
+    Output: Runs memoizing/caching and prints how long it took."""
+    start_time = t.time()
+    m.make_memoize_table()
+    print("--- %s seconds ---" % (t.time() - start_time))
+    print("--- %s minutes ---" % ((t.time() - start_time)/60))
 
 test_print_and_prompt(pidf.FilterSystem())

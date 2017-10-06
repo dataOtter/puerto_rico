@@ -1,12 +1,14 @@
+"""Functions to create a memoizing table in the database."""
 import copy
 import hashlib as h
-
 import constants as c
 import mysql_query_fuctions as q
 from faceted_search import faceted_search_filter_instances as pidf
 
 
 def get_filters_string(filters: list):
+    """Input: A list of filter instances.
+    Output: Returns string of all filter kinds and categories, sorted lexographically."""
     f_string_list = []
     for f in filters:
         f_string_list.append(f.get_kind_and_cat())
@@ -16,10 +18,15 @@ def get_filters_string(filters: list):
 
 
 def get_pids_string(pids: list):
+    """Input: A list of pids.
+        Output: Returns input list as string."""
     return ','.join(pids)
 
 
 def add_filter_pid_pair_to_db_table(filters_list: list, pids_list: list):
+    """Input: A list of filter instances; list of pids.
+    Output: Adds row of given filters as sorted string, pids as string,
+    and hash of filters string to memoize table in db."""
     filters_str = get_filters_string(filters_list)
     pids_str = get_pids_string(pids_list)
     filters_hash = h.md5(filters_str.encode()).hexdigest()
@@ -29,21 +36,25 @@ def add_filter_pid_pair_to_db_table(filters_list: list, pids_list: list):
         q.execute_query_insert_one_row(row, c.MEMOIZING_TABLE_NAME, c.MEMOIZING_TABLE_COLUMN_LABELS)
 
 
-def get_row_from_db_table(comparison_str, col_to_get: str):
+def get_row_from_db_table(hash_to_look_up: str, col_to_get: str):
+    """Input: Hash to look up in the db table; column label of value to return.
+    Output: Returns the desired field as a list if it exists, otherwise empty list."""
     query = "SELECT " + col_to_get + " FROM " + c.MEMOIZING_TABLE_NAME + \
-            " WHERE " + c.MEMOIZING_HASH_COLUMN_LABEL + " = '" + comparison_str + "'"
-    row_string_list = q.execute_query_return_list(query)
+            " WHERE " + c.MEMOIZING_HASH_COLUMN_LABEL + " = '" + hash_to_look_up + "'"
+    row_string_list = q.execute_query_return_list(query)  # get as list the desired column field where give hash occurs
     if len(row_string_list) > 0:
         if len(row_string_list[0]) == 0:
-            row_list = []
+            row_list = []  # if there is no row containing the given hash
         else:
-            row_list = row_string_list[0].split(',')
+            row_list = row_string_list[0].split(',')  # otherwise, split the returned field string into a list
     else:
         row_list = None
     return row_list
 
 
 def get_filters_result_pids_from_memo_table(filters: list):
+    """Input: List of filter instances.
+    Output: Returns pids if given filters are applied from memoizing table."""
     filters_str = get_filters_string(filters)
     filters_hash = h.md5(filters_str.encode()).hexdigest()
     results_pids = get_row_from_db_table(filters_hash, col_to_get=c.MEMOIZING_TABLE_COLUMN_LABELS[1])
@@ -51,6 +62,8 @@ def get_filters_result_pids_from_memo_table(filters: list):
 
 
 def clear_memoize_table():
+    """Input: None.
+    Output: Clears the memoizing table."""
     q.execute_query_drop_table(c.MEMOIZING_TABLE_NAME)
     q.execute_query_create_table(c.MEMOIZING_TABLE_NAME, c.MEMOIZING_TABLE_COLUMN_LABELS, data_type='TEXT')
     q.execute_query("ALTER TABLE " + c.MEMOIZING_TABLE_NAME + " MODIFY COLUMN " +
@@ -59,6 +72,9 @@ def clear_memoize_table():
 
 
 def get_filter_subsets(all_individual_filters: list, all_filter_subsets: list, fs):
+    """Input: List of all (remaining) possible filters; list of list of all filter subsets; filter system instance.
+        Output: Runs recursively to populate the memoize table with all possible filter subsets
+        and their corresponding pid list (with smart lookup so as never to recalculate the same filter combination)."""
     to_print = []
     for fltr in all_individual_filters:
         to_print.append(fltr.get_kind_and_cat())
@@ -102,6 +118,8 @@ def get_filter_subsets(all_individual_filters: list, all_filter_subsets: list, f
 
 
 def make_memoize_table():
+    """Input: None.
+    Output: Creates and populates the memoize table in the database."""
     clear_memoize_table()
     fs = pidf.FilterSystem()
     get_filter_subsets(fs.get_inactive_filters(), [[]], fs)
