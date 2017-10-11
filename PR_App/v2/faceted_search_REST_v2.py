@@ -8,7 +8,7 @@ app.secret_key = 'why would I tell you my secret key?'
 
 @app.route("/")
 def main():
-    return f.render_template('index.html', result='this is main', fltrs=[])
+    return f.render_template('index_v2.html', result='this is main', fltrs=[])
 
 
 @app.route("/show_results", methods=["POST", "GET"])
