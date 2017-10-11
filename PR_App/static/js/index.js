@@ -1,6 +1,5 @@
 /*
 ===============================================================
-
 Basic syntax is: $(selector).action()
 
 A $ sign to define/access jQuery
@@ -18,12 +17,10 @@ $("#test").hide() - hides the element with id="test".
 https://www.w3schools.com/jquery/jquery_ref_selectors.asp
 
 https://www.w3schools.com/jquery/jquery_ref_events.asp
-
 ===============================================================
 */
 //Global:
 var survey = [];
-var s2 = [];
 
 $(document).ready(function(){
 
@@ -36,73 +33,38 @@ $(document).ready(function(){
 
 
     $('#filter_button').click(function() {
-        //Empty array:
         survey = {};
-        s2 = [];
-        //Push data:
         for (i=1; i<=$(".rb").length; i++) {
             var kind = $(".rb")[i-1].id;
             var rbValue = $("#"+kind).find(".rb-tab-active").attr("data-value");
             survey[kind] = rbValue;
-            //survey.push([kind, rbValue]);
-            //s2.push(kind + ' ' + rbValue);
         };
         var json_str_survey = JSON.stringify(survey);  // send this to python
-        //alert(json_str_survey);
-        //alert(survey);
-        //alert("This is a test");
 
         $.ajax({
-                type: 'POST',
-                contentType: 'application/json',
-                data: json_str_survey,
-                url: '/testingJSON',
-                success: function(response) {
-                console.log("success!! " + response);
+            type: 'POST',
+            contentType: 'application/json',
+            data: json_str_survey,
+            url: '/show_results',
+            success: function(theData) {
+                console.log("success!! " + theData);
+                //alert(theData.filters);
+                //alert(theData.results);
+                $('#res-fltrs').empty();
+                $('#res-header').empty();
+                $("#res-header").append(theData.results + " participants are:");
+                $(theData.filters).each(function(index, element){
+                    $("#res-fltrs").append("<div class='res-tab'> <div class='res-text-box'> <span class='res-txt'>" +
+                    element + "</span> </div> </div>");
+                //alert("HERE");
+                });
             },
+
             error: function(error) {
                 console.log("failure!! " + error);
             }
         });
 
-
     });
 
 });
-
-/*
-//Save data:
-$(".trigger").click(function(){
-  //Empty array:
-  survey = [];
-  s2 = [];
-  //Push data:
-  for (i=1; i<=$(".rb").length; i++) {
-    var kind = $(".rb")[i-1].id;
-    var rbValue = $("#"+kind).find(".rb-tab-active").attr("data-value");
-    //Bidimensional array push:
-    survey.push([kind, rbValue]); //Bidimensional array: [ [1,3], [2,4] ]
-    s2.push(kind + ' ' + rbValue);
-  };
-  var json_str_survey = JSON.stringify(s2);  // send this to python
-  alert(json_str_survey);
-  alert(survey);
-  //Debug:
-  //debug();
-
-  $.ajax({
-            url: '/testingJSON',
-            data: $('form').serialize(),
-            type: 'POST',
-            success: function(response) {
-                console.log(response);
-            },
-            error: function(error) {
-                console.log(error);
-            }
-        });
-
-});
-*/
-
-

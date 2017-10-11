@@ -1,19 +1,26 @@
+"""Functions to run MySQL queries and return "filtered" project ID lists."""
 import constants as c
 import mysql_query_fuctions as q
 
 
 def pids_phase_1():
+    """Input: None.
+    Output: Returns list of of all phase 1 project IDs."""
     statement = "SELECT DISTINCT project_id FROM p1_screenings"
     return q.execute_query_return_list(statement)
 
 
 def pids_phase_2():
+    """Input: None.
+    Output: Returns list of of all phase 2 project IDs."""
     statement = "SELECT DISTINCT project_id FROM subjects_ids " \
                 "WHERE unique_id IN (SELECT unique_id FROM p2_network_interviews)"
     return q.execute_query_return_list(statement)
 
 
 def pids_gender(pids_list, gender_code, temp_table='temp', col='pid'):
+    """Input: .
+    Output: ."""
     q.populate_temp_table(pids_list, table_name=temp_table, label=col)
     query = "SELECT DISTINCT project_id FROM subjects_ids " \
             "WHERE (project_id IN " \

@@ -8,49 +8,43 @@ app.secret_key = 'why would I tell you my secret key?'
 
 @app.route("/")
 def main():
-    return f.render_template('temp_index.html', result='this is main', fltrs=[])
+    return f.render_template('index.html', result='this is main', fltrs=[])
 
 
-@app.route("/show_results", methods=["POST"])
+@app.route("/show_results", methods=["POST", "GET"])
 def show_result():
+    data = f.request.json
     fs = pidf.FilterSystem()
     to_apply = []
-    '''gender, age = f.request.form['gender'], f.request.form['age']
-    mindrugs, maxdrugs = f.request.form['mindrugs'], f.request.form['maxdrugs']
 
-    if gender != 'ALL':
-        to_apply.append("Gender " + gender)
+    if data['gender'] != 'ALL':
+        to_apply.append("Gender " + data['gender'])
 
-    if age != 'ALL':
-        to_apply.append("Age " + age)
+    if data['age'] != 'ALL':
+        to_apply.append("Age " + data['age'])
 
-    if mindrugs != 'ALL':
-        to_apply.append("MinDrugUse " + mindrugs)
+    if data['mindrugs'] != 'ALL':
+        to_apply.append("MinDrugUse " + data['mindrugs'])
 
-    if maxdrugs != 'ALL':
-        to_apply.append("MaxDrugUse " + maxdrugs)
+    if data['maxdrugs'] != 'ALL':
+        to_apply.append("MaxDrugUse " + data['maxdrugs'])
 
     for fltr in fs.get_inactive_filters():
         if fltr.get_kind_and_cat() in to_apply:
             fs.add_filter(fltr)
 
-    result = len(fs.get_result_pids())'''
+    result = len(fs.get_result_pids())
 
-    #wordlist = j.loads(f.request.args.get('wordlist'))
-    #print(wordlist)
+    print(result)
 
-    return f.render_template("temp_index.html", result='this is show', fltrs=to_apply)
+    fltr_dict = {"filters": to_apply, "results": result}
+
+    return f.jsonify(fltr_dict)
 
 
-@app.route("/testingJSON", methods=["POST"])
+@app.route("/testingJSON", methods=["GET"])
 def testingJSON():
-    data = f.request.json
-    print("this is it!")
-    print(data, type(data))
-    for key, value in data.items():
-        print(key, value)
-    return f.render_template('temp_index.html', result='this is testing json', fltrs=[])
-    # no, result will have to be sent to html back through ajax - I think...
+    return f.jsonify({'one': ['this', 'is', 'a', 'test']})
 
 
 if __name__ == "__main__":

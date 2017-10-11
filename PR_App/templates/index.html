@@ -143,19 +143,12 @@
     <!--</form>-->
   </div>
 
-  <section id="results">
-    <h3>Number of participants that are:</h3>
+  <div id="res-box" class="rb-box">
+    <h2>Result</h2>
+      <h3 id="res-header"></h3>
+      <div id="res-fltrs" class="rb"></div>
 
-    {% for fltr in fltrs %}
-      <p>{{ fltr }}</p>
-    {% endfor %}
-
-    <table border = 1>
-      <tr>
-        <td> {{ result }} </td>
-      </tr>
-    </table>
-  </section>
+  </div>
 
 </body>
 </html>

@@ -14,7 +14,7 @@ body {
 .rb-box {
   width: 80%;
   max-width: 1200px;
-  min-width: 600px;
+  min-width: 1000px;
   margin: 50px auto;
   padding: 1.3em;
   background: #292942;
@@ -38,6 +38,7 @@ p {
 .rb {
   padding: 20px 0;
   text-align: center;
+  min-width: 800px;
   background: rgba(255,255,255,.03);
   border-radius: .3em;
 }
@@ -72,6 +73,31 @@ type="radio"{
   border-radius: 100%;
   cursor: pointer;
   transition: ease .5s;
+}
+
+.res-text-box {
+  position: absolute;
+  width: 200px;
+  height: 30px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -65%);
+  background: transparent;
+  border: 2px solid rgba(255,255,255,.3);
+}
+
+.res-tab {
+  display: inline-block;
+  position: relative;
+  width: 20%;
+}
+
+.res-txt {
+  position: relative;
+  top: 20%;
+  transform: translate(-50%, -50%);
+  font-size: 1em;
+  color: #FFFFFF;
 }
 
 .rb-tab-active .rb-spot {
