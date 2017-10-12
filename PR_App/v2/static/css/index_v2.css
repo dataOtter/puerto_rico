@@ -1,4 +1,3 @@
-/* Containers */
 html, body {
   min-height: 100%;
 }
@@ -36,9 +35,8 @@ p {
 }
 
 .rb {
-  padding: 20px 0;
+  padding: 20px;
   text-align: center;
-  min-width: 800px;
   background: rgba(255,255,255,.03);
   border-radius: .3em;
 }
@@ -46,28 +44,23 @@ p {
 .rb-tab {
   display: inline-block;
   position: relative;
-  width: 15%;
+  width: 18%;
 }
 
 type="radio"{
 }
 
 .rb-txt {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  top: 20%;
   font-size: 1em;
   color: #FFFFFF;
 }
 
 .rb-spot {
-  position: absolute;
-  width: 120px;
-  height: 30px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -65%);
+  position: relative;
+  width: 170px;
+  height: 35px;
   background: transparent;
   border: 2px solid rgba(255,255,255,.3);
   border-radius: 100%;
@@ -75,13 +68,15 @@ type="radio"{
   transition: ease .5s;
 }
 
-.res-text-box {
-  position: absolute;
+.rb-tab-active .rb-spot {
+  background: rgba(0,0,0,.35);
+  border: 2px solid rgba(243,49,128,.6);
+}
+
+.res-spot {
+  position: relative;
   width: 200px;
   height: 30px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -65%);
   background: transparent;
   border: 2px solid rgba(255,255,255,.3);
 }
@@ -98,11 +93,6 @@ type="radio"{
   transform: translate(-50%, -50%);
   font-size: 1em;
   color: #FFFFFF;
-}
-
-.rb-tab-active .rb-spot {
-  background: rgba(0,0,0,.35);
-  border: 2px solid rgba(243,49,128,.6);
 }
 
 /* Submit Button */

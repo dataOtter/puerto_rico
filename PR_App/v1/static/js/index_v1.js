@@ -44,20 +44,21 @@ $(document).ready(function(){
         $.ajax({
             type: 'POST',
             contentType: 'application/json',
-            data: json_str_survey,
+            data: json_str_fltrs,
             url: '/show_results',
             success: function(theData) {
                 console.log("success!! " + theData);
                 //alert(theData.filters);
                 //alert(theData.results);
                 $('#res-fltrs').empty();
-                $('#res-header').empty();
-                $("#res-header").append(theData.results + " participants are:");
+                $("#res-header").empty().append(theData.results + " participants are:");
                 $(theData.filters).each(function(index, element){
                     $("#res-fltrs").append("<div class='res-tab'> <div class='res-text-box'> <span class='res-txt'>" +
                     element + "</span> </div> </div>");
-                //alert("HERE");
                 });
+
+                $(".rb").find(".rb-tab").removeClass("rb-tab-active");
+                $('.rb-tab[data-value="ALL"]').addClass("rb-tab-active");
             },
 
             error: function(error) {

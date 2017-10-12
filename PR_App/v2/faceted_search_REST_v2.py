@@ -1,9 +1,9 @@
 import flask as f
 from faceted_search import faceted_search_filter_instances as pidf
-import json as j
 
 app = f.Flask(__name__)
 app.secret_key = 'why would I tell you my secret key?'
+fs = pidf.FilterSystem()
 
 
 @app.route("/")
@@ -14,37 +14,60 @@ def main():
 @app.route("/show_results", methods=["POST", "GET"])
 def show_result():
     data = f.request.json
-    fs = pidf.FilterSystem()
     to_apply = []
+    to_remove = []
+    print("incoming data:")
+    print(data)
 
-    if data['gender'] != 'ALL':
-        to_apply.append("Gender " + data['gender'])
+    if data['Gender'] == 'ALL':
+        to_remove.append("Gender")
+    elif data['Gender'] != "ASIS":
+        to_apply.append("Gender " + data['Gender'])
 
-    if data['age'] != 'ALL':
-        to_apply.append("Age " + data['age'])
+    if data['Age'] == 'ALL':
+        to_remove.append("Age")
+    elif data['Age'] != 'ASIS':
+        to_apply.append("Age " + data['Age'])
 
-    if data['mindrugs'] != 'ALL':
-        to_apply.append("MinDrugUse " + data['mindrugs'])
+    if data['MinDrugUse'] == 'ALL':
+        to_remove.append("MinDrugUse")
+    elif data['MinDrugUse'] != 'ASIS':
+        to_apply.append("MinDrugUse " + data['MinDrugUse'])
 
-    if data['maxdrugs'] != 'ALL':
-        to_apply.append("MaxDrugUse " + data['maxdrugs'])
+    if data['MaxDrugUse'] == 'ALL':
+        to_remove.append("MaxDrugUse")
+    elif data['MaxDrugUse'] != 'ASIS':
+        to_apply.append("MaxDrugUse " + data['MaxDrugUse'])
 
+    active_filter_kinds = []
     for fltr in fs.get_inactive_filters():
         if fltr.get_kind_and_cat() in to_apply:
-            fs.add_filter(fltr)
+            print("Applying filter: " + fltr.get_kind_and_cat())
+            fs.add_filter(fltr)  # add all selected filters
+            active_filter_kinds.append(fltr.get_kind())
+
+    print("In to remove list:")
+    print(to_remove)
+    rem_fltrs = []
+    for fltr in fs.get_active_filters():
+        print("Active filter: " + fltr.get_kind_and_cat())
+        if fltr.get_kind() in to_remove:
+            print("Adding to remove filter list: " + fltr.get_kind_and_cat())
+            rem_fltrs.append(fltr)
+
+    for fltr in rem_fltrs:
+        fs.remove_filter(fltr)  # remove all deselected filters
+
+    aslist = fs.get_add_filter_options_list()  # update filter options and get current filter options as list of strings
+
+    print("outgoing string list:")
+    print(aslist)
 
     result = len(fs.get_result_pids())
 
-    print(result)
-
-    fltr_dict = {"filters": to_apply, "results": result}
+    fltr_dict = {"filters": to_apply, "results": result, "testing": aslist, "fltr_kinds": list(set(active_filter_kinds))}
 
     return f.jsonify(fltr_dict)
-
-
-@app.route("/testingJSON", methods=["GET"])
-def testingJSON():
-    return f.jsonify({'one': ['this', 'is', 'a', 'test']})
 
 
 if __name__ == "__main__":

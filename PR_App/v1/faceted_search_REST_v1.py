@@ -42,10 +42,5 @@ def show_result():
     return f.jsonify(fltr_dict)
 
 
-@app.route("/testingJSON", methods=["GET"])
-def testingJSON():
-    return f.jsonify({'one': ['this', 'is', 'a', 'test']})
-
-
 if __name__ == "__main__":
     app.run()

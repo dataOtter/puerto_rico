@@ -60,6 +60,17 @@ class FilterSystem:
         Output: Returns list of all currently inactive filters (class member)."""
         return self.inactive_filters
 
+    def get_add_filter_options_list(self):
+        """Input: None.
+        Output: Returns list of each addable filter's kind, category and number of resulting project IDs."""
+        aslist = []
+        for kind, fltr_num_list in self.get_add_filter_options().items():
+            for fltr_num in fltr_num_list:
+                aslist.append(kind)
+                aslist.append(fltr_num[0].get_cat())
+                aslist.append(fltr_num[1])
+        return aslist
+
     def add_filter(self, filter):
         """Input: A filter instance.
         Output: Adds a filter to the active filters list; applies filter and updates list of results pids;

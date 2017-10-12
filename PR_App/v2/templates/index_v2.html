@@ -13,32 +13,31 @@
 </head>
 
 <body>
+
+  <div id="results"></div>
+
   <div class="rb-box">
 
     <h2>Narrow down your results</h2>
 
-    <!--<form action="/show_results" method="post">
-    <form>-->
-
-      <!-- Radio Button Module -->
       <h3>1. Gender</h3>
-      <div id="gender" class="rb">
-        <div class="rb-tab" data-value="M">
+      <div id="Gender" class="rb">
+        <div id="Gender-M" class="rb-tab" data-value="M">
           <div class="rb-spot">
             <span class="rb-txt">Male</span>
           </div>
         </div>
-        <div class="rb-tab" data-value="F">
+        <div id="Gender-F" class="rb-tab" data-value="F">
           <div class="rb-spot">
             <span class="rb-txt">Female</span>
           </div>
         </div>
-        <div class="rb-tab" data-value="TG">
+        <div id="Gender-TG" class="rb-tab" data-value="TG">
           <div class="rb-spot">
             <span class="rb-txt">Transgender</span>
           </div>
         </div>
-        <div class="rb-tab rb-tab-active" data-value="ALL">
+        <div id="Gender-ALL" class="rb-tab rb-tab-active" data-value="ALL">
           <div class="rb-spot">
             <span class="rb-txt">All</span>
           </div>
@@ -46,29 +45,29 @@
       </div>
 
       <h3>2. Age</h3>
-      <div id="age" class="rb">
+      <div id="Age" class="rb">
 
-        <div class="rb-tab" data-value="0-18">
+        <div id="Age-0-18" class="rb-tab" data-value="0-18">
           <div class="rb-spot">
             <span class="rb-txt">0-18</span>
           </div>
         </div>
-        <div class="rb-tab" data-value="19-24">
+        <div id="Age-19-24" class="rb-tab" data-value="19-24">
           <div class="rb-spot">
             <span class="rb-txt">19-24</span>
           </div>
         </div>
-        <div class="rb-tab" data-value="25-40">
+        <div id="Age-25-40" class="rb-tab" data-value="25-40">
           <div class="rb-spot">
             <span class="rb-txt">25-40</span>
           </div>
         </div>
-        <div class="rb-tab" data-value="41-100">
+        <div id="Age-41-100" class="rb-tab" data-value="41-100">
           <div class="rb-spot">
             <span class="rb-txt">41-100</span>
           </div>
         </div>
-        <div class="rb-tab rb-tab-active" data-value="ALL">
+        <div id="Age-ALL" class="rb-tab rb-tab-active" data-value="ALL">
           <div class="rb-spot">
             <span class="rb-txt">All</span>
           </div>
@@ -76,29 +75,29 @@
       </div>
 
       <h3>3. Minimum drug use per day</h3>
-      <div id="mindrugs" class="rb">
+      <div id="MinDrugUse" class="rb">
 
-        <div class="rb-tab" data-value="1">
+        <div id="MinDrugUse-1" class="rb-tab" data-value="1">
           <div class="rb-spot">
             <span class="rb-txt">1</span>
           </div>
         </div>
-        <div class="rb-tab" data-value="2-3">
+        <div id="MinDrugUse-2-3" class="rb-tab" data-value="2-3">
           <div class="rb-spot">
             <span class="rb-txt">2-3</span>
           </div>
         </div>
-        <div class="rb-tab" data-value="4-7">
+        <div id="MinDrugUse-4-7" class="rb-tab" data-value="4-7">
           <div class="rb-spot">
             <span class="rb-txt">4-7</span>
           </div>
         </div>
-        <div class="rb-tab" data-value="8">
+        <div id="MinDrugUse-8" class="rb-tab" data-value="8">
           <div class="rb-spot">
             <span class="rb-txt">8</span>
           </div>
         </div>
-        <div class="rb-tab rb-tab-active" data-value="ALL">
+        <div id="MinDrugUse-ALL" class="rb-tab rb-tab-active" data-value="ALL">
           <div class="rb-spot">
             <span class="rb-txt">Any</span>
           </div>
@@ -106,47 +105,38 @@
       </div>
 
       <h3>4. Maximum drug use per day</h3>
-      <div id="maxdrugs" class="rb">
+      <div id="MaxDrugUse" class="rb">
 
-        <div class="rb-tab" data-value="1">
+        <div id="MaxDrugUse-1" class="rb-tab" data-value="1">
           <div class="rb-spot">
             <span class="rb-txt">1</span>
           </div>
         </div>
-        <div class="rb-tab" data-value="2-3">
+        <div id="MaxDrugUse-2-3" class="rb-tab" data-value="2-3">
           <div class="rb-spot">
             <span class="rb-txt">2-3</span>
           </div>
         </div>
-        <div class="rb-tab" data-value="4-7">
+        <div id="MaxDrugUse-4-7" class="rb-tab" data-value="4-7">
           <div class="rb-spot">
             <span class="rb-txt">4-7</span>
           </div>
         </div>
-        <div class="rb-tab" data-value="8">
+        <div id="MaxDrugUse-8" class="rb-tab" data-value="8">
           <div class="rb-spot">
             <span class="rb-txt">8</span>
           </div>
         </div>
-        <div class="rb-tab rb-tab-active" data-value="ALL">
+        <div id="MaxDrugUse-ALL" class="rb-tab rb-tab-active" data-value="ALL">
           <div class="rb-spot">
             <span class="rb-txt">Any</span>
           </div>
         </div>
       </div>
 
-      <!-- Button -->
       <div class="button-box">
         <button id="filter_button" class="button trigger">Submit</button>
       </div>
-
-    <!--</form>-->
-  </div>
-
-  <div id="res-box" class="rb-box">
-    <h2>Result</h2>
-      <h3 id="res-header"></h3>
-      <div id="res-fltrs" class="rb"></div>
 
   </div>
 
