@@ -40,7 +40,7 @@ $(document).ready(function(){
                 console.log("success!! " + theData);
                 //alert(theData.filters);
                 //alert(theData.results);
-                $('#results').empty().append("<div id='res-box' class='rb-box'>");
+                $('#results').empty().append("<div id='res-box' class='res-box'>");
                 $('#res-box').append("<h2>Results</h2> <h3>" + theData.results + " participants are:</h3>" +
                     "<div id='res-fltrs' class='rb'>");
                 $(theData.filters).each(function(index, element){
@@ -86,6 +86,10 @@ $(document).ready(function(){
                     }
                     $("#" + kind).prepend("<div id='" + new_id + "' class='rb-tab' data-value='" + cat
                     + "'><div class='rb-spot'><span class='rb-txt'>" + new_txt + " (" + theData.testing[i+2] + ")</span></div></div>");
+
+                    //$("#" + kind).prepend("<div id='" + new_id + "' class='rb-tab' data-value='" + cat
+                    //+ "'><div class='rb-spot'></div><span class='rb-txt'>" + new_txt + " (" + theData.testing[i+2] + ")</span></div>");
+
                 };
             },
 

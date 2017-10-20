@@ -12,9 +12,9 @@ body {
 
 .rb-box {
     width: 80%;
-    max-width: 1200px;
-    min-width: 800px;
-    margin: 50px auto;
+    max-width: 250px;
+    min-width: 250px;
+    margin: 50px;
     padding: 1.3em;
     background: #292942;
     border-radius: .75em;
@@ -42,9 +42,9 @@ p {
 }
 
 .rb-tab {
-  display: inline-block;
-  position: relative;
-  width: 18%;
+    position: relative;
+    width: 80%;
+    padding: 10px 18px;
 }
 
 type="radio"{
@@ -59,8 +59,8 @@ type="radio"{
 
 .rb-spot {
   position: relative;
-  width: 170px;
-  height: 35px;
+  width: 10px;
+  height: 10px;
   background: transparent;
   border: 2px solid rgba(255,255,255,.3);
   border-radius: 100%;

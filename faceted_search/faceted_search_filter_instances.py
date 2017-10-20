@@ -9,8 +9,8 @@ from filters import filter_SQL_queries as sql_fltr
 class FilterSystem:
     """Filter system class made of instances of various filters."""
     def __init__(self):
-        male = cl.GenderFilter("M")
         female = cl.GenderFilter("F")
+        male = cl.GenderFilter("M")
         transgender = cl.GenderFilter("TG")
 
         ageto18 = cl.AgeFilter("0-18")
@@ -28,11 +28,11 @@ class FilterSystem:
         drugmax7 = cl.MaxDrugsFilter("4-7")
         drugmax8 = cl.MaxDrugsFilter("8")
 
-        self.filters_tuple = (male, female, transgender,
+        self.filters_tuple = (female, male, transgender,
                               ageto18, age19to24, age25to40, age41to100,
                               drugmin1, drugmin3, drugmin7, drugmin8,
                               drugmax1, drugmax3, drugmax7, drugmax8)
-        self.filters_dict = {"Gender": (male, female, transgender),
+        self.filters_dict = {"Gender": (female, male, transgender),
                              "Age": (ageto18, age19to24, age25to40, age41to100),
                              "MinDrugUse": (drugmin1, drugmin3, drugmin7, drugmin8),
                              "MaxDrugUse": (drugmax1, drugmax3, drugmax7, drugmax8)}
@@ -42,7 +42,7 @@ class FilterSystem:
 
     def get_filters_dict(self):
         """Input: None.
-        Output: Returns dictionary of all filter kinds to categories (class member)."""
+        Output: Returns dictionary of all filter kinds to each category instance (class member)."""
         return self.filters_dict
 
     def get_result_pids(self):
@@ -62,14 +62,32 @@ class FilterSystem:
 
     def get_add_filter_options_list(self):
         """Input: None.
-        Output: Returns list of each addable filter's kind, category and number of resulting project IDs."""
+        Output: Returns list of each addable filter's kind, category, number of resulting project IDs, as 3 strings."""
         aslist = []
         for kind, fltr_num_list in self.get_add_filter_options().items():
-            for fltr_num in fltr_num_list:
+            sort_fltr_num_list = sorted(fltr_num_list, key=self.get_key)
+            for fltr_num in sort_fltr_num_list:
                 aslist.append(kind)
                 aslist.append(fltr_num[0].get_cat())
                 aslist.append(fltr_num[1])
         return aslist
+
+    def get_add_filter_options_str_dict(self):
+        """Input: None.
+        Output: Returns dictionary of filter kinds to
+        list of each addable category and number of resulting project IDs."""
+        str_dict = {}
+        for kind, fltr_num_list in self.get_add_filter_options().items():
+            sort_fltr_num_list = sorted(fltr_num_list, key=self.get_key)
+            for fltr_num in sort_fltr_num_list:
+                if kind in str_dict:
+                    str_dict[kind].append((fltr_num[0].get_cat(), fltr_num[1]))
+                else:
+                    str_dict[kind] = [(fltr_num[0].get_cat(), fltr_num[1])]
+        return str_dict
+
+    def get_key(self, item):
+        return item[0].get_cat()
 
     def add_filter(self, filter):
         """Input: A filter instance.
@@ -177,7 +195,6 @@ class FilterSystem:
                 else:
                     options_dict[kind] = [(fltr, temp_len)]
 
-        options_dict = options_dict
         return options_dict
 
     def add_or_remove_filter(self, filter):
