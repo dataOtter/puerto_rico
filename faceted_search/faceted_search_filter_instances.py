@@ -28,14 +28,21 @@ class FilterSystem:
         drugmax7 = cl.MaxDrugsFilter("4-7")
         drugmax8 = cl.MaxDrugsFilter("8")
 
+        prborn = cl.CountryBornFilter("PuertoRico")
+        usborn = cl.CountryBornFilter("MainlandUS")
+        drborn = cl.CountryBornFilter("DomRep")
+        otherborn = cl.CountryBornFilter("Other")
+
         self.filters_tuple = (female, male, transgender,
                               ageto18, age19to24, age25to40, age41to100,
                               drugmin1, drugmin3, drugmin7, drugmin8,
-                              drugmax1, drugmax3, drugmax7, drugmax8)
+                              drugmax1, drugmax3, drugmax7, drugmax8,
+                              prborn, usborn, drborn, otherborn)
         self.filters_dict = {"Gender": (female, male, transgender),
                              "Age": (ageto18, age19to24, age25to40, age41to100),
                              "MinDrugUse": (drugmin1, drugmin3, drugmin7, drugmin8),
-                             "MaxDrugUse": (drugmax1, drugmax3, drugmax7, drugmax8)}
+                             "MaxDrugUse": (drugmax1, drugmax3, drugmax7, drugmax8),
+                             "CountryBorn": (prborn, usborn, drborn, otherborn)}
         self.inactive_filters = list(self.filters_tuple)
         self.active_filters = []
         self.result_pids = w.get_union_of_lists(sql_fltr.pids_phase_1(), sql_fltr.pids_phase_2())

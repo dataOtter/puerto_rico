@@ -62,6 +62,7 @@ $(document).ready(function(){
     }
 
     function update_results_section(theData){
+        //var active_fltrs = eval(theData.active_fltrs);
         $("#results").show();
         $("#res-box h3").empty().append(theData.res_pids_count + " participants are:");
         $("#res-fltrs").empty();

@@ -40,6 +40,7 @@ class GenderFilter(PidFilter):
         """Input: List of project IDs.
         Output: Returns list of project IDs after filtering by this filter's gender type."""
         ans = []
+        '''For every category of this filter, add an if statement and SQL filter execution'''
         if self.desired_gender == "M":
             ans = sql_fltr.pids_males(pids_list)
         elif self.desired_gender == "F":
@@ -137,3 +138,32 @@ class MaxDrugsFilter(PidFilter):
 
     def get_kind_and_cat(self):
         return str(self.get_kind() + " " + self.get_cat())
+
+
+class CountryBornFilter(PidFilter):
+    __metaclass__ = abc.ABCMeta
+
+    def __init__(self, category):
+        super(CountryBornFilter, self).__init__("CountryBorn")
+        self.desired_category = category
+
+    def apply(self, pids_list):
+        """Input: List of project IDs.
+        Output: Returns list of project IDs after filtering by this filter's category type."""
+        ans = []
+        if self.desired_category == "PuertoRico":
+            ans = sql_fltr.pids_born_pr(pids_list)
+        elif self.desired_category == "MainlandUS":
+            ans = sql_fltr. pids_born_cont_us(pids_list)
+        elif self.desired_category == "DomRep":
+            ans = sql_fltr.pids_born_dom_rep(pids_list)
+        elif self.desired_category == "Other":
+            ans = sql_fltr.pids_born_other(pids_list)
+        return ans
+
+    def get_cat(self):
+        return str(self.desired_category)
+
+    def get_kind_and_cat(self):
+        return str(self.get_kind() + " " + self.get_cat())
+

@@ -115,51 +115,33 @@ def get_unique_sender_receiver_pairs(sender_receiver_list):
             pass
     return sender_receiver_list
 
-'''p1 = pids_phase_1(db_name, user_name, pwd, host_ip)
-p2 = pids_phase_2(db_name, user_name, pwd, host_ip)
-union = w.get_union_of_lists(p1, p2)
-intersection = w.get_intersection_of_lists(p1, p2)
-p1_only = w.get_difference_list1_only(p1, p2)
-p2_only = w.get_difference_list1_only(p2, p1)
-#print(len(p1), len(p2), len(p1_only), len(p2_only), len(union), len(intersection))
 
-sr = sender_receiver_from_edges(pids_females(union, db_name, user_name, pwd, host_ip),
-                                pids_males(union, db_name, user_name, pwd, host_ip),
-                                db_name, user_name, pwd, host_ip)
-print(len(get_unique_sender_receiver_pairs(sr)))'''
+def pids_country_born(pids_list, country_code, temp_table='temp', col='pid'):
+    q.populate_temp_table(pids_list, table_name=temp_table, label=col)
+    query = "SELECT DISTINCT project_id FROM subjects_ids " \
+            "WHERE (project_id IN " \
+            "(SELECT project_id FROM p1_screenings WHERE rds_id IN " \
+            "(SELECT rds_id FROM p1_interviews WHERE DM4 = " + str(country_code) + "))" \
+            "OR project_id IN (SELECT project_id FROM p2_first_interviews WHERE P2FIDM4 = " + str(country_code) + "))" \
+            "AND project_id IN (SELECT * FROM " + temp_table + ")"
+    return q.execute_query_return_list(query)
 
-'''print(len(pids_min_drug_use_per_day
-          (pids_age_range
-           (pids_females
-            (w.get_intersection_of_lists
-             (pids_phase_1(db_name, user_name, pwd, host_ip), pids_phase_2(db_name, user_name, pwd, host_ip)),
-             db_name, user_name, pwd, host_ip),
-            db_name, user_name, pwd, host_ip, 25, 45),
-           db_name, user_name, pwd, host_ip, 4)))
 
-print(len(pids_max_drug_use_per_day(pids_age_range(pids_males(p2_only, db_name, user_name, pwd, host_ip),
-                         db_name, user_name, pwd, host_ip, 45, 55), db_name, user_name, pwd, host_ip, 4)))
+def pids_born_pr(pids_list):
+    return pids_country_born(pids_list, 1)
 
-# all relationships that exist between
-# females who participated in p1 and p2, are between 25 and 45 years old, use drugs at least 4 times per day and
-# males who participated only in p2, are between 45 and 55 years old, use drugs at most 4 times per day
-print(sender_receiver_from_edges
-      (pids_min_drug_use_per_day
-       (pids_age_range
-        (pids_females
-         (w.get_intersection_of_lists
-          (pids_phase_1(db_name, user_name, pwd, host_ip), pids_phase_2(db_name, user_name, pwd, host_ip)),
-          db_name, user_name, pwd, host_ip),
-         db_name, user_name, pwd, host_ip, 25, 45),
-        db_name, user_name, pwd, host_ip, 4),
-       pids_max_drug_use_per_day
-       (pids_age_range
-        (pids_males
-         (w.get_difference_list1_only
-          (pids_phase_2(db_name, user_name, pwd, host_ip), pids_phase_2(db_name, user_name, pwd, host_ip)),
-          db_name, user_name, pwd, host_ip),
-         db_name, user_name, pwd, host_ip, 45, 55),
-        db_name, user_name, pwd, host_ip, 4), db_name, user_name, pwd, host_ip))'''
+
+def pids_born_cont_us(pids_list):
+    return pids_country_born(pids_list, 2)
+
+
+def pids_born_dom_rep(pids_list):
+    return pids_country_born(pids_list, 3)
+
+
+def pids_born_other(pids_list):
+    return pids_country_born(pids_list, 4)
+
 
 '''p1_first_interviews: ID2
 [In the last 12 months, on average, how often did you inject drugs?]
