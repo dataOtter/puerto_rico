@@ -15,9 +15,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 CREATE SCHEMA IF NOT EXISTS `puerto_rico` ;
 USE `puerto_rico` ;
 
--- -----------------------------------------------------
--- Table `puerto_rico`.`subjects_ids`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`subjects_ids` (
   `project_id` VARCHAR(45) NOT NULL,
   `rds_id` VARCHAR(45) NULL,
@@ -26,10 +23,6 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`subjects_ids` (
   UNIQUE INDEX `project_id_UNIQUE` (`project_id` ASC))
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `puerto_rico`.`p1_screenings`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`p1_screenings` (
   `rds_id` INT UNSIGNED NOT NULL,
   `project_id` VARCHAR(45) NOT NULL,
@@ -43,10 +36,6 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`p1_screenings` (
     ON UPDATE RESTRICT)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `puerto_rico`.`p1_hivs`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`p1_hivs` (
   `rds_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`rds_id`),
@@ -58,10 +47,6 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`p1_hivs` (
     ON UPDATE RESTRICT)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `puerto_rico`.`p1_hcvs`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`p1_hcvs` (
   `rds_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`rds_id`),
@@ -73,10 +58,6 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`p1_hcvs` (
     ON UPDATE RESTRICT)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `puerto_rico`.`p1_interviews`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`p1_interviews` (
   `rds_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`rds_id`),
@@ -88,10 +69,6 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`p1_interviews` (
     ON UPDATE RESTRICT)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `puerto_rico`.`p1_followups`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`p1_followups` (
   `rds_id` INT UNSIGNED NOT NULL,
   `LtCallDt` DATE NOT NULL,
@@ -104,10 +81,6 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`p1_followups` (
     ON UPDATE RESTRICT)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `puerto_rico`.`p2_network_interviews`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_network_interviews` (
   `unique_id` VARCHAR(45) NOT NULL,
   `P2LtCallDt` DATE NOT NULL,
@@ -115,10 +88,6 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_network_interviews` (
   PRIMARY KEY (`unique_id`, `P2LtCallDt`, `P2LtCallST`))
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `puerto_rico`.`p2_hivs`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_hivs` (
   `unique_id` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`unique_id`),
@@ -130,10 +99,6 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_hivs` (
     ON UPDATE RESTRICT)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `puerto_rico`.`p2_hcvs`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_hcvs` (
   `unique_id` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`unique_id`),
@@ -145,10 +110,6 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_hcvs` (
     ON UPDATE RESTRICT)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `puerto_rico`.`p2_first_interviews`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_first_interviews` (
   `unique_id` VARCHAR(45) NOT NULL,
   `project_id` VARCHAR(45) NOT NULL,
@@ -167,10 +128,6 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_first_interviews` (
     ON UPDATE RESTRICT)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `puerto_rico`.`p2_second_interviews`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_second_interviews` (
   `unique_id` VARCHAR(45) NOT NULL,
   `rds_id` INT UNSIGNED NULL,
@@ -189,10 +146,6 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_second_interviews` (
     ON UPDATE RESTRICT)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `puerto_rico`.`p1_p2_overlaps`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`p1_p2_overlaps` (
   `unique_id` VARCHAR(45) NOT NULL,
   `rds_id` INT UNSIGNED NOT NULL,
@@ -219,10 +172,6 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`p1_p2_overlaps` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `puerto_rico`.`all_edges_index`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`all_edges_index` (
   `edge_id` INT UNSIGNED ZEROFILL NOT NULL,
   `sender_pid` VARCHAR(45) NOT NULL,
@@ -243,10 +192,6 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`all_edges_index` (
     ON UPDATE RESTRICT)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `puerto_rico`.`network_edges`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`network_edges` (
   `edge_id` INT UNSIGNED ZEROFILL NOT NULL,
   PRIMARY KEY (`edge_id`),
@@ -258,10 +203,6 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`network_edges` (
     ON UPDATE RESTRICT)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `puerto_rico`.`rds_edges`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`rds_edges` (
   `edge_id` INT UNSIGNED ZEROFILL NOT NULL,
   PRIMARY KEY (`edge_id`),
@@ -273,25 +214,17 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`rds_edges` (
     ON UPDATE RESTRICT)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `puerto_rico`.`all_notes_index`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`all_notes_index` (
   `note_id` INT UNSIGNED NOT NULL,
   `note_name` VARCHAR(45) NOT NULL,
   `date` DATE NULL,
-  `note_type` VARCHAR(255) NOT NULL COMMENT 'May be \"F\" for field note, \"C\" for connection note, \"R\" for Roberto',
+  `note_type` VARCHAR(255) NOT NULL COMMENT 'May be \"Field note\" for field note, \"Connection note\" for connection note, \"R\" for Roberto',
   `text` LONGTEXT NULL,
   PRIMARY KEY (`note_id`),
   UNIQUE INDEX `note_name_UNIQUE` (`note_name` ASC),
   UNIQUE INDEX `note_id_UNIQUE` (`note_id` ASC))
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `puerto_rico`.`edges_to_notes`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`edges_to_notes` (
   `note_edge_id` INT UNSIGNED ZEROFILL NOT NULL,
   `edge_id` INT UNSIGNED NOT NULL,
@@ -311,10 +244,6 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`edges_to_notes` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `puerto_rico`.`authors`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`authors` (
   `author_id` INT UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
@@ -323,7 +252,6 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`authors` (
   UNIQUE INDEX `name_UNIQUE` (`name` ASC))
 ENGINE = InnoDB;
 
-
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+SET UNIQUE_CHECKS=0;

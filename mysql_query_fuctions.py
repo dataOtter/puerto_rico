@@ -121,3 +121,29 @@ def get_existing_column_labels_from_db_table(tbl_name):
                 "WHERE TABLE_SCHEMA='" + c.DB_NAME + "' AND TABLE_NAME='" + tbl_name + "'"
     keys = execute_query_return_list(statement)
     return keys  # for PR project, before populating DB, these are the primary and foreign keys
+
+
+def execute_query_drop_db():
+    """Input: Name of the database to delete.
+    Output: Deletes the given database using the database details set in the constants file."""
+    cnx = mysql.connector.connect(user=c.USER_NAME, password=c.PASSWORD, host=c.HOST_IP)
+    cursor = cnx.cursor()
+    cursor.execute("DROP DATABASE IF EXISTS " + c.DB_NAME)
+    cnx.commit()
+    cursor.close()
+    cnx.close()
+
+
+def execute_query_create_db():
+    execute_query_drop_db()
+    cnx = mysql.connector.connect(user=c.USER_NAME, password=c.PASSWORD, host=c.HOST_IP)
+    cursor = cnx.cursor()
+    f = open(c.CREATE_DB_SQL_FILE_PATH)
+    full_sql = f.read()
+    sql_commands = full_sql.replace('\n', '').split(';')[:-1]
+    for sql_command in sql_commands:
+        cursor.execute(sql_command)
+        cnx.commit()
+
+    cursor.close()
+    cnx.close()

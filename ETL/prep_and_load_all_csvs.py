@@ -6,6 +6,7 @@ from ETL import prepare_subjects_ids as prep_0, \
     prepare_all_edge_and_notes_csvs as prep_4, \
     mysql_and_csv_functions as sqlcsv
 import constants as c
+import mysql_query_fuctions as q
 
 # may have to call w.get_and_remove_discrepancy_rows_and_indices_from_old_edges(old_edge_full_path, old_node_full_path)
 # down the line, make function to copy all new incoming files into new directory
@@ -24,9 +25,12 @@ def prep_all_csvs():
 def load_all_csvs_into_db():
     """Input: None.
     Output: Populates the database with all csv data."""
+    q.execute_query_create_db()
     for csv in c.ALL_CSV:
         csv_path = c.ALL_CSVS_PATH + csv + '.csv'
         sqlcsv.load_one_table_from_csv_into_db(csv_path, csv)
 
 prep_all_csvs()
 load_all_csvs_into_db()
+
+# FN 4.18.2016 is added twice because one entry is Fn ...

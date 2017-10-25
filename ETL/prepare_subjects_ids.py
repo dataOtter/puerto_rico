@@ -18,5 +18,8 @@ def create_sub_ids_csv():
     # make sure that the data is put into the correct column in subjects_ids
     # put project_id, rds_id, and unique_id from the old nodes table into the new subjects_ids table
     for row in nodes_data:
+        for i in range(len(row)):
+            if row[i] in c.NO_ENTRIES:
+                row[i] = ''
         add_row = [row[nodes_pid_index], row[nodes_rds_index], row[nodes_unique_index]]
         w.append_row_to_csv(path_sub_ids, add_row)

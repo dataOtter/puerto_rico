@@ -273,16 +273,21 @@ def get_unique_single_entry_list(original_data: list):
     """Input: List of strings of the original data of which to get true set.
         Output: Returns a list of the input data without duplicates or multiple entries per element/string."""
     data_set_list = list(set(original_data))
-    if '' in data_set_list:
-        data_set_list.remove('')
+    for no_note in c.NO_ENTRIES:  # remove the elements that indicate no note entry exists (empty string, 'NA')
+        try:
+            data_set_list.remove(no_note)
+        except ValueError:
+            pass
     i = 0
-    # split up the field note row entries with multiple entries per row
-    while i < len(data_set_list):
+    # split up multiple entries per field
+    while i < len(data_set_list):  # this ensures that any entries that have not been fully split are examined again
         entry = data_set_list[i]
         if ',' in entry:
             split_and_append_entry_of_list(data_set_list, entry, ',')
-        elif ';' in entry:
+        elif ';' in entry:  # elifs so that each loop we only split on one kind of separator; splits are iterated over
             split_and_append_entry_of_list(data_set_list, entry, ';')
+        elif ':' in entry:
+            split_and_append_entry_of_list(data_set_list, entry, ':')
         else:
             entry.strip()
             i += 1
@@ -300,7 +305,7 @@ def split_and_append_entry_of_list(set_list, entry, sym):
         set_list.append(e.strip())
 
 
-def add_note_name_for_each_unique_note(path_notes, path_old_edges, old_col_label, type_entry_name):
+def add_note_name_for_each_unique_note(path_notes, path_old_edges, old_col_label, type_of_entry):
     """Input: File path to the new notes.csv file; file path to the old edges file;
     old edge file label of note column to be appended to new file; name of the note type for type column in new file.
     Output: Adds a row to column note_name of new file for each unique note name from the given old edge file column."""
@@ -309,7 +314,7 @@ def add_note_name_for_each_unique_note(path_notes, path_old_edges, old_col_label
     # append a row for each unique field note to the notes.csv file
     # assumes that column 1 is note_name, column 2 is note_type
     for one_entry in unique_data:
-        append_row_to_csv(path_notes, [one_entry, type_entry_name])
+        append_row_to_csv(path_notes, [one_entry, type_of_entry])
 
 
 def get_full_csv_path(file_name):
@@ -398,22 +403,36 @@ def get_discrepancy_pids_only_in_old_edge_not_node(old_edge_full_path, old_node_
     """Input: File paths of old edge csv and old node csv.
     Output: Returns list of project IDs that occur only in old edge csv file and not in old node csv file."""
     unique_pids_from_old_edges = get_unique_pids_from_old_edges(old_edge_full_path)
-    unique_pids_from_old_subjects_pids = get_data_from_one_col_as_list(old_node_full_path, c.LABEL_PID)
+    unique_pids_from_old_nodes = get_data_from_one_col_as_list(old_node_full_path, c.OLD_LABEL_PID)
     only_in_old_edges = []
     for edge_pid in unique_pids_from_old_edges:
-        if edge_pid not in unique_pids_from_old_subjects_pids:
+        if edge_pid not in unique_pids_from_old_nodes:
             only_in_old_edges.append(edge_pid)
     return only_in_old_edges
 
 
+def get_discrepancy_pids_only_in_old_node_not_edge(old_edge_full_path, old_node_full_path):
+    """Input: File paths of old edge csv and old node csv.
+    Output: Returns list of project IDs that occur only in old edge csv file and not in old node csv file."""
+    unique_pids_from_old_edges = get_unique_pids_from_old_edges(old_edge_full_path)
+    unique_pids_from_old_nodes = get_data_from_one_col_as_list(old_node_full_path, c.OLD_LABEL_PID)
+    only_in_old_nodes = []
+    for node_pid in unique_pids_from_old_nodes:
+        if node_pid not in unique_pids_from_old_edges:
+            only_in_old_nodes.append(node_pid)
+    return only_in_old_nodes
+
+
 def get_and_remove_discrepancy_rows_and_indices_from_old_edges():
     """Input: None.
-    Output: Returns list of rows as list that contained at least one pid that occurred in
+    Output: Returns list of rows as lists that contained at least one pid that occurred in
     the old edge file, but not the node file; remove those discrepancy rows from the old edge file."""
     old_edge_full_path = get_full_csv_path(c.OLD_EDGES_FILE)
     old_node_full_path = get_full_csv_path(c.OLD_NODES_FILE)
 
     only_in_old_edges = get_discrepancy_pids_only_in_old_edge_not_node(old_edge_full_path, old_node_full_path)
+    # not too relevant: there can be nodes that do not appear in the edges file
+    only_in_old_nodes = get_discrepancy_pids_only_in_old_node_not_edge(old_edge_full_path, old_node_full_path)
 
     x = get_csv_as_list(old_edge_full_path)
     original_edge_data = x[1:]
@@ -426,6 +445,7 @@ def get_and_remove_discrepancy_rows_and_indices_from_old_edges():
 
     for i in range(len(original_edge_data)):
         row = original_edge_data[i]  # for every row from the original data
+        to_add = 1
         for pid in only_in_old_edges:
             if pid in row:  # if the pid that occurs only in the old edge file (but not the node file) is in this row
                 #discrepancy_rows.append([original_edge_data.index(row) + 2] + row)
@@ -433,8 +453,6 @@ def get_and_remove_discrepancy_rows_and_indices_from_old_edges():
                 discrepancy_rows.append([i + 2] + row)
                 to_add = 0
                 break  # stop trying to find discrepancy pids in this row if we already found one
-            else:
-                to_add = 1
         if to_add == 1:  # if we did not find any discrepancy pids in this row, append it to the temp file as "clean".
             append_row_to_csv(temp_file_path, row)
 
@@ -496,7 +514,7 @@ def get_difference_list1_only(list1, list2):
     return list(set(list1) - set(list2))
 
 
-#get_and_remove_discrepancy_rows_and_indices_from_old_edges(c.ALL_CSVS_PATH)
+#print(get_and_remove_discrepancy_rows_and_indices_from_old_edges())
 
 #print(get_ids_not_in_sub_ids("P1", 'p1_screenings', 'rds_id'))
 
