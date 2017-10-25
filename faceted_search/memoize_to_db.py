@@ -123,3 +123,4 @@ def make_memoize_table():
     clear_memoize_table()
     fs = pidf.FilterSystem()
     get_filter_subsets(fs.get_inactive_filters(), [[]], fs)
+

@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d07d9d50-5074-49a5-889a-faa5c06f1cee" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/~$ding a new filter to faceted search.docx" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Adding a new filter to faceted search.docx" afterPath="$PROJECT_DIR$/Adding a new filter to faceted search.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PR_App/v4/version_constants.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/faceted_search/faceted_search_filter_text_testing.py" afterPath="$PROJECT_DIR$/faceted_search/faceted_search_filter_text_run.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ETL/prep_and_load_all_csvs.py" afterPath="$PROJECT_DIR$/ETL/prep_and_load_all_csvs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ETL/prepare_all_edge_and_notes_csvs.py" afterPath="$PROJECT_DIR$/ETL/prepare_all_edge_and_notes_csvs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ETL/prepare_subjects_ids.py" afterPath="$PROJECT_DIR$/ETL/prepare_subjects_ids.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ETL/wrangling_functions.py" afterPath="$PROJECT_DIR$/ETL/wrangling_functions.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SQL/current_create_db_frame_from_EER.sql" afterPath="$PROJECT_DIR$/SQL/current_create_db_frame_from_EER.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/constants.py" afterPath="$PROJECT_DIR$/constants.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysql_query_fuctions.py" afterPath="$PROJECT_DIR$/mysql_query_fuctions.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/faceted_search/memoize_to_db.py" afterPath="$PROJECT_DIR$/faceted_search/memoize_to_db.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/filters/filter_SQL_queries.py" afterPath="$PROJECT_DIR$/filters/filter_SQL_queries.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,62 +19,13 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="constants.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/constants.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
-              <caret line="2" column="21" lean-forward="true" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="for_python_create_sql_db.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SQL/for_python_create_sql_db.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="220" column="47" lean-forward="true" selection-start-line="220" selection-start-column="47" selection-end-line="220" selection-end-column="47" />
-              <folding>
-                <element signature="e#0#8845#0" expanded="false" />
-                <element signature="e#0#8845#0" expanded="false" />
-                <element signature="e#0#8845#0" expanded="false" />
-                <element signature="e#0#8845#0" expanded="false" />
-                <element signature="e#0#8845#0" expanded="false" />
-                <element signature="e#0#8845#0" expanded="false" />
-                <element signature="e#0#8845#0" expanded="false" />
-                <element signature="e#0#8845#0" expanded="false" />
-                <element signature="e#0#8845#0" expanded="false" />
-                <element signature="e#0#8845#0" expanded="false" />
-                <element signature="e#0#8845#0" expanded="false" />
-                <element signature="e#0#8845#0" expanded="false" />
-                <element signature="e#0#8845#0" expanded="false" />
-                <element signature="e#0#8845#0" expanded="false" />
-                <element signature="e#0#8845#0" expanded="false" />
-                <element signature="e#0#8845#0" expanded="false" />
-                <element signature="e#0#8845#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="current_create_db_frame_from_EER.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SQL/current_create_db_frame_from_EER.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="283" column="12" lean-forward="false" selection-start-line="283" selection-start-column="12" selection-end-line="283" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -127,12 +75,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/filters/pid_filter_instances.py" />
-        <option value="$PROJECT_DIR$/modular_data_flow/modular_data_flow.py" />
-        <option value="$PROJECT_DIR$/PR_App/templates/hi.html" />
-        <option value="$PROJECT_DIR$/PR_App/hi.py" />
-        <option value="$PROJECT_DIR$/PR_App/css/test.css" />
-        <option value="$PROJECT_DIR$/PR_App/templates/test.css" />
         <option value="$PROJECT_DIR$/PR_App/tests.js" />
         <option value="$PROJECT_DIR$/PR_App/templates/temp_test.html" />
         <option value="$PROJECT_DIR$/PR_App/templates/main_page.html" />
@@ -145,8 +87,6 @@
         <option value="$PROJECT_DIR$/ETL/prepare_all_p2_csvs.py" />
         <option value="$PROJECT_DIR$/ETL/prepare_p1_p2_overlaps.py" />
         <option value="$PROJECT_DIR$/faceted_search/faceted_search_abstract_filter_classes.py" />
-        <option value="$PROJECT_DIR$/faceted_search/faceted_search_filter_text_testing.py" />
-        <option value="$PROJECT_DIR$/faceted_search/memoize_to_db.py" />
         <option value="$PROJECT_DIR$/PR_App/faceted_search_webpage_v1.py" />
         <option value="$PROJECT_DIR$/PR_App/templates/index.html" />
         <option value="$PROJECT_DIR$/PR_App/static/js/index.js" />
@@ -169,15 +109,23 @@
         <option value="$PROJECT_DIR$/PR_App/v3/static/js/index_v3.js" />
         <option value="$PROJECT_DIR$/faceted_search/faceted_search_filter_classes.py" />
         <option value="$PROJECT_DIR$/faceted_search/faceted_search_filter_instances.py" />
-        <option value="$PROJECT_DIR$/filters/filter_SQL_queries.py" />
         <option value="$PROJECT_DIR$/ETL/prepare_subjects_ids.py" />
-        <option value="$PROJECT_DIR$/constants.py" />
         <option value="$PROJECT_DIR$/mysql_query_fuctions.py" />
         <option value="$PROJECT_DIR$/SQL/current_create_db_frame_from_EER.sql" />
         <option value="$PROJECT_DIR$/SQL/for_python_create_sql_db.sql" />
         <option value="$PROJECT_DIR$/ETL/prepare_all_edge_and_notes_csvs.py" />
         <option value="$PROJECT_DIR$/ETL/wrangling_functions.py" />
         <option value="$PROJECT_DIR$/ETL/prep_and_load_all_csvs.py" />
+        <option value="$PROJECT_DIR$/constants.py" />
+        <option value="$PROJECT_DIR$/faceted_search/memoize_to_db.py" />
+        <option value="$PROJECT_DIR$/faceted_search/init_memoize_table.py" />
+        <option value="$PROJECT_DIR$/faceted_search/faceted_search_filter_text_testing.py" />
+        <option value="$PROJECT_DIR$/faceted_search/faceted_search_filter_text_run.py" />
+        <option value="$PROJECT_DIR$/filters/filter_SQL_queries.py" />
+        <option value="$PROJECT_DIR$/PR_App/v4/faceted_search_REST_v4.py" />
+        <option value="$PROJECT_DIR$/PR_App/v4/version_constants.py" />
+        <option value="$PROJECT_DIR$/PR_App/v4/templates/index_v4.html" />
+        <option value="$PROJECT_DIR$/PR_App/v4/static/js/index_v4.js" />
       </list>
     </option>
   </component>
@@ -202,7 +150,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -225,26 +172,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SQL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="puerto_rico" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="puerto_rico" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ETL" />
+              <option name="myItemId" value="filters" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -275,95 +209,118 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.prep_and_load_all_csvs">
-    <configuration default="false" name="prepare_all_edge_and_notes_csvs" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.faceted_search_REST_v4">
+    <configuration default="false" name="faceted_search_REST_v3" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ETL" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/PR_App/v3" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="puerto_rico" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ETL/prepare_all_edge_and_notes_csvs.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PR_App/v3/faceted_search_REST_v3.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="wrangling_functions" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="memoize_to_db" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ETL" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/faceted_search" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="puerto_rico" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ETL/wrangling_functions.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/faceted_search/memoize_to_db.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="prep_and_load_all_csvs" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="init_memoize_table" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ETL" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/faceted_search" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="puerto_rico" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ETL/prep_and_load_all_csvs.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/faceted_search/init_memoize_table.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="prepare_subjects_ids" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="filter_SQL_queries" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ETL" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/filters" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="puerto_rico" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ETL/prepare_subjects_ids.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/filters/filter_SQL_queries.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="mysql_query_fuctions" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="faceted_search_REST_v4" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/PR_App/v4" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="puerto_rico" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mysql_query_fuctions.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PR_App/v4/faceted_search_REST_v4.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="OdpsPythonConfigurationType" factoryName="MaxCompute Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="puerto_rico" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="PROJECT_NAME" value="" />
+      <option name="TABLE_NAME" value="" />
+      <option name="TABLE_COLUMNS" value="" />
+      <option name="TABLE_PARTITION" value="" />
+      <option name="MAIN_CLASS" value="" />
       <method />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -432,19 +389,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.prepare_all_edge_and_notes_csvs" />
-      <item index="1" class="java.lang.String" itemvalue="Python.wrangling_functions" />
-      <item index="2" class="java.lang.String" itemvalue="Python.prep_and_load_all_csvs" />
-      <item index="3" class="java.lang.String" itemvalue="Python.prepare_subjects_ids" />
-      <item index="4" class="java.lang.String" itemvalue="Python.mysql_query_fuctions" />
+      <item index="0" class="java.lang.String" itemvalue="Python.faceted_search_REST_v3" />
+      <item index="1" class="java.lang.String" itemvalue="Python.memoize_to_db" />
+      <item index="2" class="java.lang.String" itemvalue="Python.init_memoize_table" />
+      <item index="3" class="java.lang.String" itemvalue="Python.filter_SQL_queries" />
+      <item index="4" class="java.lang.String" itemvalue="Python.faceted_search_REST_v4" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.prep_and_load_all_csvs" />
-        <item index="1" class="java.lang.String" itemvalue="Python.mysql_query_fuctions" />
-        <item index="2" class="java.lang.String" itemvalue="Python.prepare_subjects_ids" />
-        <item index="3" class="java.lang.String" itemvalue="Python.wrangling_functions" />
-        <item index="4" class="java.lang.String" itemvalue="Python.prepare_all_edge_and_notes_csvs" />
+        <item index="0" class="java.lang.String" itemvalue="Python.faceted_search_REST_v4" />
+        <item index="1" class="java.lang.String" itemvalue="Python.faceted_search_REST_v3" />
+        <item index="2" class="java.lang.String" itemvalue="Python.filter_SQL_queries" />
+        <item index="3" class="java.lang.String" itemvalue="Python.init_memoize_table" />
+        <item index="4" class="java.lang.String" itemvalue="Python.memoize_to_db" />
       </list>
     </recent_temporary>
   </component>
@@ -474,20 +431,28 @@
     <history-entry file="Nosetests_in_faceted_search_REST_v1_py - 2017.10.11 at 15h 39m 56s.xml">
       <configuration name="Nosetests in faceted_search_REST_v1.py" configurationId="tests" />
     </history-entry>
+    <history-entry file="Nosetests_in_faceted_search_filter_text_testing_py - 2017.10.25 at 14h 03m 43s.xml">
+      <configuration name="Nosetests in faceted_search_filter_text_testing.py" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.171875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15327695" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32241014" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29809725" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="FAQ Robot" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.171875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Job Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="MaxCompute Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15327695" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3689218" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -511,29 +476,11 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="237" />
+      <option name="time" value="238" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/PR_App/templates/hi.html" />
-    <entry file="file://$PROJECT_DIR$/PR_App/tests.js" />
-    <entry file="file://$PROJECT_DIR$/ETL/wrangling_reference_summary.py" />
-    <entry file="file://$PROJECT_DIR$/faceted_search/memoize_to_db.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="56" lean-forward="true" selection-start-line="0" selection-start-column="56" selection-end-line="0" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/conf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PR_App/templates/testing_index.html" />
     <entry file="file://$PROJECT_DIR$/PR_App/static/js/testing_js.js" />
     <entry file="file://$PROJECT_DIR$/PR_App/static/js/ajax_load_test.txt" />
     <entry file="file://$PROJECT_DIR$/PR_App/faceted_search_REST_v1.py" />
@@ -565,25 +512,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/faceted_search/faceted_search_filter_text_testing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="29" column="51" lean-forward="true" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PR_App/v2/static/css/index_v3.css" />
     <entry file="file://$PROJECT_DIR$/PR_App/v2/static/css/index_v2.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
           <caret line="16" column="22" lean-forward="false" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PR_App/v3/static/css/index_v4.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -616,13 +549,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PR_App/v3/static/css/index_v3.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modular_data_flow/file_parser.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1851">
@@ -637,46 +563,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PR_App/v3/faceted_search_REST_v3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="16" column="83" lean-forward="true" selection-start-line="16" selection-start-column="83" selection-end-line="16" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PR_App/v3/static/js/index_v3.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="71" column="10" lean-forward="true" selection-start-line="71" selection-start-column="10" selection-end-line="71" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PR_App/v3/templates/index_v3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/faceted_search/faceted_search_filter_instances.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="37" column="69" lean-forward="true" selection-start-line="37" selection-start-column="69" selection-end-line="37" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/faceted_search/faceted_search_filter_classes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="146" column="55" lean-forward="true" selection-start-line="146" selection-start-column="55" selection-end-line="146" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ETL/prepare_all_p2_csvs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="5" column="4" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -684,7 +574,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="5" column="4" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -692,7 +581,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="16" column="36" lean-forward="false" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -700,7 +588,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="589">
           <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -708,28 +595,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
           <caret line="639" column="0" lean-forward="false" selection-start-line="639" selection-start-column="0" selection-end-line="639" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/filters/filter_SQL_queries.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-636">
-          <caret line="126" column="45" lean-forward="true" selection-start-line="126" selection-start-column="45" selection-end-line="126" selection-end-column="45" />
-          <folding>
-            <element signature="e#158#346#0" expanded="false" />
-            <element signature="e#373#646#0" expanded="false" />
-            <element signature="e#724#1316#0" expanded="false" />
-            <element signature="e#1408#2067#0" expanded="false" />
-            <element signature="e#2170#2718#0" expanded="false" />
-            <element signature="e#2820#2852#0" expanded="false" />
-            <element signature="e#2892#2924#0" expanded="false" />
-            <element signature="e#2994#3056#0" expanded="false" />
-            <element signature="e#3126#3187#0" expanded="false" />
-            <element signature="e#3233#3552#0" expanded="false" />
-            <element signature="e#3615#4325#0" expanded="false" />
-            <element signature="e#4392#4568#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -737,18 +602,64 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="213">
           <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="e#2084#3171#0" expanded="false" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SQL/current_create_db_frame_from_EER.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="283" column="12" lean-forward="false" selection-start-line="283" selection-start-column="12" selection-end-line="283" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/ProgramData/Anaconda3/Lib/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="308" column="0" lean-forward="false" selection-start-line="308" selection-start-column="0" selection-end-line="308" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SQL/for_python_create_sql_db.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="220" column="47" lean-forward="true" selection-start-line="220" selection-start-column="47" selection-end-line="220" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ETL/prepare_all_edge_and_notes_csvs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1429">
+          <caret line="95" column="58" lean-forward="false" selection-start-line="95" selection-start-column="58" selection-end-line="95" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ETL/prep_and_load_all_csvs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="33" column="23" lean-forward="true" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ETL/wrangling_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1375">
+          <caret line="239" column="0" lean-forward="false" selection-start-line="239" selection-start-column="0" selection-end-line="239" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="15" column="8" lean-forward="false" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mysql_query_fuctions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state relative-caret-position="204">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding>
-            <element signature="e#704#1349#0" expanded="false" />
             <element signature="e#1421#1873#0" expanded="false" />
             <element signature="e#1960#2588#0" expanded="false" />
             <element signature="e#2686#3539#0" expanded="false" />
@@ -762,123 +673,179 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SQL/current_create_db_frame_from_EER.sql">
+    <entry file="file://$PROJECT_DIR$/faceted_search/faceted_search_filter_classes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="283" column="12" lean-forward="false" selection-start-line="283" selection-start-column="12" selection-end-line="283" selection-end-column="12" />
+        <state relative-caret-position="3625">
+          <caret line="146" column="55" lean-forward="true" selection-start-line="146" selection-start-column="55" selection-end-line="146" selection-end-column="55" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/ProgramData/Anaconda3/Lib/codecs.py">
+    <entry file="file://$PROJECT_DIR$/faceted_search/memoize_to_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="308" column="0" lean-forward="false" selection-start-line="308" selection-start-column="0" selection-end-line="308" selection-end-column="0" />
+        <state relative-caret-position="-2266">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="e#61#72#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faceted_search/faceted_search_filter_instances.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="17" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <element signature="e#2197#2345#0" expanded="false" />
+            <element signature="e#2386#2500#0" expanded="false" />
+            <element signature="e#2544#2674#0" expanded="false" />
+            <element signature="e#2907#3411#0" expanded="false" />
+            <element signature="e#3468#4071#0" expanded="false" />
+            <element signature="e#4110#4134#0" expanded="false" />
+            <element signature="e#4178#4917#0" expanded="false" />
+            <element signature="e#4964#5867#0" expanded="false" />
+            <element signature="e#5917#6100#0" expanded="false" />
+            <element signature="e#6170#6339#0" expanded="false" />
+            <element signature="e#6382#6729#0" expanded="false" />
+            <element signature="e#6805#7156#0" expanded="false" />
+            <element signature="e#7207#7593#0" expanded="false" />
+            <element signature="e#7641#9169#0" expanded="false" />
+            <element signature="e#9223#9481#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faceted_search/init_memoize_table.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SQL/for_python_create_sql_db.sql">
+    <entry file="file://$PROJECT_DIR$/faceted_search/faceted_search_filter_text_run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="220" column="47" lean-forward="true" selection-start-line="220" selection-start-column="47" selection-end-line="220" selection-end-column="47" />
+        <state relative-caret-position="709">
+          <caret line="69" column="1" lean-forward="false" selection-start-line="69" selection-start-column="1" selection-end-line="69" selection-end-column="1" />
           <folding>
-            <element signature="e#0#8845#0" expanded="false" />
-            <element signature="e#0#8845#0" expanded="false" />
-            <element signature="e#0#8845#0" expanded="false" />
-            <element signature="e#0#8845#0" expanded="false" />
-            <element signature="e#0#8845#0" expanded="false" />
-            <element signature="e#0#8845#0" expanded="false" />
-            <element signature="e#0#8845#0" expanded="false" />
-            <element signature="e#0#8845#0" expanded="false" />
-            <element signature="e#0#8845#0" expanded="false" />
-            <element signature="e#0#8845#0" expanded="false" />
-            <element signature="e#0#8845#0" expanded="false" />
-            <element signature="e#0#8845#0" expanded="false" />
-            <element signature="e#0#8845#0" expanded="false" />
-            <element signature="e#0#8845#0" expanded="false" />
-            <element signature="e#0#8845#0" expanded="false" />
-            <element signature="e#0#8845#0" expanded="false" />
-            <element signature="e#0#8845#0" expanded="false" />
+            <element signature="e#83#175#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ETL/wrangling_functions.py">
+    <entry file="file://$PROJECT_DIR$/filters/filter_SQL_queries.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1375">
-          <caret line="239" column="0" lean-forward="false" selection-start-line="239" selection-start-column="0" selection-end-line="239" selection-end-column="0" />
+        <state relative-caret-position="1550">
+          <caret line="178" column="21" lean-forward="true" selection-start-line="178" selection-start-column="21" selection-end-line="178" selection-end-column="21" />
           <folding>
-            <element signature="e#156#412#0" expanded="false" />
-            <element signature="e#464#726#0" expanded="false" />
-            <element signature="e#796#1025#0" expanded="false" />
-            <element signature="e#1077#1370#0" expanded="false" />
-            <element signature="e#1410#1592#0" expanded="false" />
-            <element signature="e#1626#1817#0" expanded="false" />
-            <element signature="e#1870#2204#0" expanded="false" />
-            <element signature="e#2269#3156#0" expanded="false" />
-            <element signature="e#3223#3790#0" expanded="false" />
-            <element signature="e#3845#4100#0" expanded="false" />
-            <element signature="e#4164#4489#0" expanded="false" />
-            <element signature="e#4561#5317#0" expanded="false" />
-            <element signature="e#5395#6591#0" expanded="false" />
-            <element signature="e#6665#7099#0" expanded="false" />
-            <element signature="e#7162#7586#0" expanded="false" />
-            <element signature="e#7672#8289#0" expanded="false" />
-            <element signature="e#8414#9711#0" expanded="false" />
-            <element signature="e#9798#10414#0" expanded="false" />
-            <element signature="e#10498#11005#0" expanded="false" />
-            <element signature="e#11067#12225#0" expanded="false" />
-            <element signature="e#12290#12607#0" expanded="false" />
-            <element signature="e#12712#13413#0" expanded="false" />
-            <element signature="e#13454#13625#0" expanded="false" />
-            <element signature="e#13715#14151#0" expanded="false" />
-            <element signature="e#14364#14952#0" expanded="false" />
-            <element signature="e#15009#15327#0" expanded="false" />
-            <element signature="e#15386#15866#0" expanded="false" />
-            <element signature="e#15929#16469#0" expanded="false" />
-            <element signature="e#16540#16774#0" expanded="false" />
-            <element signature="e#16867#17337#0" expanded="false" />
-            <element signature="e#17436#17990#0" expanded="false" />
-            <element signature="e#18089#18643#0" expanded="false" />
-            <element signature="e#18716#20613#0" expanded="false" />
-            <element signature="e#20672#20930#0" expanded="false" />
-            <element signature="e#21013#22087#0" expanded="false" />
-            <element signature="e#22132#22324#0" expanded="false" />
-            <element signature="e#22376#22607#0" expanded="false" />
-            <element signature="e#22659#22883#0" expanded="false" />
+            <element signature="e#77#98#0" expanded="true" />
+            <element signature="e#158#346#0" expanded="false" />
+            <element signature="e#373#646#0" expanded="false" />
+            <element signature="e#694#1490#0" expanded="false" />
+            <element signature="e#1552#2450#0" expanded="false" />
+            <element signature="e#2519#3342#0" expanded="false" />
+            <element signature="e#3388#3829#0" expanded="false" />
+            <element signature="e#3884#4691#0" expanded="false" />
+            <element signature="e#4725#4890#0" expanded="false" />
+            <element signature="e#4926#5093#0" expanded="false" />
+            <element signature="e#5133#5305#0" expanded="false" />
+            <element signature="e#5373#5680#0" expanded="false" />
+            <element signature="e#5748#6053#0" expanded="false" />
+            <element signature="e#6089#6253#0" expanded="false" />
+            <element signature="e#6294#6465#0" expanded="false" />
+            <element signature="e#6506#6681#0" expanded="false" />
+            <element signature="e#6720#6888#0" expanded="false" />
+            <element signature="e#6951#7663#0" expanded="false" />
+            <element signature="e#7730#8068#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ETL/prepare_all_edge_and_notes_csvs.py">
+    <entry file="file://$PROJECT_DIR$/PR_App/v3/faceted_search_REST_v3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1429">
-          <caret line="95" column="58" lean-forward="false" selection-start-line="95" selection-start-column="58" selection-end-line="95" selection-end-column="58" />
+        <state relative-caret-position="425">
+          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding>
-            <element signature="e#2883#3567#0" expanded="false" />
-            <element signature="e#3733#4542#0" expanded="false" />
-            <element signature="e#4700#5428#0" expanded="false" />
-            <element signature="e#5494#6406#0" expanded="false" />
-            <element signature="e#6604#7906#0" expanded="false" />
+            <element signature="e#205#246#0" expanded="false" />
+            <element signature="e#329#475#0" expanded="false" />
+            <element signature="e#554#2333#0" expanded="false" />
+            <element signature="e#2366#2486#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ETL/prep_and_load_all_csvs.py">
+    <entry file="file://$PROJECT_DIR$/PR_App/v3/static/css/index_v4.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="33" column="23" lean-forward="true" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
-          <folding>
-            <element signature="e#76#328#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/constants.py">
+    <entry file="file://$PROJECT_DIR$/PR_App/v3/static/js/index_v3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1775">
+          <caret line="71" column="10" lean-forward="false" selection-start-line="71" selection-start-column="10" selection-end-line="71" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PR_App/v3/templates/index_v3.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
-          <caret line="2" column="21" lean-forward="true" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding>
+            <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PR_App/v3/static/css/index_v3.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#2893#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PR_App/v4/version_constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="4" lean-forward="true" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PR_App/v4/static/js/index_v4.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="94" column="41" lean-forward="false" selection-start-line="94" selection-start-column="41" selection-end-line="94" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#5295#0" expanded="false" />
+            <element signature="e#0#5295#0" expanded="false" />
+            <element signature="e#0#5295#0" expanded="false" />
+            <element signature="e#0#5295#0" expanded="false" />
+            <element signature="e#0#5295#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PR_App/v4/faceted_search_REST_v4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="15" lean-forward="true" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PR_App/v4/templates/index_v4.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="32" column="25" lean-forward="true" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
           <folding />
         </state>
       </provider>

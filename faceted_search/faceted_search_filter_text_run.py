@@ -4,7 +4,7 @@ from faceted_search import faceted_search_filter_instances as pidf, \
 import time as t
 
 
-def test_print_and_prompt(filter_system):
+def print_and_prompt(filter_system):
     """Input: Filter system instance.
     Output: Runs the filters system through the command prompt for testing purposes."""
     while True:
@@ -66,4 +66,8 @@ def memoize_all_and_time():
     print("--- %s seconds ---" % (t.time() - start_time))
     print("--- %s minutes ---" % ((t.time() - start_time)/60))
 
-test_print_and_prompt(pidf.FilterSystem())
+
+#memoize_all_and_time()
+
+print_and_prompt(pidf.FilterSystem())
+
