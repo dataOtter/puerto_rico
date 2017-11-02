@@ -1,3 +1,4 @@
+"""REST service connecting to the PR database as well as the UI through Jquery"""
 import flask as f
 from faceted_search import faceted_search_filter_instances as pidf
 from PR_App.v4 import version_constants as vc
@@ -9,17 +10,22 @@ fs = pidf.FilterSystem()
 
 @app.route("/")
 def main():
+    """Returns the initial html page"""
     return f.render_template(vc.INDEX_HTML)
 
 
 @app.route("/show_init_filters", methods=["POST"])
 def show_init_filters():
+    """Returns a json dictionary of all filter options and number of resulting project IDs"""
     # filter kind to list of each category & number of project IDs
     return f.jsonify({"filter_options_dict": fs.get_add_filter_options_str_dict()})
 
 
 @app.route("/show_results", methods=["POST", "GET"])
 def show_result():
+    """Returns a json dictionary of: number of project IDs resulting from the applied filter(s);
+    list of all currently active filter kinds; list of all currently active filters as a kind and category string;
+    list of all possible filter kinds; json dictionary of all filter options and number of resulting project IDs."""
     data = f.request.json  # get selected filters options as kind to category/'ALL'/'ASIS' dictionary
     to_apply, to_remove, active_filter_kinds, active_fltrs, rem_fltrs = [], [], [], [], []
     all_fltr_kinds = get_all_fltr_kinds()
@@ -56,6 +62,7 @@ def show_result():
 
 
 def get_all_fltr_kinds():
+    """Returns a list of all possible filter kinds."""
     all_fltr_kinds = []
     for kind in fs.get_filters_dict():
         all_fltr_kinds.append(kind)

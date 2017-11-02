@@ -106,13 +106,14 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `puerto_rico`.`p2_network_interviews`
+-- Table `puerto_rico`.`p2_network_supplement_edges`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_network_interviews` (
+CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_network_supplement_edges` (
+  `full_edge_id` VARCHAR(45) NOT NULL,
+  `sender_id` VARCHAR(45) NOT NULL,
+  `receiver_id` VARCHAR(45) NOT NULL,
   `unique_id` VARCHAR(45) NOT NULL,
-  `P2LtCallDt` DATE NOT NULL,
-  `P2LtCallST` TIME NOT NULL,
-  PRIMARY KEY (`unique_id`, `P2LtCallDt`, `P2LtCallST`))
+  PRIMARY KEY (`unique_id`))
 ENGINE = InnoDB;
 
 
@@ -125,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_hivs` (
   UNIQUE INDEX `unique_id_UNIQUE` (`unique_id` ASC),
   CONSTRAINT `p2_hivs_unique_id`
     FOREIGN KEY (`unique_id`)
-    REFERENCES `puerto_rico`.`p2_network_interviews` (`unique_id`)
+    REFERENCES `puerto_rico`.`p2_network_supplement_edges` (`unique_id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB;
@@ -140,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_hcvs` (
   UNIQUE INDEX `unique_id_UNIQUE` (`unique_id` ASC),
   CONSTRAINT `p2_hcvs_unique_id`
     FOREIGN KEY (`unique_id`)
-    REFERENCES `puerto_rico`.`p2_network_interviews` (`unique_id`)
+    REFERENCES `puerto_rico`.`p2_network_supplement_edges` (`unique_id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB;
@@ -157,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_first_interviews` (
   UNIQUE INDEX `project_id_UNIQUE` (`project_id` ASC),
   CONSTRAINT `p2_first_interviews_unique_id`
     FOREIGN KEY (`unique_id`)
-    REFERENCES `puerto_rico`.`p2_network_interviews` (`unique_id`)
+    REFERENCES `puerto_rico`.`p2_network_supplement_edges` (`unique_id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT,
   CONSTRAINT `p2_first_interviews_project_id`
@@ -179,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_second_interviews` (
   INDEX `rds_id_idx` (`rds_id` ASC),
   CONSTRAINT `p2_second_interviews_unique_id`
     FOREIGN KEY (`unique_id`)
-    REFERENCES `puerto_rico`.`p2_network_interviews` (`unique_id`)
+    REFERENCES `puerto_rico`.`p2_network_supplement_edges` (`unique_id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT,
   CONSTRAINT `p2_second_interviews_rds_id`
@@ -204,7 +205,7 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`p1_p2_overlaps` (
   UNIQUE INDEX `project_id_UNIQUE` (`project_id` ASC),
   CONSTRAINT `p1_p2_overlap_unique_id`
     FOREIGN KEY (`unique_id`)
-    REFERENCES `puerto_rico`.`p2_network_interviews` (`unique_id`)
+    REFERENCES `puerto_rico`.`p2_network_supplement_edges` (`unique_id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT,
   CONSTRAINT `p1_p2_overlap_rds_id`

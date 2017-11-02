@@ -141,11 +141,11 @@ def add_col_and_data_to_csv(full_path, col_name, values_to_add: list):
     if col_name in cols:  # check that this new column doesn't already exist
         return 1
 
-    full_path_temp = full_path[:-4] + "2.csv"
-    create_empty_csv(full_path_temp)
+    path_temp = c.TEMP_FILE_PATH
+    create_empty_csv(path_temp)
 
     cols.append(col_name)
-    append_row_to_csv(full_path_temp, cols)  # populate new csv with old column labels plus the new column label
+    append_row_to_csv(path_temp, cols)  # populate new csv with old column labels plus the new column label
 
     f = open(full_path, 'r')
     reader = csv.reader(f, delimiter=',')
@@ -154,10 +154,10 @@ def add_col_and_data_to_csv(full_path, col_name, values_to_add: list):
     while i < len(values_to_add):  # need while so that we can increase i with each new row read
         for row in reader:
             row.append(values_to_add[i])  # add the appropriate value to this current row, as a value of the new column
-            append_row_to_csv(full_path_temp, row)  # add this extended row to the temp csv file
+            append_row_to_csv(path_temp, row)  # add this extended row to the temp csv file
             i += 1
     f.close()
-    rename_csv(full_path_temp, full_path)  # rename the temp csv to the original name, thus "adding" the new column
+    rename_csv(path_temp, full_path)  # rename the temp csv to the original name, thus "adding" the new column
 
 
 def add_merged_col_to_csv(full_path, new_col_name, cols_to_merge):

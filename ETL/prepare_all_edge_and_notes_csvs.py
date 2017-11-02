@@ -6,12 +6,12 @@ from ETL import wrangling_functions as w
 def create_all_edge_and_note_csvs():
     """Input: None.
     Output: Creates and populates all edge and note csv files."""
-    path_edges = c.EDGES_PATH
+    path_edges = c.ALL_EDGES_INDEX_PATH
     path_old_edge_file = c.OLD_EDGES_PATH
     path_net_edges = c.NETWORK_EDGES_PATH
     path_rds_edges = c.RDS_EDGES_PATH
-    path_notes = c.NOTES_PATH
-    path_note_edges = c.NOTE_EDGES_PATH
+    path_notes = c.ALL_NOTES_INDEX_PATH
+    path_note_edges = c.EDGES_TO_NOTES_PATH
 
     label_old_net, label_old_rds = c.OLD_LABEL_NET, c.OLD_LABEL_RDS
     label_old_cnx, label_old_fn = c.OLD_LABEL_CNX, c.OLD_LABEL_FN

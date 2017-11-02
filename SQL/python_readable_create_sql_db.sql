@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`subjects_ids` (
   `rds_id` VARCHAR(45) NULL,
   `unique_id` VARCHAR(45) NULL,
   PRIMARY KEY (`project_id`),
+  INDEX `unique_id_idx` (`unique_id` ASC),
   UNIQUE INDEX `project_id_UNIQUE` (`project_id` ASC))
 ENGINE = InnoDB;
 
@@ -81,11 +82,21 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`p1_followups` (
     ON UPDATE RESTRICT)
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_network_interviews` (
-  `unique_id` VARCHAR(45) NOT NULL,
-  `P2LtCallDt` DATE NOT NULL,
-  `P2LtCallST` TIME NOT NULL,
-  PRIMARY KEY (`unique_id`, `P2LtCallDt`, `P2LtCallST`))
+CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_network_supplement_edges` (
+  `full_edge_id` VARCHAR(45) NOT NULL,
+  `sender_pid` VARCHAR(45) NOT NULL,
+  `receiver_pid` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`full_edge_id`),
+  CONSTRAINT `p2_network_supplement_edges_sender_pid`
+    FOREIGN KEY (`sender_pid`)
+    REFERENCES `puerto_rico`.`subjects_ids` (`project_id`)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT,
+  CONSTRAINT `p2_network_supplement_edges_full_edge_id`
+    FOREIGN KEY (`full_edge_id`)
+    REFERENCES `puerto_rico`.`all_edges_index` (`full_edge_id`)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT)
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_hivs` (
@@ -94,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_hivs` (
   UNIQUE INDEX `unique_id_UNIQUE` (`unique_id` ASC),
   CONSTRAINT `p2_hivs_unique_id`
     FOREIGN KEY (`unique_id`)
-    REFERENCES `puerto_rico`.`p2_network_interviews` (`unique_id`)
+    REFERENCES `puerto_rico`.`subjects_ids` (`unique_id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB;
@@ -105,7 +116,18 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_hcvs` (
   UNIQUE INDEX `unique_id_UNIQUE` (`unique_id` ASC),
   CONSTRAINT `p2_hcvs_unique_id`
     FOREIGN KEY (`unique_id`)
-    REFERENCES `puerto_rico`.`p2_network_interviews` (`unique_id`)
+    REFERENCES `puerto_rico`.`subjects_ids` (`unique_id`)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT)
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_net_sups_extract` (
+  `project_id` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`project_id`),
+  UNIQUE INDEX `project_id_UNIQUE` (`project_id` ASC),
+  CONSTRAINT `p2_net_sups_extract_project_id`
+    FOREIGN KEY (`project_id`)
+    REFERENCES `puerto_rico`.`subjects_ids` (`project_id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB;
@@ -118,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_first_interviews` (
   UNIQUE INDEX `project_id_UNIQUE` (`project_id` ASC),
   CONSTRAINT `p2_first_interviews_unique_id`
     FOREIGN KEY (`unique_id`)
-    REFERENCES `puerto_rico`.`p2_network_interviews` (`unique_id`)
+    REFERENCES `puerto_rico`.`subjects_ids` (`unique_id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT,
   CONSTRAINT `p2_first_interviews_project_id`
@@ -136,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_second_interviews` (
   INDEX `rds_id_idx` (`rds_id` ASC),
   CONSTRAINT `p2_second_interviews_unique_id`
     FOREIGN KEY (`unique_id`)
-    REFERENCES `puerto_rico`.`p2_network_interviews` (`unique_id`)
+    REFERENCES `puerto_rico`.`subjects_ids` (`unique_id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT,
   CONSTRAINT `p2_second_interviews_rds_id`
@@ -157,7 +179,7 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`p1_p2_overlaps` (
   UNIQUE INDEX `project_id_UNIQUE` (`project_id` ASC),
   CONSTRAINT `p1_p2_overlap_unique_id`
     FOREIGN KEY (`unique_id`)
-    REFERENCES `puerto_rico`.`p2_network_interviews` (`unique_id`)
+    REFERENCES `puerto_rico`.`subjects_ids` (`unique_id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT,
   CONSTRAINT `p1_p2_overlap_rds_id`
@@ -176,8 +198,10 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`all_edges_index` (
   `edge_id` INT UNSIGNED ZEROFILL NOT NULL,
   `sender_pid` VARCHAR(45) NOT NULL,
   `receiver_pid` VARCHAR(45) NOT NULL,
+  `full_edge_id` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`edge_id`),
   UNIQUE INDEX `id_UNIQUE` (`edge_id` ASC),
+  UNIQUE INDEX `full_edge_id_UNIQUE` (`full_edge_id` ASC),
   INDEX `sender_pid_idx` (`sender_pid` ASC),
   INDEX `receiver_pid_idx` (`receiver_pid` ASC),
   CONSTRAINT `edges_sender_pid`
