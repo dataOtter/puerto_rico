@@ -1,7 +1,8 @@
 DB_NAME = 'puerto_rico'
 USER_NAME = 'root'
 PASSWORD = 'password'
-HOST_IP = '192.168.0.27'
+HOST_IP = '192.168.4.30'
+
 
 def concat_path(filename):
     return ALL_CSVS_PATH + filename + '.csv'
@@ -17,6 +18,27 @@ LOGGING_SQL_INSERT_STATEMENT = False
 
 SQL_FILTER_TEMP_TBL = 'temp'
 SQL_FILTER_TEMP_COL = 'pid'
+
+#######################################################################################################################
+# DASHBOARD DATA LABELS
+#######################################################################################################################
+CITY_LABELS_P1 = {'1': 'Cayey', '2': 'Cidra', '3': 'Aguas Buenas', '4': 'Comerío', '5': 'Otro'}
+CITY_LABELS_P2 = {'1': 'Cayey', '2': 'Cidra', '3': 'Aguas Buenas', '4': 'Comerío', '5': 'Other'}
+
+'''P1
+1 [Cayey]
+2 [Cidra]
+3 [Aguas Buenas]
+4 [Comerío]
+5 [Otro]
+
+P2
+1 [Cayey]
+2 [Cidra]
+3 [Aguas Buenas]
+4 [Comerio]
+
+5 [Other: (specify)] _________'''
 
 #######################################################################################################################
 # MEMOIZING

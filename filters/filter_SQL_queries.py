@@ -14,7 +14,7 @@ def pids_phase_2():
     """Input: None.
     Output: Returns list of of all phase 2 project IDs."""
     statement = "SELECT DISTINCT project_id FROM subjects_ids " \
-                "WHERE unique_id IN (SELECT unique_id FROM p2_network_interviews)"
+                "WHERE project_id IN (SELECT DISTINCT project_id FROM p2_network_supplement_edges)"
     return q.execute_query_return_list(statement)
 
 

@@ -32,6 +32,22 @@ def execute_query_return_list(statement: str):
     return result_list
 
 
+def execute_query_return_raw(statement: str):
+    """Input: MySQL statement as a string; only for statements that retrieve data.
+        Output: Executes the given statement using the database details set in the constants file.
+        Returns the retrieved data raw as is."""
+    cnx = mysql.connector.connect(user=c.USER_NAME, password=c.PASSWORD, host=c.HOST_IP, database=c.DB_NAME)
+    cursor = cnx.cursor()
+    if c.LOGGING_SQL_STATEMENT:
+        print(statement)
+    cursor.execute(statement)
+    res = cursor.fetchall()
+    cnx.commit()
+    cursor.close()
+    cnx.close()
+    return res
+
+
 def get_insert_row_statement(table_name: str, col_labels: list):
     """Input: Name of the table into which to insert a row; list of column labels of that table.
     Output: Returns the appropriate MySQL statement for inserting a row into the given table."""

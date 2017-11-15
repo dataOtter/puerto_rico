@@ -30,7 +30,7 @@ def load_all_csvs_into_db():
         csv_path = c.concat_path(csv)
         sqlcsv.load_one_table_from_csv_into_db(csv_path, csv)
 
-#prep_all_csvs()
+prep_all_csvs()
 load_all_csvs_into_db()
 
 # FN 4.18.2016 is added twice because one entry is Fn ...

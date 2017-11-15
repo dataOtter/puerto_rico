@@ -69,5 +69,5 @@ def memoize_all_and_time():
 
 #memoize_all_and_time()
 
-print_and_prompt(pidf.FilterSystem())
+#print_and_prompt(pidf.FilterSystem())
 
