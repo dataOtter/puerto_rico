@@ -1,6 +1,5 @@
 """This runs the filters system through the command prompt. Optional memoizing."""
-from faceted_search import faceted_search_filter_instances as pidf, \
-    memoize_to_db as m
+from faceted_search import memoize_to_db as m
 import time as t
 
 
