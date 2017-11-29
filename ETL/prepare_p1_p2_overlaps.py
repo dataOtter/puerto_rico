@@ -8,7 +8,7 @@ def create_p1_p2_overlaps():
     Output: Create the overlap file with entries for every participant who was present
     in both p1_screenings and p2_network_interviews; populates it with unique id, project id, rds id."""
     path_screenings = c.P1_SCREENINGS_PATH
-    path_network = c.P2_DEPRECATED_NET_SUPS_PATH
+    path_network = c.P2_NET_SUPS_EXTRACT_PATH
     path_nodes = c.OLD_NODES_PATH
     path_overlap = c.P1_P2_OVERLAPS_PATH
 

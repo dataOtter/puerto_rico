@@ -71,7 +71,10 @@ def insert_data_from_csv(full_path, column_positions, tbl_name):
                 row_values += ('',)
             else:
                 row_values += (row[index],)
-        print(row_values)
+        if c.LOGGING_SQL_INSERT_VALUES:
+            print(row_values)
+        if c.LOGGING_SQL_QUERIES:
+            print(insert_row_statement, row_values)
         cursor.execute(insert_row_statement, row_values)
         cnx.commit()
 

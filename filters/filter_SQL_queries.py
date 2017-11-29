@@ -13,8 +13,7 @@ def pids_phase_1():
 def pids_phase_2():
     """Input: None.
     Output: Returns list of of all phase 2 project IDs."""
-    statement = "SELECT DISTINCT project_id FROM subjects_ids " \
-                "WHERE project_id IN (SELECT DISTINCT project_id FROM p2_network_supplement_edges)"
+    statement = "SELECT DISTINCT sender_pid FROM p2_network_supplement_edges"
     return q.execute_query_return_list(statement)
 
 
@@ -154,11 +153,21 @@ def sender_receiver_from_edges(pids_list1, pids_list2):
     Output: Returns a sender_receiver list of those relationships - including both permutations of each."""
     q.populate_temp_table(pids_list1, table_name='temp1', label='sender_receiver')
     q.populate_temp_table(pids_list2, table_name='temp2', label='sender_receiver')
-    query = "SELECT sender_receiver FROM all_edges_index " \
+    query = "SELECT * FROM all_edges_index " \
             "WHERE (sender_pid IN (SELECT * FROM temp1) " \
             "AND receiver_pid IN (SELECT * FROM temp2)) " \
             "OR (sender_pid IN (SELECT * FROM temp2) " \
             "AND receiver_pid IN (SELECT * FROM temp1))"
+    return q.execute_query_return_list(query)
+
+
+def get_full_edge_ids_for_pids_list(pids_list: list):
+    """Input: PID list of the participants whose relationship edges to return.
+    Output: Returns a sender_receiver list of those relationships - including both permutations of each relationship."""
+    q.populate_temp_table(pids_list, table_name='temp', label='sender_or_receiver')
+    query = "SELECT full_edge_id FROM all_edges_index " \
+            "WHERE sender_pid IN (SELECT * FROM temp) " \
+            "OR receiver_pid IN (SELECT * FROM temp)"
     return q.execute_query_return_list(query)
 
 

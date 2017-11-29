@@ -8,7 +8,7 @@ def execute_query(statement: str):
     Output: Executes the given statement using the database details set in the constants file."""
     cnx = mysql.connector.connect(user=c.USER_NAME, password=c.PASSWORD, host=c.HOST_IP, database=c.DB_NAME)
     cursor = cnx.cursor()
-    if c.LOGGING_SQL_STATEMENT:
+    if c.LOGGING_SQL_QUERIES or c.LOGGING_SQL_INSERT_VALUES:
         print(statement)
     cursor.execute(statement)
     cnx.commit()
@@ -22,7 +22,7 @@ def execute_query_return_list(statement: str):
     Returns the retrieved data as a list of strings."""
     cnx = mysql.connector.connect(user=c.USER_NAME, password=c.PASSWORD, host=c.HOST_IP, database=c.DB_NAME)
     cursor = cnx.cursor()
-    if c.LOGGING_SQL_STATEMENT:
+    if c.LOGGING_SQL_QUERIES or c.LOGGING_NONE_INSERT_SQL_QUERIES:
         print(statement)
     cursor.execute(statement)
     result_list = [item[0] for item in cursor.fetchall()]  # get result as list of strings, rather than list of tuples
@@ -38,7 +38,7 @@ def execute_query_return_raw(statement: str):
         Returns the retrieved data raw as is."""
     cnx = mysql.connector.connect(user=c.USER_NAME, password=c.PASSWORD, host=c.HOST_IP, database=c.DB_NAME)
     cursor = cnx.cursor()
-    if c.LOGGING_SQL_STATEMENT:
+    if c.LOGGING_SQL_QUERIES or c.LOGGING_NONE_INSERT_SQL_QUERIES:
         print(statement)
     cursor.execute(statement)
     res = cursor.fetchall()
@@ -67,7 +67,7 @@ def execute_query_insert_one_row(row: list, table_name: str, col_labels: list):
     insert_row_statement = get_insert_row_statement(table_name, col_labels)
     cnx = mysql.connector.connect(user=c.USER_NAME, password=c.PASSWORD, host=c.HOST_IP, database=c.DB_NAME)
     cursor = cnx.cursor()
-    if c.LOGGING_SQL_STATEMENT:
+    if c.LOGGING_SQL_QUERIES:
         print(insert_row_statement, row)
     cursor.execute(insert_row_statement, row)
     cnx.commit()
@@ -82,12 +82,12 @@ def execute_query_insert_multiple_rows(all_rows: list, table_name: str, col_labe
     insert_row_statement = get_insert_row_statement(table_name, col_labels)
     cnx = mysql.connector.connect(user=c.USER_NAME, password=c.PASSWORD, host=c.HOST_IP, database=c.DB_NAME)
     cursor = cnx.cursor()
-    if c.LOGGING_SQL_STATEMENT:
+    if c.LOGGING_SQL_INSERT_VALUES:
         print("Inserting " + str(len(all_rows)) + " rows: " + str(all_rows))
     for row in all_rows:
         if isinstance(row, str):
             row = [row]
-        if c.LOGGING_SQL_INSERT_STATEMENT:
+        if c.LOGGING_SQL_QUERIES:
             print(insert_row_statement, row)
         cursor.execute(insert_row_statement, row)
         cnx.commit()
@@ -144,7 +144,10 @@ def execute_query_drop_db():
     Output: Deletes the given database using the database details set in the constants file."""
     cnx = mysql.connector.connect(user=c.USER_NAME, password=c.PASSWORD, host=c.HOST_IP)
     cursor = cnx.cursor()
-    cursor.execute("DROP DATABASE IF EXISTS " + c.DB_NAME)
+    statement = "DROP DATABASE IF EXISTS " + c.DB_NAME
+    if c.LOGGING_SQL_QUERIES or c.LOGGING_NONE_INSERT_SQL_QUERIES:
+        print(statement)
+    cursor.execute(statement)
     cnx.commit()
     cursor.close()
     cnx.close()
@@ -158,6 +161,8 @@ def execute_query_create_db():
     full_sql = f.read()
     sql_commands = full_sql.replace('\n', '').split(';')[:-1]
     for sql_command in sql_commands:
+        if c.LOGGING_SQL_QUERIES or c.LOGGING_NONE_INSERT_SQL_QUERIES:
+            print(sql_command)
         cursor.execute(sql_command)
         cnx.commit()
 

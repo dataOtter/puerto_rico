@@ -1,5 +1,6 @@
 """This runs the filters system through the command prompt. Optional memoizing."""
 from faceted_search import memoize_to_db as m
+from faceted_search import faceted_search_filter_instances as pidf
 import time as t
 
 
@@ -68,5 +69,5 @@ def memoize_all_and_time():
 
 #memoize_all_and_time()
 
-#print_and_prompt(pidf.FilterSystem())
+print_and_prompt(pidf.FilterSystem())
 
