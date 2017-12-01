@@ -91,6 +91,7 @@ class FilterSystem:
                     str_dict[kind].append((fltr_num[0].get_cat(), fltr_num[1]))
                 else:
                     str_dict[kind] = [(fltr_num[0].get_cat(), fltr_num[1])]
+        #print("returned str_dict of addable filters: " + str(str_dict))
         return str_dict
 
     def get_key(self, item):
@@ -195,13 +196,14 @@ class FilterSystem:
                 temp_pids = fltr.apply(self.result_pids)
 
             temp_len = len(temp_pids)
-            if temp_len > 0:
-                kind = fltr.get_kind()
-                if kind in options_dict:
-                    options_dict[kind].append((fltr, temp_len))
-                else:
-                    options_dict[kind] = [(fltr, temp_len)]
-
+            #print(temp_len)
+            #if temp_len > 0:
+            kind = fltr.get_kind()
+            if kind in options_dict:
+                options_dict[kind].append((fltr, temp_len))
+            else:
+                options_dict[kind] = [(fltr, temp_len)]
+        #print("returned str_dict of addable filters: " + str(options_dict))
         return options_dict
 
     def add_or_remove_filter(self, filter):

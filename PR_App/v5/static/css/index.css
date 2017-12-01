@@ -10,6 +10,15 @@ body {
   color: rgba(255,255,255,.5);
 }
 
+.flex-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
+}
+
+
 .rb-box {
     width: 80%;
     max-width: 1200px;
@@ -73,11 +82,21 @@ type="radio"{
   border: 2px solid rgba(243,49,128,.6);
 }
 
+/* Results and download */
+.res&download {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Results box */
+.results {
+}
+
 .res-box {
-  width: 80%;
   max-width: 1200px;
-  min-width: 1000px;
+  min-width: 500px;
   margin: 50px auto;
   padding: 1.3em;
   background: #292942;
@@ -115,6 +134,10 @@ type="radio"{
   color: #FFFFFF;
 }
 
+/* Download */
+
+
+
 /* Submit Button */
 .button-box {
   padding: 10px 0;
@@ -148,3 +171,6 @@ button:hover {
   box-shadow: 0 3px 5px -5px rgba(0, 0, 0, 0.3);
   color: #6f6f6f;
 }
+
+
+

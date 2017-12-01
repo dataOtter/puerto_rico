@@ -1,6 +1,7 @@
 """REST service connecting to the PR database as well as the UI through Jquery"""
 import flask as f
 from faceted_search import faceted_search_filter_instances as pidf
+from csv_writer import write_to_csv as csv_zip
 
 app = f.Flask(__name__)
 app.secret_key = "It's secret, duh"
@@ -17,7 +18,14 @@ def main():
 def show_init_filters():
     """Returns a json dictionary of all filter options and number of resulting project IDs"""
     # filter kind to list of each category & number of project IDs
-    return f.jsonify({"filter_options_dict": fs.get_add_filter_options_str_dict()})
+    return f.jsonify({"filter_options_dict": fs.get_add_filter_options_str_dict(),
+                      "total_participants": len(fs.get_result_pids())})
+
+
+@app.route("/generate_download_zip", methods=["POST"])
+def generate_download_zip():
+    """Generates a zip files containing a nodes.csv and edges.csv based on the current project IDs selection"""
+    return f.jsonify({"zip_folder_name": csv_zip.make_zip_folder(fs.get_result_pids())})
 
 
 @app.route("/show_results", methods=["POST", "GET"])
@@ -26,7 +34,8 @@ def show_result():
     list of all currently active filter kinds; list of all currently active filters as a kind and category string;
     list of all possible filter kinds; json dictionary of all filter options and number of resulting project IDs."""
     data = f.request.json  # get selected filters options as kind to category/'ALL'/'ASIS' dictionary
-    to_apply, to_remove, active_filter_kinds, active_fltrs, rem_fltrs = [], [], [], [], []
+    to_apply, to_remove, active_filter_kinds, rem_fltrs = [], [], [], []
+    active_fltrs = {}
     all_fltr_kinds = get_all_fltr_kinds()
 
     for kind in all_fltr_kinds:
@@ -51,7 +60,7 @@ def show_result():
         fs.remove_filter(fltr)  # remove each filter
 
     for fltr in fs.get_active_filters():
-        active_fltrs.append(fltr.get_kind_and_cat())
+        active_fltrs[fltr.get_kind()] = fltr.get_cat()
 
     return f.jsonify({"res_pids_count": len(fs.get_result_pids()),
                       "active_fltr_kinds": list(set(active_filter_kinds)),

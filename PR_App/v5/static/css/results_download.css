@@ -1,0 +1,65 @@
+/* Results and download */
+.res-download {
+    background: gainsboro;
+    flex-grow: 1;
+    min-width: 300px;
+    max-width: 500px;
+    margin-left: 1em;
+    margin-bottom: 2em;
+}
+
+/* Results box */
+.results {
+}
+
+.res-spot {
+  position: relative;
+  width: 200px;
+  height: 30px;
+  background: transparent;
+  border: 2px solid rgba(255,255,255,.3);
+}
+
+.res-tab {
+  display: inline-block;
+  position: relative;
+  width: 20%;
+}
+
+.res-txt {
+  position: relative;
+  top: 20%;
+  transform: translate(-50%, -50%);
+  font-size: 1em;
+  color: #FFFFFF;
+}
+
+/* Download */
+.button-box {
+  padding: 10px 0;
+  text-align: center;
+}
+
+button {
+  width: 80%;
+  margin-top: 1.2em;
+  padding: 1em;
+  max-width: 220px;
+  font-size: .9em;
+  color: rgb(30, 156, 215);
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: .15em;
+  background: white;
+  border: none;
+  outline: none;
+  border-radius: .75em;
+  cursor: pointer;
+}
+
+button:hover {
+  box-shadow: 0 3px 5px -5px rgba(0, 0, 0, 0.3);
+  color: grey;
+}
+.download {
+}

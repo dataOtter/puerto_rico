@@ -2,7 +2,7 @@ USE puerto_rico;
 
 SHOW TABLES;
 
-SELECT * FROM p2_second_interviews;
+SELECT * FROM all_edges_index;
 
 DROP DATABASE puerto_rico;
 

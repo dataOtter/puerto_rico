@@ -1,7 +1,7 @@
 DB_NAME = 'puerto_rico'
 USER_NAME = 'maisha'
 PASSWORD = 'password123'
-HOST_IP = '192.168.4.35'
+HOST_IP = '192.168.0.22'
 
 
 def concat_path(filename):
@@ -10,7 +10,7 @@ def concat_path(filename):
 ALL_CSVS_PATH = "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\csv_data\\"
 CREATE_DB_SQL_FILE_PATH = \
     "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\puerto_rico\\SQL\\python_readable_create_sql_db.sql"
-DOWNLOAD_FILES_PATH = "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\puerto_rico\\PR_App\\v5\\download_files\\"
+DOWNLOAD_FILES_PATH = "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\puerto_rico\\PR_App\\v5\\outputs\\"
 
 CSV_NULL_VALUES = '#NULL!'
 
@@ -45,7 +45,7 @@ P2
 #######################################################################################################################
 # MEMOIZING
 #######################################################################################################################
-MEMOIZE = False  # if turning on again, be sure to call clear table function in memoize!
+MEMOIZE = True  # if turning on again, be sure to call clear table function in memoize!
 MEMOIZING_TABLE_NAME = 'top_secret_highly_confidential_cheat_sheet'
 MEMOIZING_TABLE_COLUMN_LABELS = ['filters', 'pids', 'hash_index']
 MEMOIZING_HASH_COLUMN_LABEL = MEMOIZING_TABLE_COLUMN_LABELS[2]

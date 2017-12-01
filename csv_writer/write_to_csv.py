@@ -37,19 +37,19 @@ def zip_up_files(ziphandle, filenames: list):
                 ziphandle.write(os.path.join(root, file), file)
 
 
-def make_zip_folder():
+def make_zip_folder(pids_list: list):
     unique_name = uuid.uuid1()
-    print(unique_name)
+    #print(unique_name)
     filename_nodes = str(unique_name) + '_nodes.csv'
     filename_edges = str(unique_name) + '_edges.csv'
-    make_nodes_csv_from_input_pids(
-        ['2344', '21445', '12435', '8909656', '24324', '23434', '090-9', '234345', '23434', '78854'], filename_nodes)
-    make_edges_csv_from_input_pids(["P1439", "P2015", "P1005", "P1175", "P1018", "P1134", "P2002"], filename_edges)
+    #make_nodes_csv_from_input_pids(
+        #['2344', '21445', '12435', '8909656', '24324', '23434', '090-9', '234345', '23434', '78854'], filename_nodes)
+    #make_edges_csv_from_input_pids(["P1439", "P2015", "P1005", "P1175", "P1018", "P1134", "P2002"], filename_edges)
+    make_nodes_csv_from_input_pids(pids_list, filename_nodes)
+    make_edges_csv_from_input_pids(pids_list, filename_edges)
 
     zipf = zipfile.ZipFile(c.DOWNLOAD_FILES_PATH + str(unique_name) + '.zip', 'w')
     zip_up_files(zipf, [filename_nodes, filename_edges])
     zipf.close()
 
-
-make_zip_folder()
-
+    return str(unique_name) + '.zip'
