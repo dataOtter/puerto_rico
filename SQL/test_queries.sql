@@ -2,7 +2,7 @@ USE puerto_rico;
 
 SHOW TABLES;
 
-SELECT * FROM all_edges_index;
+SELECT filters, length(pids)/6 FROM top_secret_highly_confidential_cheat_sheet order by length(pids) desc;
 
 DROP DATABASE puerto_rico;
 

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Circle Test</title>
+
+    <link rel="stylesheet" href="../static/css/circle.css">
+
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../static/js/circle.js"></script>
+</head>
+<body>
+
+<div id="circle-div">
+    <svg class="circle-box">
+        <g transform="translate(230, 230)">
+            <g id="circle" class="progress-meter">
+                <path id="meter" class="circle-meter" d="0"></path>
+                <path id="foreground" class="circle-foreground" d="0"></path>
+                <path id="front" class="circle-front" d="0"></path>
+                <text id="text" class="circle-text"></text>
+            </g>
+        </g>
+    </svg>
+</div>
+
+</body>
+</html>
