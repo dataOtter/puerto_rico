@@ -1,10 +1,9 @@
 /* Results and download */
 .res-download {
-    background: gainsboro;
     flex-grow: 1;
     min-width: 460px;
     max-width: 460px;
-    margin-left: 1em;
+    margin-left: 2em;
     margin-bottom: 2em;
 }
 
@@ -12,6 +11,7 @@
 .circle-box {
     width: 460px;
     height: 460px;
+    margin-top: 75px;
 }
 
 .circle-meter {
@@ -28,9 +28,10 @@
 
 .circle-text {
     font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 52px;
+    font-size: 80px;
     text-anchor: middle;
     fill: rgb(30, 156, 215);
+    transform: translateY(6%);
 }
 
 /* Download */
@@ -38,7 +39,7 @@
 }
 
 .button-box {
-  padding: 10px 0;
+  padding: 30px 0;
   text-align: center;
 }
 
@@ -53,9 +54,9 @@ button {
   text-decoration: none;
   letter-spacing: .15em;
   background: white;
-  border: none;
-  outline: none;
+  border: 2px solid rgb(30, 156, 215);
   border-radius: .75em;
+  outline: none;
   cursor: pointer;
 }
 

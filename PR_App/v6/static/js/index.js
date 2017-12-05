@@ -1,5 +1,12 @@
 $(document).ready(function(){
 
+    $(document).ajaxStart(function(){
+        $.LoadingOverlay("show");
+    });
+    $(document).ajaxStop(function(){
+        $.LoadingOverlay("hide");
+    });
+
     $.post("/show_init_filters", init_filters);
 
     //Spot switcher and update filter options function:
@@ -86,9 +93,10 @@ $(document).ready(function(){
 
         //make selected filter(s) active buttons
         for (var kind in active_fltrs) {
-            cat = active_fltrs[kind];
-            $("#" + kind + "-" + cat).addClass('rbutton-active').prop("disabled", true);
-            $('#' + kind + "-" + cat + " .rb-txt").empty().append(cat);
+            $(active_fltrs[kind]).each(function(i, cat){
+                $("#" + kind + "-" + cat).addClass('rbutton-active').prop("disabled", true);
+                $('#' + kind + "-" + cat + " .rb-txt").empty().append(cat);
+            });
         }
         //make button options for all addable filters with resulting project IDs if applied
         for (var kind in filter_options_dict) {
@@ -125,7 +133,7 @@ $(document).ready(function(){
         var startPercent = prev_selected/total, endPercent = selected/total;
 
         var twoPi = Math.PI * 2;
-        var count = Math.round(Math.abs((endPercent - startPercent) / 0.01));
+        var count = Math.abs((endPercent - startPercent) / 0.01);
         var step = endPercent < startPercent ? -0.01 : 0.01;
 
         var arc = d3.svg.arc()

@@ -72,7 +72,11 @@ def show_result():
     f.session['fs'] = pickle.dumps(fs)
 
     for fltr in fs.get_active_filters():
-        active_fltrs[fltr.get_kind()] = fltr.get_cat()
+        kind = fltr.get_kind()
+        if kind in active_fltrs:
+            active_fltrs[kind].append(fltr.get_cat())
+        else:
+            active_fltrs[kind] = [fltr.get_cat()]
 
     return f.jsonify({"res_pids_count": len(fs.get_result_pids()),
                       "active_fltr_kinds": list(set(active_filter_kinds)),

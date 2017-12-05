@@ -13,7 +13,7 @@ def main():
 @app.route("/get_data", methods=["POST"])
 def get_data():
     data = q.get_db_city_agegroup()
-    print(data)
+    #print(data)
 
     return f.jsonify({"results": data})
 
