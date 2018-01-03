@@ -15,7 +15,7 @@
     height: 2px;
     background: rgb(30, 156, 215); /* For browsers that do not support gradients */
     background: linear-gradient(to right, rgba(204, 224, 224, .0), rgba(30, 156, 215, .57), rgba(0, 117, 190, .87), rgb(0, 91, 151));
-    margin-bottom: 2em;
+    margin-bottom: 4em;
     margin-top: -1em;
 }
 

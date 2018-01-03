@@ -1,7 +1,7 @@
 DB_NAME = 'puerto_rico'
-USER_NAME = 'maisha'
-PASSWORD = 'password123'
-HOST_IP = '192.168.4.35'
+USER_NAME = 'root'
+PASSWORD = 'password'
+HOST_IP = '192.168.66.17'
 
 
 def concat_path(filename):
@@ -10,7 +10,7 @@ def concat_path(filename):
 ALL_CSVS_PATH = "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\csv_data\\"
 CREATE_DB_SQL_FILE_PATH = \
     "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\puerto_rico\\SQL\\python_readable_create_sql_db.sql"
-DOWNLOAD_FILES_PATH = "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\puerto_rico\\PR_App\\v5\\outputs\\"
+DOWNLOAD_FILES_PATH = "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\puerto_rico\\PR_App\\v7\\outputs\\"
 
 CSV_NULL_VALUES = '#NULL!'
 
@@ -24,9 +24,8 @@ SQL_FILTER_TEMP_COL = 'pid'
 #######################################################################################################################
 # DASHBOARD DATA LABELS
 #######################################################################################################################
-CITY_LABELS_P1 = {'1': 'Cayey', '2': 'Cidra', '3': 'Aguas Buenas', '4': 'Comerío', '5': 'Otro'}
+CITY_LABELS_P1 = {'1': 'Cayey', '2': 'Cidra', '3': 'Aguas Buenas', '4': 'Comerío', '5': 'Other'}
 CITY_LABELS_P2 = {'1': 'Cayey', '2': 'Cidra', '3': 'Aguas Buenas', '4': 'Comerío', '5': 'Other'}
-
 '''P1
 1 [Cayey]
 2 [Cidra]
@@ -121,13 +120,13 @@ ALL_NOTES_INDEX_PATH = concat_path(ALL_NOTES_INDEX_FILE)
 EDGES_TO_NOTES_FILE = 'edges_to_notes'
 EDGES_TO_NOTES_PATH = concat_path(EDGES_TO_NOTES_FILE)
 
-ALL_CSV = [SUBJECTS_IDS_FILE,
-           ALL_EDGES_INDEX_FILE, NETWORK_EDGES_FILE, RDS_EDGES_FILE,
-           ALL_NOTES_INDEX_FILE, EDGES_TO_NOTES_FILE,
-           P1_SCREENINGS_FILE, P1_HIVS_FILE, P1_HCVS_FILE, P1_INTERVIEWS_FILE, P1_FOLLOW_UPS_FILE,
-           P2_NETWORK_SUPPLEMENT_EDGES_FILE, P2_NET_SUPS_EXTRACT_FILE,
-           P2_FIRST_INTERVIEWS_FILE, P2_SECOND_INTERVIEWS_FILE, P2_HIVS_FILE, P2_HCVS_FILE,
-           P1_P2_OVERLAPS_FILE]
+ALL_TABLES = [SUBJECTS_IDS_FILE,
+              ALL_EDGES_INDEX_FILE, NETWORK_EDGES_FILE, RDS_EDGES_FILE,
+              ALL_NOTES_INDEX_FILE, EDGES_TO_NOTES_FILE,
+              P1_SCREENINGS_FILE, P1_HIVS_FILE, P1_HCVS_FILE, P1_INTERVIEWS_FILE, P1_FOLLOW_UPS_FILE,
+              P2_NETWORK_SUPPLEMENT_EDGES_FILE, P2_NET_SUPS_EXTRACT_FILE,
+              P2_FIRST_INTERVIEWS_FILE, P2_SECOND_INTERVIEWS_FILE, P2_HIVS_FILE, P2_HCVS_FILE,
+              P1_P2_OVERLAPS_FILE]
 #######################################################################################################################
 # FILE NAMES AND FILE PATHS
 #######################################################################################################################
@@ -169,6 +168,21 @@ TYPE_FN = "Field note"
 #######################################################################################################################
 # OLD AND NEW COLUMN LABELS
 #######################################################################################################################
+
+#######################################################################################################################
+# SQL TABLES GROUPED BY PRIMARY KEY/ID
+#######################################################################################################################
+RDSID_PRIM_KEY_TBLS = [P1_HIVS_FILE, P1_HCVS_FILE, P1_INTERVIEWS_FILE, P1_FOLLOW_UPS_FILE, P1_SCREENINGS_FILE]
+UNIQUEID_PRIM_KEY_TBLS = [P2_FIRST_INTERVIEWS_FILE, P2_HCVS_FILE, P2_HIVS_FILE, P2_SECOND_INTERVIEWS_FILE]
+EDGEID_PRIM_KEY_TBLS = [NETWORK_EDGES_FILE, RDS_EDGES_FILE, EDGES_TO_NOTES_FILE]
+SENDERPID_PRIM_KEY_TBLS = [ALL_EDGES_INDEX_FILE, P2_NETWORK_SUPPLEMENT_EDGES_FILE]
+PID_PRIM_KEY_TBLS = [P2_NET_SUPS_EXTRACT_FILE, P1_P2_OVERLAPS_FILE, SUBJECTS_IDS_PATH]
+NOTEID_PRIM_KEY_TBLS = [ALL_NOTES_INDEX_FILE]
+#######################################################################################################################
+# SQL TABLES GROUPED BY PRIMARY KEY/ID
+#######################################################################################################################
+
+
 
 NETWORK_HCV_HIV_COLS_TO_MERGE = ['P2FLFN', 'P2FLBM', 'P2BD', 'P2FLMN', 'P2FLSN', 'P2EDAD']
 INTERVIEWS1_COLS_TO_MERGE = ['P2FIFLFN', 'P2FIFLBM', 'P2FIBD', 'P2FIFLMN', 'P2FIFLSN', 'P2FIEDAD']

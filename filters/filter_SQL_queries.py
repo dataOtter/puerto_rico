@@ -10,10 +10,48 @@ def pids_phase_1():
     return q.execute_query_return_list(statement)
 
 
+def pids_p1_fltr(pids_list):
+    """Input: List of project IDs to filter.
+    Output: Returns list of of all remaining project IDs that are in phase 1."""
+    q.populate_temp_table(pids_list, table_name=c.SQL_FILTER_TEMP_TBL, label=c.SQL_FILTER_TEMP_COL)
+    statement = "SELECT DISTINCT project_id FROM p1_screenings " \
+                "WHERE project_id IN (SELECT * FROM " + c.SQL_FILTER_TEMP_TBL + ")"
+    return q.execute_query_return_list(statement)
+
+
+def pids_p1_only_fltr(pids_list):
+    """Input: List of project IDs to filter.
+    Output: Returns list of of all remaining project IDs that are in phase 1."""
+    q.populate_temp_table(pids_list, table_name=c.SQL_FILTER_TEMP_TBL, label=c.SQL_FILTER_TEMP_COL)
+    statement = "SELECT DISTINCT project_id FROM p1_screenings " \
+                "WHERE project_id NOT IN (SELECT DISTINCT sender_pid FROM p2_network_supplement_edges) " \
+                "AND project_id IN (SELECT * FROM " + c.SQL_FILTER_TEMP_TBL + ")"
+    return q.execute_query_return_list(statement)
+
+
 def pids_phase_2():
     """Input: None.
     Output: Returns list of of all phase 2 project IDs."""
     statement = "SELECT DISTINCT sender_pid FROM p2_network_supplement_edges"
+    return q.execute_query_return_list(statement)
+
+
+def pids_p2_fltr(pids_list):
+    """Input: List of project IDs to filter.
+    Output: Returns list of of all remaining project IDs that are in phase 2."""
+    q.populate_temp_table(pids_list, table_name=c.SQL_FILTER_TEMP_TBL, label=c.SQL_FILTER_TEMP_COL)
+    statement = "SELECT DISTINCT sender_pid FROM p2_network_supplement_edges " \
+                "WHERE sender_pid IN (SELECT * FROM " + c.SQL_FILTER_TEMP_TBL + ")"
+    return q.execute_query_return_list(statement)
+
+
+def pids_p2_only_fltr(pids_list):
+    """Input: List of project IDs to filter.
+    Output: Returns list of of all remaining project IDs that are in phase 2."""
+    q.populate_temp_table(pids_list, table_name=c.SQL_FILTER_TEMP_TBL, label=c.SQL_FILTER_TEMP_COL)
+    statement = "SELECT DISTINCT sender_pid FROM p2_network_supplement_edges " \
+                "WHERE sender_pid NOT IN (SELECT DISTINCT project_id FROM p1_screenings) " \
+                "AND sender_pid IN (SELECT * FROM " + c.SQL_FILTER_TEMP_TBL + ")"
     return q.execute_query_return_list(statement)
 
 
@@ -90,6 +128,60 @@ def pids_country_born(pids_list, country_code):
             "OR project_id IN (SELECT project_id FROM p2_first_interviews WHERE P2FIDM4 = " + str(country_code) + "))" \
             "AND project_id IN (SELECT * FROM " + c.SQL_FILTER_TEMP_TBL + ")"
     return q.execute_query_return_list(query)
+
+
+def pids_city(pids_list, city_code):
+    """Input: List of project IDs to filter; code of the country born in to filter on.
+    Output: Returns list of all remaining project IDs for the selected country of birth and given project IDs list."""
+    q.populate_temp_table(pids_list, table_name=c.SQL_FILTER_TEMP_TBL, label=c.SQL_FILTER_TEMP_COL)
+    query = "SELECT DISTINCT project_id FROM subjects_ids " \
+            "WHERE (project_id IN " \
+            "(SELECT project_id FROM p1_screenings WHERE rds_id IN " \
+            "(SELECT rds_id FROM p1_interviews WHERE DM1 = " + str(city_code) + "))" \
+            "OR project_id IN (SELECT project_id FROM p2_first_interviews WHERE P2FIDM1 = " + str(city_code) + "))" \
+            "AND project_id IN (SELECT * FROM " + c.SQL_FILTER_TEMP_TBL + ")"
+    return q.execute_query_return_list(query)
+
+
+def pids_cayey(pids_list):
+    """Input: List of project IDs to filter.
+    Output: Returns project IDs list of all participants living in Cayey within the given project IDs list."""
+    label = get_city_labels('Cayey')
+    return pids_city(pids_list, label)
+
+
+def pids_cidra(pids_list):
+    """Input: List of project IDs to filter.
+    Output: Returns project IDs list of all participants living in Cidra within the given project IDs list."""
+    label = get_city_labels('Cidra')
+    return pids_city(pids_list, label)
+
+
+def pids_aguas_buenas(pids_list):
+    """Input: List of project IDs to filter.
+    Output: Returns project IDs list of all participants living in Aguas Buenas within the given project IDs list."""
+    label = get_city_labels('Aguas Buenas')
+    return pids_city(pids_list, label)
+
+
+def pids_comerio(pids_list):
+    """Input: List of project IDs to filter.
+    Output: Returns project IDs list of all participants living in Comerío within the given project IDs list."""
+    label = get_city_labels('Comerío')
+    return pids_city(pids_list, label)
+
+
+def pids_other(pids_list):
+    """Input: List of project IDs to filter.
+    Output: Returns project IDs list of all participants living in other cities within the given project IDs list."""
+    label = get_city_labels('Other')
+    return pids_city(pids_list, label)
+
+
+def get_city_labels(city_name):
+    for label, city in c.CITY_LABELS_P1.items():
+        if city == city_name:
+            return label
 
 
 def pids_males(pids_list):

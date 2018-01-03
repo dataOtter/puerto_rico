@@ -28,7 +28,7 @@ def load_all_csvs_into_db():
     """Input: None.
     Output: Populates the database with all csv data."""
     q.execute_query_create_db()
-    for csv in c.ALL_CSV:
+    for csv in c.ALL_TABLES:
         csv_path = c.concat_path(csv)
         sqlcsv.load_one_table_from_csv_into_db(csv_path, csv)
 

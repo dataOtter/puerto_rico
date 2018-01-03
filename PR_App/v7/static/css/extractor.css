@@ -1,6 +1,6 @@
-.filters {
+.col-filters {
     flex-grow: 4;
-    max-width: 68em;
+    min-width: 58em;
     max-width: 68em;
     padding: 1.3em;
     margin-right: 2.5em;
@@ -10,14 +10,47 @@
     font-size: 1.1em;
 }
 
-.horizontal-line  {
-    width: 300px;
-    height: 2px;
-    background: rgb(30, 156, 215); /* For browsers that do not support gradients */
-    background: linear-gradient(to right, rgba(204, 224, 224, .0), rgba(30, 156, 215, .57), rgba(0, 117, 190, .87), rgb(0, 91, 151));
-    margin-bottom: 2em;
-    margin-top: -1em;
+.phase-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 68em;
 }
+
+.cols-flex {
+    display: flex;
+    justify-content: space-between;
+    height: 18em;
+}
+
+.cols-box {
+    width: 48%;
+}
+
+.cols-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.cols-button {
+    width: 10em;
+    font-size: .9em;
+    color: rgb(30, 156, 215);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    border: 2px solid rgb(30, 156, 215);
+    border-radius: .4em;
+    cursor: pointer;
+    text-align: center;
+    height: 1.8em;
+    padding-top: .5em;
+}
+
+.cols-header div.cols-button:hover {
+  color: grey;
+}
+
 
 /* Custom Radio Button */
 p {
@@ -98,7 +131,3 @@ type="radio"{
 .filters div.rbutton:hover .rb-txt{
   color: grey;
 }
-
-/*.filters div.rbutton:hover .rb-spot{
-  border: 2px solid grey;
-}*/

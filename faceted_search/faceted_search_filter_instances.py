@@ -9,9 +9,9 @@ from filters import filter_SQL_queries as sql_fltr
 class FilterSystem:
     """Filter system class made of instances of various filters."""
     def __init__(self):
-        female = cl.GenderFilter("F")
-        male = cl.GenderFilter("M")
-        transgender = cl.GenderFilter("TG")
+        female = cl.GenderFilter("Female")
+        male = cl.GenderFilter("Male")
+        transgender = cl.GenderFilter("Transgender")
 
         ageto18 = cl.AgeFilter("0-18")
         age19to24 = cl.AgeFilter("19-24")
@@ -33,16 +33,31 @@ class FilterSystem:
         drborn = cl.CountryBornFilter("DomRep")
         otherborn = cl.CountryBornFilter("Other")
 
+        cidra = cl.CityFilter("Cidra")
+        cayey = cl.CityFilter("Cayey")
+        comerio = cl.CityFilter("Comerio")
+        aguasbuenas = cl.CityFilter("AguasBuenas")
+        othercity = cl.CityFilter("Other")
+
+        phase1 = cl.PhaseFilter('1')
+        phase2 = cl.PhaseFilter('2')
+        phase1only = cl.PhaseFilter('1only')
+        phase2only = cl.PhaseFilter('2only')
+
         self.filters_tuple = (female, male, transgender,
                               ageto18, age19to24, age25to40, age41to100,
                               drugmin1, drugmin3, drugmin7, drugmin8,
                               drugmax1, drugmax3, drugmax7, drugmax8,
-                              prborn, usborn, drborn, otherborn)
+                              prborn, usborn, drborn, otherborn,
+                              cidra, cayey, comerio, aguasbuenas, othercity,
+                              phase1, phase2, phase1only, phase2only)
         self.filters_dict = {"Gender": (female, male, transgender),
                              "Age": (ageto18, age19to24, age25to40, age41to100),
                              "MinDrugUse": (drugmin1, drugmin3, drugmin7, drugmin8),
                              "MaxDrugUse": (drugmax1, drugmax3, drugmax7, drugmax8),
-                             "CountryBorn": (prborn, usborn, drborn, otherborn)}
+                             "CountryBorn": (prborn, usborn, drborn, otherborn),
+                             "City": (cidra, cayey, comerio, aguasbuenas, othercity),
+                             "Phase": (phase1, phase2, phase1only, phase2only)}
         self.inactive_filters = list(self.filters_tuple)
         self.active_filters = []
         self.result_pids = w.get_union_of_lists(sql_fltr.pids_phase_1(), sql_fltr.pids_phase_2())

@@ -29,6 +29,64 @@ class PidFilter:
         return self.kind
 
 
+class PhaseFilter(PidFilter):
+    __metaclass__ = abc.ABCMeta
+
+    def __init__(self, category):
+        super(PhaseFilter, self).__init__("Phase")
+        self.desired_category = category
+
+    def apply(self, pids_list):
+        """Input: List of project IDs.
+        Output: Returns list of project IDs after filtering by this filter's category type."""
+        ans = []
+        if self.desired_category == "1":
+            ans = sql_fltr.pids_p1_fltr(pids_list)
+        elif self.desired_category == "2":
+            ans = sql_fltr.pids_p2_fltr(pids_list)
+        elif self.desired_category == "1only":
+            ans = sql_fltr.pids_p1_only_fltr(pids_list)
+        elif self.desired_category == "2only":
+            ans = sql_fltr.pids_p2_only_fltr(pids_list)
+        return ans
+
+    def get_cat(self):
+        return str(self.desired_category)
+
+    def get_kind_and_cat(self):
+        return str(self.get_kind() + " " + self.get_cat())
+
+
+class CityFilter(PidFilter):
+    __metaclass__ = abc.ABCMeta
+
+    def __init__(self, category):
+        super(CityFilter, self).__init__("City")
+        self.desired_category = category
+
+    def apply(self, pids_list):
+        """Input: List of project IDs.
+        Output: Returns list of project IDs after filtering by this filter's category type."""
+        ans = []
+        if self.desired_category == "Cayey":
+            ans = sql_fltr.pids_cayey(pids_list)
+        elif self.desired_category == "Cidra":
+            ans = sql_fltr.pids_cidra(pids_list)
+        elif self.desired_category == "Comerio":
+            ans = sql_fltr.pids_comerio(pids_list)
+        elif self.desired_category == "Aguas Buenas":
+            ans = sql_fltr.pids_aguas_buenas(pids_list)
+        elif self.desired_category == "Other":
+            ans = sql_fltr.pids_other(pids_list)
+        return ans
+
+    def get_cat(self):
+        return str(self.desired_category)
+
+    def get_kind_and_cat(self):
+        return str(self.get_kind() + " " + self.get_cat())
+
+
 class GenderFilter(PidFilter):
     __metaclass__ = abc.ABCMeta
 
@@ -41,11 +99,11 @@ class GenderFilter(PidFilter):
         Output: Returns list of project IDs after filtering by this filter's gender type."""
         ans = []
         '''For every category of this filter, add an if statement and SQL filter execution'''
-        if self.desired_gender == "M":
+        if self.desired_gender == "Male":
             ans = sql_fltr.pids_males(pids_list)
-        elif self.desired_gender == "F":
+        elif self.desired_gender == "Female":
             ans = sql_fltr.pids_females(pids_list)
-        elif self.desired_gender == "TG":
+        elif self.desired_gender == "Transgender":
             ans = sql_fltr.pids_transgender(pids_list)
         return ans
 
