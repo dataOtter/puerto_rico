@@ -27,6 +27,12 @@
     width: 48%;
 }
 
+.cols-scroll {
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 80%;
+}
+
 .cols-header {
     display: flex;
     justify-content: space-between;
@@ -43,7 +49,7 @@
     border-radius: .4em;
     cursor: pointer;
     text-align: center;
-    height: 1.8em;
+    height: 2.6em;
     padding-top: .5em;
 }
 
@@ -52,82 +58,7 @@
 }
 
 
-/* Custom Radio Button */
-p {
-    font-size: .9em;
-}
-
-.rbutton-row {
-    display: flex;
-    text-align: center;
-    margin: 1em;
-}
-
-.rbutton {
-    margin: 0 .5em;
-}
-
-.rbutton-all {
-    margin: 0 1.5em;
-}
-
-type="radio"{
-}
-
-.rb-txt {
-  position: relative;
-  top: 15px;
-  font-size: .9em;
-  color: rgb(30, 156, 215);
-  vertical-align: middle;
-  letter-spacing: .04em;
-}
-
-.rblabel-txt {
-    position: relative;
-    top: 15px;
-    font-size: .9em;
-    color: black;
-    vertical-align: middle;
-    letter-spacing: .04em;
-}
-
-.rb-spot {
-  position: relative;
-  width: 155px;
-  height: 50px;
-  border: 2px solid rgb(30, 156, 215);
-  border-radius: .75em;
-  cursor: pointer;
-  transition: ease .5s;
-}
-
-.rblabel-spot {
-    position: relative;
-    width: 100px;
-    height: 50px;
+.tbl-col-label:hover {
     cursor: pointer;
-    transition: ease .5s;
-    text-align: right;
-}
-
-.rbutton-active .rb-spot {
-  background: rgb(30, 156, 215);
-}
-
-.rbutton-active .rb-txt {
-  color: white;
-}
-
-.rbutton-inactive .rb-spot {
-  border: 2px solid rgba(30, 156, 215, .3);
-  cursor: not-allowed;
-}
-
-.rbutton-inactive .rb-txt {
-  color: rgba(30, 156, 215, .3);
-}
-
-.filters div.rbutton:hover .rb-txt{
-  color: grey;
+    color: rgb(30, 156, 215);
 }

@@ -98,7 +98,7 @@ def get_phase_dict_of_tbl_dicts_of_col_lists():
     tbls = get_phase_tbls()
     all_cols['phase1'] = get_p1_columns(tbls['p1'])
     all_cols['phase2'] = get_p2_columns(tbls['p2'])
-    all_cols['edges&other'] = get_general_columns(tbls['general'])
+    all_cols['descriptives'] = get_general_columns(tbls['general'])
     return all_cols
 
 

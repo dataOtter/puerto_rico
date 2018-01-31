@@ -1,7 +1,7 @@
 DB_NAME = 'puerto_rico'
-USER_NAME = 'root'
-PASSWORD = 'password'
-HOST_IP = '192.168.66.17'
+USER_NAME = 'maisha'
+PASSWORD = 'password123'
+HOST_IP = '192.168.0.19'
 
 
 def concat_path(filename):
