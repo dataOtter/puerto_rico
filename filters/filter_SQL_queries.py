@@ -6,7 +6,7 @@ import mysql_query_fuctions as q
 def pids_phase_1():
     """Input: None.
     Output: Returns list of of all phase 1 project IDs."""
-    statement = "SELECT DISTINCT project_id FROM p1_screenings"
+    statement = "SELECT DISTINCT " + c.LABEL_PID + " FROM " + c.P1_SCREENINGS_FILE
     return q.execute_query_return_list(statement)
 
 
@@ -14,8 +14,8 @@ def pids_p1_fltr(pids_list):
     """Input: List of project IDs to filter.
     Output: Returns list of of all remaining project IDs that are in phase 1."""
     q.populate_temp_table(pids_list, table_name=c.SQL_FILTER_TEMP_TBL, label=c.SQL_FILTER_TEMP_COL)
-    statement = "SELECT DISTINCT project_id FROM p1_screenings " \
-                "WHERE project_id IN (SELECT * FROM " + c.SQL_FILTER_TEMP_TBL + ")"
+    statement = ("SELECT DISTINCT " + c.LABEL_PID + " FROM " + c.P1_SCREENINGS_FILE +
+                 " WHERE " + c.LABEL_PID + " IN (SELECT * FROM " + c.SQL_FILTER_TEMP_TBL + ")")
     return q.execute_query_return_list(statement)
 
 
@@ -23,16 +23,17 @@ def pids_p1_only_fltr(pids_list):
     """Input: List of project IDs to filter.
     Output: Returns list of of all remaining project IDs that are in phase 1."""
     q.populate_temp_table(pids_list, table_name=c.SQL_FILTER_TEMP_TBL, label=c.SQL_FILTER_TEMP_COL)
-    statement = "SELECT DISTINCT project_id FROM p1_screenings " \
-                "WHERE project_id NOT IN (SELECT DISTINCT sender_pid FROM p2_network_supplement_edges) " \
-                "AND project_id IN (SELECT * FROM " + c.SQL_FILTER_TEMP_TBL + ")"
+    statement = ("SELECT DISTINCT " + c.LABEL_PID + " FROM " + c.P1_SCREENINGS_FILE +
+                 " WHERE " + c.LABEL_PID + " NOT IN (SELECT DISTINCT " + c.LABEL_SENDER_PID +
+                 " FROM " + c.P2_NETWORK_SUPPLEMENT_EDGES_FILE +
+                 ") AND " + c.LABEL_PID + " IN (SELECT * FROM " + c.SQL_FILTER_TEMP_TBL + ")")
     return q.execute_query_return_list(statement)
 
 
 def pids_phase_2():
     """Input: None.
     Output: Returns list of of all phase 2 project IDs."""
-    statement = "SELECT DISTINCT sender_pid FROM p2_network_supplement_edges"
+    statement = "SELECT DISTINCT " + c.LABEL_SENDER_PID + " FROM " + c.P2_NETWORK_SUPPLEMENT_EDGES_FILE
     return q.execute_query_return_list(statement)
 
 
@@ -40,8 +41,8 @@ def pids_p2_fltr(pids_list):
     """Input: List of project IDs to filter.
     Output: Returns list of of all remaining project IDs that are in phase 2."""
     q.populate_temp_table(pids_list, table_name=c.SQL_FILTER_TEMP_TBL, label=c.SQL_FILTER_TEMP_COL)
-    statement = "SELECT DISTINCT sender_pid FROM p2_network_supplement_edges " \
-                "WHERE sender_pid IN (SELECT * FROM " + c.SQL_FILTER_TEMP_TBL + ")"
+    statement = ("SELECT DISTINCT " + c.LABEL_SENDER_PID + " FROM " + c.P2_NETWORK_SUPPLEMENT_EDGES_FILE +
+                 " WHERE " + c.LABEL_SENDER_PID + " IN (SELECT * FROM " + c.SQL_FILTER_TEMP_TBL + ")")
     return q.execute_query_return_list(statement)
 
 
@@ -49,9 +50,10 @@ def pids_p2_only_fltr(pids_list):
     """Input: List of project IDs to filter.
     Output: Returns list of of all remaining project IDs that are in phase 2."""
     q.populate_temp_table(pids_list, table_name=c.SQL_FILTER_TEMP_TBL, label=c.SQL_FILTER_TEMP_COL)
-    statement = "SELECT DISTINCT sender_pid FROM p2_network_supplement_edges " \
-                "WHERE sender_pid NOT IN (SELECT DISTINCT project_id FROM p1_screenings) " \
-                "AND sender_pid IN (SELECT * FROM " + c.SQL_FILTER_TEMP_TBL + ")"
+    statement = ("SELECT DISTINCT " + c.LABEL_SENDER_PID + " FROM " + c.P2_NETWORK_SUPPLEMENT_EDGES_FILE +
+                 " WHERE " + c.LABEL_SENDER_PID + " NOT IN (SELECT DISTINCT " + c.LABEL_PID +
+                 " FROM " + c.P1_SCREENINGS_FILE + ") AND " + c.LABEL_SENDER_PID +
+                 " IN (SELECT * FROM " + c.SQL_FILTER_TEMP_TBL + ")")
     return q.execute_query_return_list(statement)
 
 
@@ -59,12 +61,19 @@ def pids_gender(pids_list, gender_code):
     """Input: List of project IDs to filter; code indicating which gender to filter on.
     Output: Returns list of all remaining project IDs for the selected gender and given project IDs list."""
     q.populate_temp_table(pids_list, table_name=c.SQL_FILTER_TEMP_TBL, label=c.SQL_FILTER_TEMP_COL)
-    query = "SELECT DISTINCT project_id FROM subjects_ids " \
-            "WHERE (project_id IN " \
-            "(SELECT project_id FROM p1_screenings WHERE rds_id IN " \
-            "(SELECT rds_id FROM p1_interviews WHERE GEN = " + str(gender_code) + "))" \
-            "OR project_id IN (SELECT project_id FROM p2_first_interviews WHERE P2FIGEN = " + str(gender_code) + "))" \
-            "AND project_id IN (SELECT * FROM " + c.SQL_FILTER_TEMP_TBL + ")"
+    query = ("SELECT DISTINCT " + c.LABEL_PID +
+             " FROM " + c.SUBJECTS_IDS_FILE +
+             " WHERE (" + c.LABEL_PID + " IN " 
+                    "(SELECT " + c.LABEL_PID +
+                    " FROM " + c.P1_SCREENINGS_FILE +
+                    " WHERE " + c.LABEL_RDS_ID + " IN (SELECT " + c.LABEL_RDS_ID +
+                                                     " FROM " + c.P1_INTERVIEWS_FILE +
+                                                     " WHERE GEN = " + str(gender_code) + ")) " +
+                     "OR " + c.LABEL_PID + " IN " +
+                     "(SELECT " + c.LABEL_PID +
+                     " FROM " + c.P2_FIRST_INTERVIEWS_FILE +
+                     " WHERE P2FIGEN = " + str(gender_code) + ")) " +
+             "AND " + c.LABEL_PID + " IN (SELECT * FROM " + c.SQL_FILTER_TEMP_TBL + ")")
     return q.execute_query_return_list(query)
 
 
@@ -72,14 +81,17 @@ def pids_age_range(pids_list, min_age=0, max_age=999):
     """Input: List of project IDs to filter; minimum age and maximum age to filter on.
     Output: Returns list of all remaining project IDs for the selected age range and given project IDs list."""
     q.populate_temp_table(pids_list, table_name=c.SQL_FILTER_TEMP_TBL, label=c.SQL_FILTER_TEMP_COL)
-    query = "SELECT DISTINCT project_id FROM subjects_ids " \
-                 "WHERE (project_id IN " \
-                 "(SELECT DISTINCT project_id FROM p1_screenings " \
-                    "WHERE EP2 >= " + str(min_age) + " AND EP2 <= " + str(max_age) + \
-                 ") OR project_id IN " \
-                 "(SELECT DISTINCT project_id FROM p2_first_interviews " \
-                    "WHERE P2FIAGE >= " + str(min_age) + " AND P2FIAGE <= " + str(max_age) + \
-                 ")) AND project_id IN (SELECT * FROM " + c.SQL_FILTER_TEMP_TBL + ")"
+    query = ("SELECT DISTINCT " + c.LABEL_PID +
+             " FROM " + c.SUBJECTS_IDS_FILE +
+             " WHERE (" + c.LABEL_PID + " IN " +
+                    "(SELECT DISTINCT " + c.LABEL_PID +
+                    " FROM " + c.P1_SCREENINGS_FILE +
+                    " WHERE EP2 >= " + str(min_age) + " AND EP2 <= " + str(max_age) + ") " +
+                    "OR " + c.LABEL_PID + " IN " +
+                    "(SELECT DISTINCT " + c.LABEL_PID +
+                    " FROM " + c.P2_FIRST_INTERVIEWS_FILE +
+                    " WHERE P2FIAGE >= " + str(min_age) + " AND P2FIAGE <= " + str(max_age) + ")) " +
+             "AND " + c.LABEL_PID + " IN (SELECT * FROM " + c.SQL_FILTER_TEMP_TBL + ")")
     return q.execute_query_return_list(query)
 
 
@@ -89,10 +101,17 @@ def pids_drug_use_per_day(pids_list, sign: str, use_per_day):
     q.populate_temp_table(pids_list, table_name=c.SQL_FILTER_TEMP_TBL, label=c.SQL_FILTER_TEMP_COL)
     codes = get_drug_use_cutoff_codes(use_per_day)
     p1code, p2code = codes[0], codes[1]
-    query = "SELECT project_id FROM subjects_ids " \
-            "WHERE (rds_id IN (SELECT rds_id FROM p1_interviews WHERE ID2 " + sign + str(p1code) + \
-            ") OR project_id IN (SELECT project_id FROM p2_first_interviews WHERE P2FIID2 " + sign + str(p2code) + \
-            ")) AND project_id IN (SELECT * FROM " + c.SQL_FILTER_TEMP_TBL + ")"
+    query = ("SELECT DISTINCT " + c.LABEL_PID +
+             " FROM " + c.SUBJECTS_IDS_FILE +
+             " WHERE (" + c.LABEL_RDS_ID + " IN " +
+                    "(SELECT " + c.LABEL_RDS_ID +
+                    " FROM " + c.P1_INTERVIEWS_FILE +
+                    " WHERE ID2 " + sign + str(p1code) + ") " +
+                    "OR " + c.LABEL_PID + " IN " +
+                    "(SELECT " + c.LABEL_PID +
+                    " FROM " + c.P2_FIRST_INTERVIEWS_FILE +
+                    " WHERE P2FIID2 " + sign + str(p2code) + ")) " +
+             "AND " + c.LABEL_PID + " IN (SELECT * FROM " + c.SQL_FILTER_TEMP_TBL + ")")
     return q.execute_query_return_list(query)
 
 
@@ -121,12 +140,18 @@ def pids_country_born(pids_list, country_code):
     """Input: List of project IDs to filter; code of the country born in to filter on.
     Output: Returns list of all remaining project IDs for the selected country of birth and given project IDs list."""
     q.populate_temp_table(pids_list, table_name=c.SQL_FILTER_TEMP_TBL, label=c.SQL_FILTER_TEMP_COL)
-    query = "SELECT DISTINCT project_id FROM subjects_ids " \
-            "WHERE (project_id IN " \
-            "(SELECT project_id FROM p1_screenings WHERE rds_id IN " \
-            "(SELECT rds_id FROM p1_interviews WHERE DM4 = " + str(country_code) + "))" \
-            "OR project_id IN (SELECT project_id FROM p2_first_interviews WHERE P2FIDM4 = " + str(country_code) + "))" \
-            "AND project_id IN (SELECT * FROM " + c.SQL_FILTER_TEMP_TBL + ")"
+    query = ("SELECT DISTINCT " + c.LABEL_PID +
+             " FROM " + c.SUBJECTS_IDS_FILE +
+             " WHERE (" + c.LABEL_PID + " IN " +
+                    "(SELECT " + c.LABEL_PID +
+                    " FROM " + c.P1_SCREENINGS_FILE +
+                    " WHERE " + c.LABEL_RDS_ID + " IN " +
+                    "(SELECT " + c.LABEL_RDS_ID +
+                    " FROM " + c.P1_INTERVIEWS_FILE + " WHERE DM4 = " + str(country_code) + ")) " +
+                    "OR " + c.LABEL_PID + " IN " +
+                    "(SELECT " + c.LABEL_PID +
+                    " FROM " + c.P2_FIRST_INTERVIEWS_FILE + " WHERE P2FIDM4 = " + str(country_code) + ")) " +
+             "AND " + c.LABEL_PID + " IN (SELECT * FROM " + c.SQL_FILTER_TEMP_TBL + ")")
     return q.execute_query_return_list(query)
 
 
@@ -134,12 +159,18 @@ def pids_city(pids_list, city_code):
     """Input: List of project IDs to filter; code of the country born in to filter on.
     Output: Returns list of all remaining project IDs for the selected country of birth and given project IDs list."""
     q.populate_temp_table(pids_list, table_name=c.SQL_FILTER_TEMP_TBL, label=c.SQL_FILTER_TEMP_COL)
-    query = "SELECT DISTINCT project_id FROM subjects_ids " \
-            "WHERE (project_id IN " \
-            "(SELECT project_id FROM p1_screenings WHERE rds_id IN " \
-            "(SELECT rds_id FROM p1_interviews WHERE DM1 = " + str(city_code) + "))" \
-            "OR project_id IN (SELECT project_id FROM p2_first_interviews WHERE P2FIDM1 = " + str(city_code) + "))" \
-            "AND project_id IN (SELECT * FROM " + c.SQL_FILTER_TEMP_TBL + ")"
+    query = ("SELECT DISTINCT " + c.LABEL_PID +
+             " FROM " + c.SUBJECTS_IDS_FILE +
+             " WHERE (" + c.LABEL_PID + " IN " +
+                    "(SELECT " + c.LABEL_PID +
+                    " FROM " + c.P1_SCREENINGS_FILE +
+                    " WHERE " + c.LABEL_RDS_ID + " IN " +
+                    "(SELECT " + c.LABEL_RDS_ID +
+                    " FROM " + c.P1_INTERVIEWS_FILE + " WHERE DM1 = " + str(city_code) + ")) " +
+                    "OR " + c.LABEL_PID + " IN " +
+                    "(SELECT " + c.LABEL_PID +
+                    " FROM " + c.P2_FIRST_INTERVIEWS_FILE + " WHERE P2FIDM1 = " + str(city_code) + ")) " +
+             "AND " + c.LABEL_PID + " IN (SELECT * FROM " + c.SQL_FILTER_TEMP_TBL + ")")
     return q.execute_query_return_list(query)
 
 
@@ -245,11 +276,11 @@ def sender_receiver_from_edges(pids_list1, pids_list2):
     Output: Returns a sender_receiver list of those relationships - including both permutations of each."""
     q.populate_temp_table(pids_list1, table_name='temp1', label='sender_receiver')
     q.populate_temp_table(pids_list2, table_name='temp2', label='sender_receiver')
-    query = "SELECT * FROM all_edges_index " \
-            "WHERE (sender_pid IN (SELECT * FROM temp1) " \
-            "AND receiver_pid IN (SELECT * FROM temp2)) " \
-            "OR (sender_pid IN (SELECT * FROM temp2) " \
-            "AND receiver_pid IN (SELECT * FROM temp1))"
+    query = ("SELECT * FROM " + c.ALL_EDGES_INDEX_FILE +
+             " WHERE (" + c.LABEL_SENDER_PID + " IN (SELECT * FROM temp1) " +
+                     "AND " + c.LABEL_RECEIVER_PID + " IN (SELECT * FROM temp2)) " +
+             "OR (" + c.LABEL_SENDER_PID + " IN (SELECT * FROM temp2) " +
+                 "AND " + c.LABEL_RECEIVER_PID + " IN (SELECT * FROM temp1))")
     return q.execute_query_return_list(query)
 
 
@@ -257,9 +288,9 @@ def get_full_edge_ids_for_pids_list(pids_list: list):
     """Input: PID list of the participants whose relationship edges to return.
     Output: Returns a sender_receiver list of those relationships - including both permutations of each relationship."""
     q.populate_temp_table(pids_list, table_name='temp', label='sender_or_receiver')
-    query = "SELECT full_edge_id FROM all_edges_index " \
-            "WHERE sender_pid IN (SELECT * FROM temp) " \
-            "OR receiver_pid IN (SELECT * FROM temp)"
+    query = ("SELECT " + c.LABEL_EDGE_ID + " FROM " + c.ALL_EDGES_INDEX_FILE +
+             " WHERE " + c.LABEL_SENDER_PID + " IN (SELECT * FROM temp) " +
+             "OR " + c.LABEL_RECEIVER_PID + " IN (SELECT * FROM temp)")
     return q.execute_query_return_list(query)
 
 

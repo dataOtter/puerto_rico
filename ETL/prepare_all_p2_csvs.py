@@ -8,7 +8,6 @@ def prep_all_p2():
     adds a project_id column to p2_first_interviews.csv; adds a rds_id column to p2_second_interviews.csv;
     creates the network supplement extract file."""
     path_old_net = c.P2_DEPRECATED_NET_SUPS_PATH
-    path_net_sup_edges = c.P2_NETWORK_SUPPLEMENT_EDGES_PATH
     path_net_sup_extract = c.P2_NET_SUPS_EXTRACT_PATH
     path_hiv = c.P2_HIVS_PATH
     path_hcv = c.P2_HCVS_PATH
@@ -25,9 +24,6 @@ def prep_all_p2():
 
     # extract P2SF and P2NS1 columns from the deprecated network supplement and get rds ids
     make_net_sup_extract_file(path_old_net, path_net_sup_extract)
-
-    # add a unique ID column to the network supplement edges file
-    #add_unique_id_to_net_sup_edges(path_net_sup_edges)
 
     # add project_id to p2_first_interviews.csv using its newly made unique_id to associate the correct project_id
     w.add_column_and_data_from_old_nodes_to_csv(path_interviews1, path_nodes,

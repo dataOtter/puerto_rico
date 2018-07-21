@@ -4,8 +4,6 @@ SHOW TABLES;
 
 SELECT filters, length(pids)/6 FROM top_secret_highly_confidential_cheat_sheet order by length(pids) desc;
 
-DROP DATABASE puerto_rico;
-
 SELECT COLUMN_NAME 
 FROM INFORMATION_SCHEMA.COLUMNS 
 WHERE TABLE_SCHEMA='puerto_rico' 
@@ -84,10 +82,114 @@ select distinct project_id from subjects_ids where project_id in
 		(select rds_id from p1_interviews where DM4 = 2))
 	or project_id in 
 		(select project_id from p2_first_interviews where P2FIDM4 = 2);
+        
+        
+# all DR born in p1(315) -- 
+select count(*), DM4 from p1_interviews group by DM4;
+select distinct project_id from p1_screenings where rds_id in (select rds_id from p1_interviews where DM4 = 3);
+
+select distinct project_id from subjects_ids where project_id in 
+	(select project_id from p1_screenings where rds_id in 
+		(select rds_id from p1_interviews where DM4 = 3))
+	or project_id in 
+		(select project_id from p2_first_interviews where P2FIDM4 = 3);
 
 
 select filters, hash_index, ceil(length(pids)/6), pids from top_secret_highly_confidential_cheat_sheet order by filters;
 
 
+SELECT DISTINCT
+    project_id
+FROM
+    subjects_ids
+WHERE
+    (project_id IN (SELECT 
+            project_id
+        FROM
+            p1_screenings
+        WHERE
+            rds_id IN (SELECT 
+                    rds_id
+                FROM
+                    p1_interviews
+                WHERE
+                    DM1 = 2))
+        OR project_id IN (SELECT 
+            project_id
+        FROM
+            p2_first_interviews
+        WHERE
+            P2FIDM1 = 2));
 
- 
+
+########################################################################
+# Join all to make one huge table for all pids and related info; and one table for all edge_ids and related info
+########################################################################
+CREATE OR REPLACE VIEW temp1 AS
+    (SELECT 
+        project_id AS subject_project_id,
+        rds_id AS subjects_rds_id,
+        unique_id AS subjects_unique_id
+    FROM
+        subjects_ids);
+        
+SELECT 
+    s.project_id AS subject_project_id,
+    s.rds_id AS subjects_rds_id,
+    s.unique_id AS subjects_unique_id,
+    ':',
+    p1s.intid as `p1s.intid`
+FROM
+    subjects_ids AS s
+        LEFT JOIN
+    p1_screenings AS p1s ON s.project_id = p1s.project_id;
+    
+
+select * from subjects_ids AS s
+	LEFT JOIN p1_screenings AS p1s ON s.rds_id = p1s.rds_id
+    left join p1_followups as p1f on s.rds_id = p1f.rds_id
+    left join p1_hivs as p1hi on s.rds_id = p1hi.rds_id
+    left join p1_hcvs as p1hc on s.rds_id = p1hc.rds_id
+    left join p1_interviews as p1i on s.rds_id = p1i.rds_id
+    
+    left join p2_first_interviews as p2fi on s.unique_id = p2fi.unique_id
+    left join p2_second_interviews as p2si on s.unique_id = p2si.unique_id
+    left join p2_hivs as p2hi on s.unique_id = p2hi.unique_id
+    left join p2_hcvs as p2hc on s.unique_id = p2hc.unique_id;
+    
+    
+
+SET @sql = CONCAT('SELECT ', (SELECT REPLACE(GROUP_CONCAT(COLUMN_NAME), 'rds_id,' 'project_id,' 'unique_id,', '') 
+					FROM INFORMATION_SCHEMA.COLUMNS 
+					WHERE TABLE_NAME = 'subjects_all_data' 
+					AND TABLE_SCHEMA = 'puerto_rico'), ' FROM subjects_all_data');
+
+PREPARE stmt1 FROM @sql;
+EXECUTE stmt1;
+
+
+
+#select edge_id, sender_pid, receiver_pid from all_edges_index AS e
+select e.*, p2n.*, n.*, r.*, GROUP_CONCAT(en.note_id SEPARATOR ', ') 
+from all_edges_index AS e
+LEFT JOIN p2_network_supplement_edges AS p2n ON e.edge_id = p2n.edge_id
+left join network_edges as n on e.edge_id = n.edge_id
+left join rds_edges as r on e.edge_id = r.edge_id
+LEFT JOIN edges_to_notes as en ON e.edge_id = en.edge_id
+GROUP BY e.edge_id;
+
+
+SELECT all_edges_index.edge_id, all_edges_index.sender_pid, all_edges_index.receiver_pid, 
+GROUP_CONCAT(edges_to_notes.note_id SEPARATOR ', ') AS `note_ids`, 
+network_edges.edge_id AS `network_edges.edge_id`, rds_edges.edge_id AS `rds_edges.edge_id` 
+FROM all_edges_index 
+LEFT JOIN edges_to_notes ON edges_to_notes.edge_id = all_edges_index.edge_id 
+LEFT JOIN network_edges ON network_edges.edge_id = all_edges_index.edge_id 
+LEFT JOIN rds_edges ON rds_edges.edge_id = all_edges_index.edge_id 
+GROUP BY all_edges_index.edge_id;
+
+
+
+
+
+

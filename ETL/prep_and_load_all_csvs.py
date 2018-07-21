@@ -22,6 +22,7 @@ def prep_all_csvs():
     prep_p2.prep_all_p2()
     prep_3.create_p1_p2_overlaps()
     prep_4.create_all_edge_and_note_csvs()
+    q.close_sql_db_connection()
 
 
 def load_all_csvs_into_db():
@@ -31,6 +32,7 @@ def load_all_csvs_into_db():
     for csv in c.ALL_TABLES:
         csv_path = c.concat_path(csv)
         sqlcsv.load_one_table_from_csv_into_db(csv_path, csv)
+    q.close_sql_db_connection()
 
 
 def memoize_all_and_time():
@@ -38,6 +40,7 @@ def memoize_all_and_time():
     Output: Runs memoizing/caching and prints how long it took."""
     start_time = t.time()
     m.make_memoize_table()
+    q.close_sql_db_connection()
     print("--- %s seconds ---" % (t.time() - start_time))
     print("--- %s minutes ---" % ((t.time() - start_time) / 60))
 

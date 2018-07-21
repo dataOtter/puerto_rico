@@ -1,20 +1,22 @@
 DB_NAME = 'puerto_rico'
 USER_NAME = 'maisha'
 PASSWORD = 'password123'
-HOST_IP = '192.168.0.19'
+HOST_IP = '192.168.1.15'
 
+GLOBAL_CNX_COUNT = -1
+GLOBAL_CNX = None
 
 def concat_path(filename):
     return ALL_CSVS_PATH + filename + '.csv'
 
-ALL_CSVS_PATH = "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\csv_data\\"
+ALL_CSVS_PATH = "D:\\Dropbox\\MB_dev\\Puerto Rico\\csv_data\\"
 CREATE_DB_SQL_FILE_PATH = \
-    "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\puerto_rico\\SQL\\python_readable_create_sql_db.sql"
-DOWNLOAD_FILES_PATH = "C:\\Users\\Maisha\\Dropbox\\MB_dev\\Puerto Rico\\puerto_rico\\PR_App\\v7\\outputs\\"
+    "D:\\Dropbox\\MB_dev\\Puerto Rico\\puerto_rico\\SQL\\python_readable_create_sql_db.sql"
+DOWNLOAD_FILES_PATH = "D:\\Dropbox\\MB_dev\\Puerto Rico\\puerto_rico\\outputs\\"
 
 CSV_NULL_VALUES = '#NULL!'
 
-LOGGING_SQL_QUERIES = False  # This will flood your window
+LOGGING_SQL_QUERIES = False  # This will flood your ouput window
 LOGGING_SQL_INSERT_VALUES = False
 LOGGING_NONE_INSERT_SQL_QUERIES = False
 
@@ -26,20 +28,8 @@ SQL_FILTER_TEMP_COL = 'pid'
 #######################################################################################################################
 CITY_LABELS_P1 = {'1': 'Cayey', '2': 'Cidra', '3': 'Aguas Buenas', '4': 'Comerío', '5': 'Other'}
 CITY_LABELS_P2 = {'1': 'Cayey', '2': 'Cidra', '3': 'Aguas Buenas', '4': 'Comerío', '5': 'Other'}
-'''P1
-1 [Cayey]
-2 [Cidra]
-3 [Aguas Buenas]
-4 [Comerío]
-5 [Otro]
-
-P2
-1 [Cayey]
-2 [Cidra]
-3 [Aguas Buenas]
-4 [Comerio]
-
-5 [Other: (specify)] _________'''
+'''P1 1 [Cayey] 2 [Cidra] 3 [Aguas Buenas] 4 [Comerío] 5 [Otro]
+P2 1 [Cayey] 2 [Cidra] 3 [Aguas Buenas] 4 [Comerio] 5 [Other: (specify)] _________'''
 
 #######################################################################################################################
 # MEMOIZING
@@ -85,7 +75,7 @@ P2_DEPRECATED_NET_SUPS_FILE = 'p2_deprecated_net_sups'
 P2_DEPRECATED_NET_SUPS_PATH = concat_path(P2_DEPRECATED_NET_SUPS_FILE)
 
 P2_NETWORK_SUPPLEMENT_EDGES_FILE = 'p2_network_supplement_edges'
-P2_NETWORK_SUPPLEMENT_EDGES_PATH = concat_path(P2_NETWORK_SUPPLEMENT_EDGES_FILE)
+#P2_NETWORK_SUPPLEMENT_EDGES_PATH = concat_path(P2_NETWORK_SUPPLEMENT_EDGES_FILE)
 
 P2_NET_SUPS_EXTRACT_FILE = 'p2_net_sups_extract'
 P2_NET_SUPS_EXTRACT_PATH = concat_path(P2_NET_SUPS_EXTRACT_FILE)
@@ -143,7 +133,7 @@ OLD_LABEL_PID = 'Project IDs'  # in node_index_9_30_17.csv
 
 LABEL_SENDER_PID = "sender_pid"
 LABEL_RECEIVER_PID = "receiver_pid"
-LABEL_SENDER_RECEIVER = "full_edge_id"
+LABEL_EDGE_ID = "edge_id"
 
 OLD_LABEL_SENDER_ID = 'Sender ID'
 OLD_LABEL_RECEIVER_ID = 'Receiver ID'
@@ -158,7 +148,6 @@ OLD_LABEL_FN = 'Field Notes'  # Column that has name of relevant field note(s), 
 
 NO_ENTRIES = ['', 'NA']  # All possible entries indicating "no note"
 
-LABEL_EDGE_ID = "edge_id"
 LABEL_NOTE_ID = "note_id"
 LABEL_NOTE_EDGE_ID = "note_edge_id"
 LABEL_NOTE_NAME = "note_name"
@@ -174,9 +163,9 @@ TYPE_FN = "Field note"
 #######################################################################################################################
 RDSID_PRIM_KEY_TBLS = [P1_HIVS_FILE, P1_HCVS_FILE, P1_INTERVIEWS_FILE, P1_FOLLOW_UPS_FILE, P1_SCREENINGS_FILE]
 UNIQUEID_PRIM_KEY_TBLS = [P2_FIRST_INTERVIEWS_FILE, P2_HCVS_FILE, P2_HIVS_FILE, P2_SECOND_INTERVIEWS_FILE]
-EDGEID_PRIM_KEY_TBLS = [NETWORK_EDGES_FILE, RDS_EDGES_FILE, EDGES_TO_NOTES_FILE]
-SENDERPID_PRIM_KEY_TBLS = [ALL_EDGES_INDEX_FILE, P2_NETWORK_SUPPLEMENT_EDGES_FILE]
-PID_PRIM_KEY_TBLS = [P2_NET_SUPS_EXTRACT_FILE, P1_P2_OVERLAPS_FILE, SUBJECTS_IDS_PATH]
+EDGEID_PRIM_KEY_TBLS = [NETWORK_EDGES_FILE, RDS_EDGES_FILE, EDGES_TO_NOTES_FILE,
+                        ALL_EDGES_INDEX_FILE, P2_NETWORK_SUPPLEMENT_EDGES_FILE]
+PID_PRIM_KEY_TBLS = [P2_NET_SUPS_EXTRACT_FILE, P1_P2_OVERLAPS_FILE, SUBJECTS_IDS_FILE]
 NOTEID_PRIM_KEY_TBLS = [ALL_NOTES_INDEX_FILE]
 #######################################################################################################################
 # SQL TABLES GROUPED BY PRIMARY KEY/ID

@@ -11,7 +11,7 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-
+DROP SCHEMA IF EXISTS `puerto_rico` ;
 CREATE SCHEMA IF NOT EXISTS `puerto_rico` ;
 USE `puerto_rico` ;
 
@@ -225,7 +225,7 @@ ENGINE = InnoDB;
 -- Table `puerto_rico`.`all_edges_index`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`all_edges_index` (
-  `edge_id` INT UNSIGNED ZEROFILL NOT NULL,
+  `edge_id` VARCHAR(45) NOT NULL,
   `sender_pid` VARCHAR(45) NOT NULL,
   `receiver_pid` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`edge_id`),
@@ -249,7 +249,7 @@ ENGINE = InnoDB;
 -- Table `puerto_rico`.`network_edges`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`network_edges` (
-  `edge_id` INT UNSIGNED ZEROFILL NOT NULL,
+  `edge_id` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`edge_id`),
   UNIQUE INDEX `edge_id_UNIQUE` (`edge_id` ASC),
   CONSTRAINT `network_edges_edge_id`
@@ -264,7 +264,7 @@ ENGINE = InnoDB;
 -- Table `puerto_rico`.`rds_edges`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`rds_edges` (
-  `edge_id` INT UNSIGNED ZEROFILL NOT NULL,
+  `edge_id` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`edge_id`),
   UNIQUE INDEX `edge_id_UNIQUE` (`edge_id` ASC),
   CONSTRAINT `rds_edges_edge_id`
@@ -295,7 +295,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`edges_to_notes` (
   `note_edge_id` INT UNSIGNED ZEROFILL NOT NULL,
-  `edge_id` INT UNSIGNED NOT NULL,
+  `edge_id` VARCHAR(45) NOT NULL,
   `note_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`note_edge_id`),
   UNIQUE INDEX `id_UNIQUE` (`note_edge_id` ASC),

@@ -57,12 +57,10 @@ def insert_data_from_csv(full_path, column_positions, tbl_name):
 
     insert_row_statement = q.get_insert_row_statement(tbl_name, labels)
 
-    cnx = mysql.connector.connect(user=c.USER_NAME, password=c.PASSWORD,
-                                  host=c.HOST_IP,
-                                  database=c.DB_NAME)
+    cnx = mysql.connector.connect(user=c.USER_NAME, password=c.PASSWORD, host=c.HOST_IP, database=c.DB_NAME)
     cursor = cnx.cursor()
 
-    rows = w.get_csv_as_list(full_path)[1:]
+    rows = w.get_csv_as_list(full_path)[1:]  # without column labels row
 
     for row in rows:
         row_values = ()

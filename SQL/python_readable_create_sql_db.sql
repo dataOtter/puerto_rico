@@ -83,18 +83,18 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`p1_followups` (
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`p2_network_supplement_edges` (
-  `full_edge_id` VARCHAR(45) NOT NULL,
+  `edge_id` VARCHAR(45) NOT NULL,
   `sender_pid` VARCHAR(45) NOT NULL,
   `receiver_pid` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`full_edge_id`),
+  PRIMARY KEY (`edge_id`),
   CONSTRAINT `p2_network_supplement_edges_sender_pid`
     FOREIGN KEY (`sender_pid`)
     REFERENCES `puerto_rico`.`subjects_ids` (`project_id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT,
-  CONSTRAINT `p2_network_supplement_edges_full_edge_id`
-    FOREIGN KEY (`full_edge_id`)
-    REFERENCES `puerto_rico`.`all_edges_index` (`full_edge_id`)
+  CONSTRAINT `p2_network_supplement_edges_edge_id`
+    FOREIGN KEY (`edge_id`)
+    REFERENCES `puerto_rico`.`all_edges_index` (`edge_id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB;
@@ -195,13 +195,12 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`p1_p2_overlaps` (
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`all_edges_index` (
-  `edge_id` INT UNSIGNED ZEROFILL NOT NULL,
+  `edge_id` VARCHAR(45) NOT NULL,
   `sender_pid` VARCHAR(45) NOT NULL,
   `receiver_pid` VARCHAR(45) NOT NULL,
-  `full_edge_id` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`edge_id`),
   UNIQUE INDEX `id_UNIQUE` (`edge_id` ASC),
-  UNIQUE INDEX `full_edge_id_UNIQUE` (`full_edge_id` ASC),
+  UNIQUE INDEX `edge_id_UNIQUE` (`edge_id` ASC),
   INDEX `sender_pid_idx` (`sender_pid` ASC),
   INDEX `receiver_pid_idx` (`receiver_pid` ASC),
   CONSTRAINT `edges_sender_pid`
@@ -217,7 +216,7 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`all_edges_index` (
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`network_edges` (
-  `edge_id` INT UNSIGNED ZEROFILL NOT NULL,
+  `edge_id` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`edge_id`),
   UNIQUE INDEX `edge_id_UNIQUE` (`edge_id` ASC),
   CONSTRAINT `network_edges_edge_id`
@@ -228,7 +227,7 @@ CREATE TABLE IF NOT EXISTS `puerto_rico`.`network_edges` (
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`rds_edges` (
-  `edge_id` INT UNSIGNED ZEROFILL NOT NULL,
+  `edge_id` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`edge_id`),
   UNIQUE INDEX `edge_id_UNIQUE` (`edge_id` ASC),
   CONSTRAINT `rds_edges_edge_id`
@@ -251,7 +250,7 @@ ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `puerto_rico`.`edges_to_notes` (
   `note_edge_id` INT UNSIGNED ZEROFILL NOT NULL,
-  `edge_id` INT UNSIGNED NOT NULL,
+  `edge_id` VARCHAR(255) NOT NULL,
   `note_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`note_edge_id`),
   UNIQUE INDEX `id_UNIQUE` (`note_edge_id` ASC),

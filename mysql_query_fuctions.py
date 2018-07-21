@@ -3,24 +3,43 @@ import mysql.connector
 import constants as c
 
 
+def get_sql_db_connection():
+    if c.GLOBAL_CNX_COUNT == -1:
+        c.GLOBAL_CNX = mysql.connector.connect(user=c.USER_NAME, password=c.PASSWORD, host=c.HOST_IP, database=c.DB_NAME)
+        c.GLOBAL_CNX_COUNT += 1  # now counter is 0
+    assert (c.GLOBAL_CNX_COUNT == 0), "Extra connection 'opened' but not 'closed'"
+    c.GLOBAL_CNX_COUNT += 1  # add 1 for each connection given to a caller
+    return c.GLOBAL_CNX
+
+
+def decr_global_cnx_count():
+    assert (c.GLOBAL_CNX_COUNT == 1), "Trying to 'close' a connection not 'opened'"
+    c.GLOBAL_CNX_COUNT -= 1
+
+
+def close_sql_db_connection():
+    c.GLOBAL_CNX.close()
+    c.GLOBAL_CNX_COUNT = -1
+
+
 def execute_query(statement: str):
     """Input: MySQL statement as a string; only for statements that do not retrieve any data.
     Output: Executes the given statement using the database details set in the constants file."""
-    cnx = mysql.connector.connect(user=c.USER_NAME, password=c.PASSWORD, host=c.HOST_IP, database=c.DB_NAME)
+    cnx = get_sql_db_connection()
     cursor = cnx.cursor()
     if c.LOGGING_SQL_QUERIES or c.LOGGING_SQL_INSERT_VALUES:
         print(statement)
     cursor.execute(statement)
     cnx.commit()
     cursor.close()
-    cnx.close()
+    decr_global_cnx_count()
 
 
 def execute_query_return_list(statement: str):
     """Input: MySQL statement as a string; only for statements that retrieve data.
     Output: Executes the given statement using the database details set in the constants file.
     Returns the retrieved data as a list of strings."""
-    cnx = mysql.connector.connect(user=c.USER_NAME, password=c.PASSWORD, host=c.HOST_IP, database=c.DB_NAME)
+    cnx = get_sql_db_connection()
     cursor = cnx.cursor()
     if c.LOGGING_SQL_QUERIES or c.LOGGING_NONE_INSERT_SQL_QUERIES:
         print(statement)
@@ -28,7 +47,7 @@ def execute_query_return_list(statement: str):
     result_list = [item[0] for item in cursor.fetchall()]  # get result as list of strings, rather than list of tuples
     cnx.commit()
     cursor.close()
-    cnx.close()
+    decr_global_cnx_count()
     return result_list
 
 
@@ -36,7 +55,7 @@ def execute_query_return_raw(statement: str):
     """Input: MySQL statement as a string; only for statements that retrieve data.
         Output: Executes the given statement using the database details set in the constants file.
         Returns the retrieved data raw as is."""
-    cnx = mysql.connector.connect(user=c.USER_NAME, password=c.PASSWORD, host=c.HOST_IP, database=c.DB_NAME)
+    cnx = get_sql_db_connection()
     cursor = cnx.cursor()
     if c.LOGGING_SQL_QUERIES or c.LOGGING_NONE_INSERT_SQL_QUERIES:
         print(statement)
@@ -44,7 +63,7 @@ def execute_query_return_raw(statement: str):
     res = cursor.fetchall()
     cnx.commit()
     cursor.close()
-    cnx.close()
+    decr_global_cnx_count()
     return res
 
 
@@ -65,14 +84,14 @@ def execute_query_insert_one_row(row: list, table_name: str, col_labels: list):
     list of column labels of that table.
     Output: Inserts the given row into the given table using the database details set in the constants file."""
     insert_row_statement = get_insert_row_statement(table_name, col_labels)
-    cnx = mysql.connector.connect(user=c.USER_NAME, password=c.PASSWORD, host=c.HOST_IP, database=c.DB_NAME)
+    cnx = get_sql_db_connection()
     cursor = cnx.cursor()
     if c.LOGGING_SQL_QUERIES:
         print(insert_row_statement, row)
     cursor.execute(insert_row_statement, row)
     cnx.commit()
     cursor.close()
-    cnx.close()
+    decr_global_cnx_count()
 
 
 def execute_query_insert_multiple_rows(all_rows: list, table_name: str, col_labels: list):
@@ -80,7 +99,7 @@ def execute_query_insert_multiple_rows(all_rows: list, table_name: str, col_labe
     list of column labels of that table.
     Output: Inserts the given rows into the given table using the database details set in the constants file."""
     insert_row_statement = get_insert_row_statement(table_name, col_labels)
-    cnx = mysql.connector.connect(user=c.USER_NAME, password=c.PASSWORD, host=c.HOST_IP, database=c.DB_NAME)
+    cnx = get_sql_db_connection()
     cursor = cnx.cursor()
     if c.LOGGING_SQL_INSERT_VALUES:
         print("Inserting " + str(len(all_rows)) + " rows: " + str(all_rows))
@@ -91,8 +110,7 @@ def execute_query_insert_multiple_rows(all_rows: list, table_name: str, col_labe
             print(insert_row_statement, row)
         cursor.execute(insert_row_statement, row)
         cnx.commit()
-    cursor.close()
-    cnx.close()
+    decr_global_cnx_count()
 
 
 def populate_temp_table(pids_list: list, table_name="temp", label="pid"):
