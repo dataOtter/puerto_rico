@@ -1,0 +1,104 @@
+.filters {
+    flex-grow: 4;
+    max-width: 68em;
+    max-width: 68em;
+    padding: 1.3em;
+    margin-right: 2.5em;
+    margin-bottom: 2em;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.1em;
+}
+
+.horizontal-line  {
+    width: 300px;
+    height: 2px;
+    background: rgb(30, 156, 215); /* For browsers that do not support gradients */
+    background: linear-gradient(to right, rgba(204, 224, 224, .0), rgba(30, 156, 215, .57), rgba(0, 117, 190, .87), rgb(0, 91, 151));
+    margin-bottom: 4em;
+    margin-top: -1em;
+}
+
+/* Custom Radio Button */
+p {
+    font-size: .9em;
+}
+
+.rbutton-row {
+    display: flex;
+    text-align: center;
+    margin: 1em;
+}
+
+.rbutton {
+    margin: 0 .5em;
+}
+
+.rbutton-all {
+    margin: 0 1.5em;
+}
+
+type="radio"{
+}
+
+.rb-txt {
+  position: relative;
+  top: 15px;
+  font-size: .9em;
+  color: rgb(30, 156, 215);
+  vertical-align: middle;
+  letter-spacing: .04em;
+}
+
+.rblabel-txt {
+    position: relative;
+    top: 15px;
+    font-size: .9em;
+    color: black;
+    vertical-align: middle;
+    letter-spacing: .04em;
+}
+
+.rb-spot {
+  position: relative;
+  width: 155px;
+  height: 50px;
+  border: 2px solid rgb(30, 156, 215);
+  border-radius: .75em;
+  cursor: pointer;
+  transition: ease .5s;
+}
+
+.rblabel-spot {
+    position: relative;
+    width: 100px;
+    height: 50px;
+    cursor: pointer;
+    transition: ease .5s;
+    text-align: right;
+}
+
+.rbutton-active .rb-spot {
+  background: rgb(30, 156, 215);
+}
+
+.rbutton-active .rb-txt {
+  color: white;
+}
+
+.rbutton-inactive .rb-spot {
+  border: 2px solid rgba(30, 156, 215, .3);
+  cursor: not-allowed;
+}
+
+.rbutton-inactive .rb-txt {
+  color: rgba(30, 156, 215, .3);
+}
+
+.filters div.rbutton:hover .rb-txt{
+  color: grey;
+}
+
+/*.filters div.rbutton:hover .rb-spot{
+  border: 2px solid grey;
+}*/

@@ -1,0 +1,36 @@
+html, body {
+  min-height: 100%;
+  overflow: auto;
+  min-width: 85em;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2%;
+    width: auto;
+    height: auto;
+}
+
+.vertical-line{
+    width: 3px;
+    background: rgb(30, 156, 215); /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(rgba(204, 224, 224, .0), rgba(30, 156, 215, .57), rgba(0, 117, 190, .87),
+                rgb(0, 91, 151),
+                rgba(0, 117, 190, .87), rgba(30, 156, 215, .57), rgba(204, 224, 224, .0));
+    background: -moz-linear-gradient(rgba(204, 224, 224, .0), rgba(30, 156, 215, .57), rgba(0, 117, 190, .87),
+                rgb(0, 91, 151),
+                rgba(0, 117, 190, .87), rgba(30, 156, 215, .57), rgba(204, 224, 224, .0));
+    background: linear-gradient(rgba(204, 224, 224, .0), rgba(30, 156, 215, .57), rgba(0, 117, 190, .87),
+                rgb(0, 91, 151),
+                rgba(0, 117, 190, .87), rgba(30, 156, 215, .57), rgba(204, 224, 224, .0));
+}
+
+
+
+

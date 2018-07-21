@@ -1,0 +1,34 @@
+{'phase1': 
+{'p1_screenings': 
+['rds_id', 'DATE', 'EP6d', 'EP6e', 'EP6f', 'EP6g', 'EP9', 'NOTES'], 
+'p1_hivs': 
+['rds_id', 'PrjName', 'AgentId', 'LtCallWd', 'LtCallST',  'INT99'], 
+'p1_hcvs': 
+['rds_id', 'RecordNo', 'LtQuestF', 'LANG', 'VHC4', 'INT99'], 
+'p1_interviews':
+['AgentId', 'Priority', 'LANG', 'SEED', 'DM4', 'FIN3', 'FIN3O'], 
+'p1_followups': 
+['LtCallDt', 'LtCallST', 'PrjName', 'CODEGH', 'RF31A', 'RF34B']}, 
+
+'phase2': 
+{'p2_network_supplement_edges': 
+['P2NS_6', 'P2NS_7', 'P2NS_8', 'P2NS_9', 'P2NS_HS', 'P2NS_10',], 'p2_net_sups_extract': 
+['project_id', 'P2SF', 'P2NS1', 'unique_id'], 
+'p2_first_interviews': 
+['P2FIDM15', 'P2FISX2M', 'P2FISX2H', 'P2FIOD4M6O', 'P2FIOD5',],
+'p2_second_interviews': 
+['P2SIPA1AM1', 'P2SIPA1AM2', 'P2SICOM7B', 'P2SICOM8'], 
+'p2_hivs': 
+['unique_id', 'P2PrjName', 'P2RecordNo', 'P2FIN3O', 'P2INT99'],
+'p2_hcvs': 
+['unique_id', 'P2PrjName', 'P2LtQuestF', 'P2CallCnt', 'P2LtCallR']},
+
+'general': 
+{'subjects_ids': 
+['project_id', 'rds_id', 'unique_id'], 
+'all_edges_index': 
+['edge_id', 'sender_pid', 'receiver_pid', 'full_edge_id'], 
+'network_edges': ['edge_id'], 
+'rds_edges': ['edge_id'], 
+'all_notes_index': ['note_id', 'note_type', 'text'], 
+'edges_to_notes': ['note_edge_id', 'edge_id', 'note_id'], 'p1_p2_overlaps': ['unique_id', 'rds_id', 'project_id']}}

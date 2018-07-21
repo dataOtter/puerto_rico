@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<meta charset="UTF-8">-->
+    <title>Puerto Rico Project Home</title>
+
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/filters.css">
+    <link rel="stylesheet" href="../static/css/results_download.css">
+
+    <link rel="stylesheet" href="../static/css/extractor.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="../staticfaceted_search.jsx.js"></script> -->
+    <script src="../static/js/final.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@1.5.4/src/loadingoverlay.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="flex-container">
+
+        <div class="filters">
+            <h2>Select participants</h2>
+            <div class="horizontal-line"></div>
+        </div>
+
+        <div class="vertical-line"></div>
+
+        <div class="res-download">
+
+            <div id="circle-div">
+                <svg class="circle-box">
+                    <g transform="translate(230, 230)">
+                        <g id="circle">
+                            <path id="meter" class="circle-meter" d="0"></path>
+                            <path id="foreground" class="circle-foreground" d="0"></path>
+                            <path id="front" class="circle-front" d="0"></path>
+                            <text id="text" class="circle-text"></text>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+
+            <div id="download" class="download">
+                <div class="button-box">
+                <button id="send_to_extractor" class="button trigger">Step 2: Extract</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

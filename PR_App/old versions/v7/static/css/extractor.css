@@ -1,0 +1,64 @@
+.col-filters {
+    flex-grow: 4;
+    min-width: 58em;
+    max-width: 68em;
+    padding: 1.3em;
+    margin-right: 2.5em;
+    margin-bottom: 2em;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.1em;
+}
+
+.phase-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 68em;
+}
+
+.cols-flex {
+    display: flex;
+    justify-content: space-between;
+    height: 18em;
+}
+
+.cols-box {
+    width: 48%;
+}
+
+.cols-scroll {
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 80%;
+}
+
+.cols-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.cols-button {
+    width: 10em;
+    font-size: .9em;
+    color: rgb(30, 156, 215);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    border: 2px solid rgb(30, 156, 215);
+    border-radius: .4em;
+    cursor: pointer;
+    text-align: center;
+    height: 2.6em;
+    padding-top: .5em;
+}
+
+.cols-header div.cols-button:hover {
+  color: grey;
+}
+
+
+.tbl-col-label:hover {
+    cursor: pointer;
+    color: rgb(30, 156, 215);
+}

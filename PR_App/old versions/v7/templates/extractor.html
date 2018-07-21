@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Extractor</title>
+
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/filters.css">
+    <link rel="stylesheet" href="../static/css/results_download.css">
+    <link rel="stylesheet" href="../static/css/extractor.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--<script src="../static/js/extractor.js"></script>-->
+    <script src="../static/js/final.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@1.5.4/src/loadingoverlay.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="flex-container">
+
+        <div class="col-filters">
+            <h2>Select columns</h2>
+            <div class="horizontal-line"></div>
+
+
+            <div id="phase_flex" class="phase-flex">
+
+            </div>
+
+        </div>
+
+        <div class="vertical-line"></div>
+
+        <div class="res-download">
+
+            <div id="download" class="download">
+                <div class="button-box">
+                <button id="generate_download_button" class="button trigger" disabled>Generate zip folder</button>
+                </div>
+                <div class="button-box">
+                <a id="download_link" class="download-button" href="" download hidden>Download here</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
